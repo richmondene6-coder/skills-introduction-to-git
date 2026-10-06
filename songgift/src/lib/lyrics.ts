@@ -17,6 +17,10 @@ Craft guidelines:
 - The title is short (2-6 words) and personal.`;
 
 export async function writeLyrics(quiz: Quiz): Promise<Lyrics> {
+  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN && process.env.NODE_ENV !== "production") {
+    console.warn("[lyrics] ANTHROPIC_API_KEY is not set: using demo lyrics");
+    return demoLyrics(quiz);
+  }
   const style = STYLES.find((s) => s.id === quiz.style)!;
   const brief = `Write a ${quiz.occasion} song.
 
@@ -54,3 +58,34 @@ ${quiz.thisYear || "(none given)"}`;
 }
 
 export class LyricsError extends Error {}
+
+/** Clearly-marked placeholder lyrics so the app can be clicked through locally before a Claude key is added. */
+function demoLyrics(quiz: Quiz): Lyrics {
+  const name = quiz.recipientName;
+  const chorus = [
+    `Oh ${name}, this song is just for you`,
+    "For every Christmas we've come through",
+    "The lights are on, the fire's bright",
+    `Merry Christmas, ${name}, tonight`,
+  ];
+  return {
+    title: `A Christmas Song for ${name} (demo)`,
+    sections: [
+      {
+        name: "Verse 1",
+        lines: ["The snow is soft against the glass", "Another year has rushed on past", "But every candle, every bell", "Brings back the moments we know well"],
+      },
+      { name: "Chorus", lines: chorus },
+      {
+        name: "Verse 2",
+        lines: [`From ${quiz.fromName}, with all our love`, "A little wish from up above", "For laughter, light and cocoa warm", "And you beside us through the storm"],
+      },
+      { name: "Chorus", lines: chorus },
+      {
+        name: "Bridge",
+        lines: ["These are demo lyrics for testing", "Add a Claude key to get the real song", "Written from your memories and jokes"],
+      },
+      { name: "Final Chorus", lines: chorus },
+    ],
+  };
+}

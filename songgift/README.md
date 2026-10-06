@@ -33,11 +33,12 @@ Code layout: `src/lib/` holds the logic (`lyrics.ts` for Claude, `music.ts` for 
 
 ```bash
 npm install
-cp .env.example .env.local   # only if you don't have a .env.local yet; add ANTHROPIC_API_KEY at minimum
+cp .env.example .env.local   # only if you don't have a .env.local yet
 npm run dev
 ```
 
-You only need `ANTHROPIC_API_KEY` to try the whole flow locally. Without the other keys, dev mode:
+You can click through the whole app locally with no keys at all. Without keys, dev mode:
+- writes clearly-marked demo lyrics (add `ANTHROPIC_API_KEY` for real ones from Claude),
 - skips payment,
 - plays a placeholder jingle instead of a real song,
 - saves orders and audio to `.data/`.
