@@ -3,15 +3,19 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE, isAdminToken } from "@/lib/admin-auth";
 import { attributionLabel } from "@/lib/attribution";
+import { isStuck } from "@/lib/fulfill";
+import { CURRENCY, formatMoney } from "@/lib/pricing";
 import { listOrders } from "@/lib/store";
 import type { Order } from "@/lib/types";
 import RetryButton from "./retry-button";
 
 export const metadata: Metadata = { title: "Admin · SongGift", robots: { index: false } };
 
-const GOAL_CENTS = 200_000_00;
-const usd = (cents: number) => `$${(cents / 100).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+// REVENUE_GOAL is in major units of the store currency (e.g. 200000 for $200k).
+const GOAL = (Number(process.env.REVENUE_GOAL) || 200_000) * 100;
 const isPaid = (o: Order) => o.status !== "preview";
+/** Revenue in the store currency (orders paid in another currency, e.g. before a switch, are skipped). */
+const revenueOf = (o: Order) => (isPaid(o) && (o.currency ?? CURRENCY) === CURRENCY ? (o.amountPaid ?? 0) : 0);
 
 export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   const jar = await cookies();
@@ -34,11 +38,12 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
 
   const orders = await listOrders(1000);
   const paid = orders.filter(isPaid);
-  const revenue = paid.reduce((sum, o) => sum + (o.amountPaidCents ?? 0), 0);
+  const revenue = paid.reduce((sum, o) => sum + revenueOf(o), 0);
   const today = new Date().toISOString().slice(0, 10);
-  const revenueToday = paid.filter((o) => o.paidAt?.startsWith(today)).reduce((s, o) => s + (o.amountPaidCents ?? 0), 0);
+  const revenueToday = paid.filter((o) => o.paidAt?.startsWith(today)).reduce((s, o) => s + revenueOf(o), 0);
   const conversion = orders.length ? Math.round((paid.length / orders.length) * 100) : 0;
-  const failed = orders.filter((o) => o.status === "failed");
+  const needsRetry = (o: Order) => o.status === "failed" || isStuck(o);
+  const failed = orders.filter(needsRetry);
 
   const bySource = new Map<string, { previews: number; sales: number; revenue: number }>();
   for (const o of orders) {
@@ -47,7 +52,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     row.previews += 1;
     if (isPaid(o)) {
       row.sales += 1;
-      row.revenue += o.amountPaidCents ?? 0;
+      row.revenue += revenueOf(o);
     }
     bySource.set(label, row);
   }
@@ -59,18 +64,20 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
       <p className="text-sm text-muted">Based on the latest {orders.length} orders</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-4">
-        <Stat label="Revenue" value={usd(revenue)} sub={`${Math.round((revenue / GOAL_CENTS) * 100)}% of $200k goal`} />
-        <Stat label="Today" value={usd(revenueToday)} />
+        <Stat label="Revenue" value={formatMoney(revenue)} sub={`${Math.round((revenue / GOAL) * 100)}% of ${formatMoney(GOAL)} goal`} />
+        <Stat label="Today" value={formatMoney(revenueToday)} />
         <Stat label="Paid orders" value={paid.length.toLocaleString()} sub={`of ${orders.length} previews`} />
         <Stat label="Preview → paid" value={`${conversion}%`} />
       </div>
       <div className="mt-3 h-2 overflow-hidden rounded-full bg-line">
-        <div className="h-full bg-berry" style={{ width: `${Math.min(100, (revenue / GOAL_CENTS) * 100)}%` }} />
+        <div className="h-full bg-berry" style={{ width: `${Math.min(100, (revenue / GOAL) * 100)}%` }} />
       </div>
 
       {failed.length > 0 && (
         <div className="card mt-6 border-berry/40 bg-berry/5">
-          <p className="font-semibold text-berry">{failed.length} failed song{failed.length > 1 ? "s" : ""} need attention</p>
+          <p className="font-semibold text-berry">
+            {failed.length} song{failed.length > 1 ? "s" : ""} failed or got stuck and need{failed.length > 1 ? "" : "s"} a retry
+          </p>
         </div>
       )}
 
@@ -82,7 +89,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             <td className="pr-4">{r.previews}</td>
             <td className="pr-4">{r.sales}</td>
             <td className="pr-4">{Math.round((r.sales / r.previews) * 100)}%</td>
-            <td>{usd(r.revenue)}</td>
+            <td>{formatMoney(r.revenue)}</td>
           </tr>
         ))}
       </Table>
@@ -94,10 +101,13 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             <td className="py-2 pr-4 whitespace-nowrap">{new Date(o.createdAt).toLocaleString("en-US", { dateStyle: "short", timeStyle: "short" })}</td>
             <td className="pr-4"><Link href={`/song/${o.id}`} className="underline">{o.lyrics.title}</Link><br /><span className="text-muted">for {o.quiz.recipientName}</span></td>
             <td className="pr-4">{o.quiz.email}</td>
-            <td className="pr-4"><StatusBadge status={o.status} /></td>
-            <td className="pr-4">{o.amountPaidCents ? usd(o.amountPaidCents) : "–"}</td>
+            <td className="pr-4"><StatusBadge status={o.status} />{isStuck(o) && <span className="block text-xs text-berry">stuck</span>}</td>
+            <td className="pr-4 whitespace-nowrap">
+              {isPaid(o) ? formatMoney(o.amountPaid ?? 0, o.currency) : "–"}
+              {o.promoCode && <span className="block text-xs text-muted">{o.promoCode}</span>}
+            </td>
             <td className="pr-4">{attributionLabel(o.attribution)}</td>
-            <td>{o.status === "failed" && <RetryButton orderId={o.id} />}</td>
+            <td>{needsRetry(o) && <RetryButton orderId={o.id} />}</td>
           </tr>
         ))}
       </Table>

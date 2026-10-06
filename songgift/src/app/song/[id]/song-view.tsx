@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { formatMoney, PRICES } from "@/lib/pricing";
 import type { PublicOrder } from "@/lib/public-order";
 import { SUPPORT_EMAIL } from "@/lib/site";
 import { track, trackPurchaseOnce } from "@/lib/track";
@@ -9,16 +10,28 @@ import { STYLES, TIERS, type TierId } from "@/lib/types";
 
 const styleLabel = (id: string) => STYLES.find((s) => s.id === id)?.label ?? id;
 
-export default function SongView({ initial, returnedFromCheckout }: { initial: PublicOrder; returnedFromCheckout: boolean }) {
+type Props = { initial: PublicOrder; returnedFromCheckout: boolean; paymentFailed: boolean };
+
+export default function SongView({ initial, returnedFromCheckout, paymentFailed }: Props) {
   const [order, setOrder] = useState(initial);
   const [paying, setPaying] = useState<TierId | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showPromo, setShowPromo] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [waitedTooLong, setWaitedTooLong] = useState(false);
 
   const inProgress = order.status === "paid" || order.status === "generating";
   const waitingForWebhook = order.status === "preview" && returnedFromCheckout;
 
-  // Poll while the song is being produced (or while Stripe's webhook is on its way).
+  // If Paystack's confirmation hasn't arrived after 2 minutes, say so instead of spinning forever.
+  useEffect(() => {
+    if (!waitingForWebhook) return;
+    const timer = setTimeout(() => setWaitedTooLong(true), 120_000);
+    return () => clearTimeout(timer);
+  }, [waitingForWebhook]);
+
+  // Poll while the song is being produced (or while Paystack's confirmation is on its way).
   useEffect(() => {
     if (!inProgress && !waitingForWebhook) return;
     const timer = setInterval(async () => {
@@ -30,18 +43,20 @@ export default function SongView({ initial, returnedFromCheckout }: { initial: P
 
   // Report the sale to ad pixels once payment is confirmed.
   useEffect(() => {
-    if (order.status !== "preview" && order.paidCents) trackPurchaseOnce(order.id, order.paidCents);
-  }, [order.status, order.paidCents, order.id]);
+    if (order.status !== "preview" && order.paidAmount && order.currency) {
+      trackPurchaseOnce(order.id, order.paidAmount, order.currency);
+    }
+  }, [order.status, order.paidAmount, order.currency, order.id]);
 
   async function checkout(tier: TierId) {
     setPaying(tier);
-    track("InitiateCheckout", { value: TIERS[tier].priceCents / 100, orderId: order.id });
+    track("InitiateCheckout", { value: PRICES[tier] / 100, orderId: order.id });
     setError(null);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderId: order.id, tier }),
+        body: JSON.stringify({ orderId: order.id, tier, promoCode: promoCode.trim() || undefined }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) throw new Error(data.error ?? "Checkout failed");
@@ -92,6 +107,19 @@ export default function SongView({ initial, returnedFromCheckout }: { initial: P
           <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-pine/20 border-t-pine" />
           <p className="font-display text-xl font-semibold">Recording your song…</p>
           <p className="mt-1 text-muted">This usually takes 2–5 minutes. We&apos;ll also email you when it&apos;s ready, so feel free to close this page.</p>
+          {waitingForWebhook && waitedTooLong && (
+            <p className="mt-3 text-sm text-muted">
+              Still waiting for payment confirmation. If you were charged, email{" "}
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="underline">{SUPPORT_EMAIL}</a> with this page&apos;s link.
+            </p>
+          )}
+        </div>
+      )}
+
+      {order.status === "preview" && paymentFailed && (
+        <div className="card mt-6 bg-berry/5">
+          <p className="font-semibold text-berry">Your payment wasn&apos;t completed, so you haven&apos;t been charged.</p>
+          <p className="mt-1 text-muted">You can try again below.</p>
         </div>
       )}
 
@@ -136,7 +164,7 @@ export default function SongView({ initial, returnedFromCheckout }: { initial: P
               <div key={id} className={`card flex flex-col ${id === "deluxe" ? "ring-2 ring-gold" : ""}`}>
                 {id === "deluxe" && <p className="text-sm font-semibold text-berry">Most popular</p>}
                 <h3 className="font-display text-xl font-semibold">{t.label}</h3>
-                <p className="font-display text-3xl font-semibold">${t.priceCents / 100}</p>
+                <p className="font-display text-3xl font-semibold">{formatMoney(PRICES[id])}</p>
                 <p className="mt-2 flex-1 text-muted">{t.description}</p>
                 <button onClick={() => checkout(id)} disabled={paying !== null} className="btn-primary mt-4">
                   {paying === id ? "Opening checkout…" : `Get ${t.label}`}
@@ -144,7 +172,26 @@ export default function SongView({ initial, returnedFromCheckout }: { initial: P
               </div>
             ))}
           </div>
-          {error && <p className="mt-3 text-berry">{error}</p>}
+          <div className="mt-4 text-center">
+            {showPromo ? (
+              <div className="mx-auto flex max-w-sm gap-2">
+                <input
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  placeholder="Promo code"
+                  aria-label="Promo code"
+                  maxLength={40}
+                  className="field py-2 uppercase"
+                />
+              </div>
+            ) : (
+              <button onClick={() => setShowPromo(true)} className="text-sm font-semibold text-pine underline">
+                Have a promo code?
+              </button>
+            )}
+            {showPromo && <p className="mt-1 text-xs text-muted">Your discount is applied when you choose a package.</p>}
+          </div>
+          {error && <p className="mt-3 text-center text-berry">{error}</p>}
           <p className="mt-4 text-center text-sm text-muted">
             Not quite right? <Link href="/create" className="underline">Start over with new details</Link>
           </p>

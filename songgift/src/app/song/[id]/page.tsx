@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: PageProps<"/song/[id]">): Pro
 
 export default async function SongPage({ params, searchParams }: PageProps<"/song/[id]">) {
   const { id } = await params;
-  const { paid } = await searchParams;
+  const { paid, payment } = await searchParams;
   const order = await getOrder(id);
   if (!order) notFound();
-  return <SongView initial={publicOrder(order)} returnedFromCheckout={paid === "1"} />;
+  return <SongView initial={publicOrder(order)} returnedFromCheckout={paid === "1"} paymentFailed={payment === "failed"} />;
 }

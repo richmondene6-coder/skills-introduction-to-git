@@ -13,7 +13,7 @@ export default function RefundsPage() {
       <h2>Delivery problems</h2>
       <p>If your song isn&apos;t delivered within 24 hours of payment, we&apos;ll refund you in full on request.</p>
       <h2>How refunds are paid</h2>
-      <p>Refunds go back to your original payment method through Stripe and usually appear within 5–10 business days.</p>
+      <p>Refunds go back to your original payment method through Paystack. How long they take to appear depends on your bank, usually 5–10 business days.</p>
     </LegalPage>
   );
 }

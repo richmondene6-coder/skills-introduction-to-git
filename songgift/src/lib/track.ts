@@ -1,3 +1,5 @@
+import { CURRENCY } from "./pricing";
+
 type PixelWindow = Window & {
   fbq?: (...args: unknown[]) => void;
   ttq?: { track: (event: string, data?: Record<string, unknown>) => void };
@@ -12,16 +14,16 @@ const TIKTOK_EVENTS = {
 type FunnelEvent = keyof typeof TIKTOK_EVENTS;
 
 /** Sends a funnel event to whichever ad pixels are loaded. Safe to call when none are. */
-export function track(event: FunnelEvent, data: { value?: number; orderId?: string } = {}) {
+export function track(event: FunnelEvent, data: { value?: number; currency?: string; orderId?: string } = {}) {
   const w = window as PixelWindow;
-  const payload = { currency: "USD", ...(data.value !== undefined && { value: data.value }) };
+  const payload = { currency: data.currency ?? CURRENCY, ...(data.value !== undefined && { value: data.value }) };
   const options = data.orderId ? { eventID: `${event}-${data.orderId}` } : undefined;
   w.fbq?.("track", event, payload, options);
   w.ttq?.track(TIKTOK_EVENTS[event], payload);
 }
 
 /** Fires Purchase at most once per order in this browser. */
-export function trackPurchaseOnce(orderId: string, valueCents: number) {
+export function trackPurchaseOnce(orderId: string, amountMinor: number, currency: string) {
   const key = `sg_purchase_${orderId}`;
   try {
     if (localStorage.getItem(key)) return;
@@ -29,5 +31,5 @@ export function trackPurchaseOnce(orderId: string, valueCents: number) {
   } catch {
     // Storage unavailable: still report the purchase.
   }
-  track("Purchase", { value: valueCents / 100, orderId });
+  track("Purchase", { value: amountMinor / 100, currency, orderId });
 }

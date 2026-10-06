@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { after } from "next/server";
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE, isAdminToken } from "@/lib/admin-auth";
-import { retryOrder } from "@/lib/fulfill";
+import { isStuck, retryOrder } from "@/lib/fulfill";
 import { getOrder } from "@/lib/store";
 
 export const maxDuration = 300;
@@ -14,8 +14,8 @@ export async function POST(request: Request) {
   }
   const { orderId } = await request.json().catch(() => ({}));
   const order = typeof orderId === "string" ? await getOrder(orderId) : null;
-  if (!order || order.status !== "failed") {
-    return NextResponse.json({ error: "Only failed orders can be retried" }, { status: 400 });
+  if (!order || !(order.status === "failed" || isStuck(order))) {
+    return NextResponse.json({ error: "Only failed or stuck orders can be retried" }, { status: 400 });
   }
   after(() => retryOrder(order.id));
   return NextResponse.json({ ok: true });

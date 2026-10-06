@@ -20,7 +20,7 @@ export default function TermsPage() {
       <h2>How you can use your song</h2>
       <p>Your song is for personal, non-commercial use: giving it as a gift, playing it at home or at events, and sharing it with family and friends, including on your personal social media. Contact us before using it commercially (for example in advertising or on streaming services).</p>
       <h2>Payment and delivery</h2>
-      <p>Prices are shown in US dollars before checkout and are charged once, through Stripe. Most songs are delivered within minutes; occasionally it takes longer. If delivery fails, we will fix it or refund you.</p>
+      <p>Prices are shown before checkout and charged once, through our payment provider, Paystack. Most songs are delivered within minutes; occasionally it takes longer. If delivery fails, we will fix it or refund you.</p>
       <h2>Refunds</h2>
       <p>See our <Link href="/refunds" className="underline">refund policy</Link>.</p>
       <h2>Liability</h2>

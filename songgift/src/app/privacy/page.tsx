@@ -12,7 +12,7 @@ export default function PrivacyPage() {
       <ul>
         <li>The answers you give in the song quiz (names, memories, style choices).</li>
         <li>Your email address, so we can deliver your song.</li>
-        <li>Payment details, which are handled by Stripe. We never see or store your full card number.</li>
+        <li>Payment details, which are handled by Paystack. We never see or store your full card number.</li>
         <li>Basic usage data and, if you arrive from an ad, which ad or link brought you (through cookies and ad pixels from Meta and TikTok).</li>
       </ul>
       <h2>How we use it</h2>
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       <h2>Who can see your song</h2>
       <p>Your song page has a private, hard-to-guess link. Anyone you share that link (or the gift card QR code) with can listen to the song and read the lyrics.</p>
       <h2>Service providers</h2>
-      <p>We use Stripe (payments), Anthropic and ElevenLabs (song creation), Vercel and Upstash (hosting and storage), Resend (email), and Meta and TikTok (ad measurement).</p>
+      <p>We use Paystack (payments), Anthropic and ElevenLabs (song creation), Vercel and Upstash (hosting and storage), Resend (email), and Meta and TikTok (ad measurement).</p>
       <h2>Your choices</h2>
       <p>You can ask us to delete your song and your data at any time by emailing <a href={`mailto:${SUPPORT_EMAIL}`} className="underline">{SUPPORT_EMAIL}</a>. You can block ad cookies in your browser settings.</p>
     </LegalPage>

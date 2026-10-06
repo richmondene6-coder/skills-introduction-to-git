@@ -1,7 +1,8 @@
 import Link from "next/link";
 import CountdownBanner from "@/components/countdown-banner";
 import Samples from "@/components/samples";
-import { TIERS } from "@/lib/types";
+import { formatMoney, PRICES } from "@/lib/pricing";
+import { TIERS, type TierId } from "@/lib/types";
 
 const steps = [
   { title: "Tell us about them", body: "Names, memories, inside jokes and what happened this year. It takes about 2 minutes." },
@@ -37,7 +38,7 @@ export default function Home() {
           <Link href="/create" className="btn-primary px-8 py-3.5 text-lg">
             Write my song, free preview →
           </Link>
-          <span className="text-sm text-muted">From $29 · Delivered in minutes</span>
+          <span className="text-sm text-muted">From {formatMoney(PRICES.standard)} · Delivered in minutes</span>
         </div>
       </section>
 
@@ -59,11 +60,11 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4">
           <h2 className="text-center font-display text-3xl font-semibold sm:text-4xl">Simple pricing</h2>
           <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
-            {Object.entries(TIERS).map(([id, t]) => (
+            {(Object.entries(TIERS) as [TierId, (typeof TIERS)[TierId]][]).map(([id, t]) => (
               <div key={id} className={`rounded-2xl p-6 ${id === "deluxe" ? "bg-white text-ink ring-4 ring-gold" : "bg-pine-dark"}`}>
                 {id === "deluxe" && <p className="mb-2 text-sm font-semibold text-berry">Most popular</p>}
                 <h3 className="font-display text-2xl font-semibold">{t.label}</h3>
-                <p className="mt-1 font-display text-4xl font-semibold">${t.priceCents / 100}</p>
+                <p className="mt-1 font-display text-4xl font-semibold">{formatMoney(PRICES[id])}</p>
                 <p className={`mt-3 ${id === "deluxe" ? "text-muted" : "text-white/80"}`}>{t.description}</p>
               </div>
             ))}

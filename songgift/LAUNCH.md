@@ -8,25 +8,28 @@
 
 ## Week 1 · Oct 6–12 · Get set up and live
 
-Accounts (start Stripe first, because its review can take several days):
+Accounts (start Paystack first, because business verification and enabling USD can take several days):
 
-- [ ] **Stripe**: activate your account (business details, bank account, support email). Stripe checks that the site has Terms, Privacy and Refund pages; those are already built.
+- [ ] **Paystack**: sign up and submit your business details for verification. Paystack checks that the site has Terms, Privacy and Refund pages; those are already built.
+- [ ] **Paystack USD**: ask Paystack support to **enable USD payments** on your account. They'll tell you what's needed (usually a USD bank account for payouts). Until this is done, dollar checkouts are refused.
+- [ ] **Paystack international cards**: confirm your account accepts cards from abroad (US, UK, Canada and so on).
 - [ ] **Anthropic**: create an API key (starts with `sk-ant-api03-`). Add billing.
 - [ ] **ElevenLabs**: pick a plan that **allows commercial use** of generated music. Check the cost per song so you know your margin.
 - [ ] **Domain**: buy one (e.g. `songgift.co`). Set up email at it for support.
 - [ ] **Resend**: verify the domain so "your song is ready" emails don't land in spam.
 - [ ] **Vercel**: import the repo, set the root directory to `songgift`, and add Upstash Redis and Vercel Blob from the Marketplace.
-- [ ] Add every environment variable from `.env.example`, including `ADMIN_PASSWORD`, `NEXT_PUBLIC_SUPPORT_EMAIL` and `NEXT_PUBLIC_SITE_URL`.
-- [ ] Stripe webhook → `https://<domain>/api/webhooks/stripe` (event: `checkout.session.completed`).
+- [ ] Add every environment variable from `.env.example`, including `PAYSTACK_SECRET_KEY`, `ADMIN_PASSWORD`, `NEXT_PUBLIC_SUPPORT_EMAIL` and `NEXT_PUBLIC_SITE_URL`.
+- [ ] Paystack webhook: **Settings → API Keys & Webhooks** → webhook URL `https://<domain>/api/webhooks/paystack`.
 
 Quality:
 
 - [ ] Make **15–20 test songs** in different styles and tones. Fix anything weak in the prompts (`src/lib/lyrics.ts`, `src/lib/types.ts`).
-- [ ] Make a **real purchase** in live mode, check the email arrives and the gift card QR works on a phone, then refund yourself.
+- [ ] Test the whole purchase with your Paystack **test** key and Paystack's test cards.
+- [ ] Switch to the **live** key, make one **real purchase** in USD, check the email arrives and the gift card QR works on a phone, then refund yourself from the Paystack dashboard.
 
 ## Week 2 · Oct 13–19 · Soft launch to people you know
 
-- [ ] Give 20–30 songs to friends and family (free or with a 100%-off Stripe promo code).
+- [ ] Give 20–30 songs to friends and family for free: add a 100%-off code with a usage limit, e.g. `PROMO_CODES=FAMILY:100:30`.
 - [ ] **Film their reactions** (with permission). These videos are your main marketing for the rest of the season.
 - [ ] Add your 3 best songs to `src/lib/samples.ts` (files go in `public/samples/`).
 - [ ] Collect 5–10 short testimonials.
@@ -52,7 +55,7 @@ Quality:
 
 ## Nov 24–Dec 1 · Black Friday and Cyber Monday
 
-- [ ] Create a Stripe promo code (e.g. `MERRY20` for 20% off) and push it in ads, posts and to past buyers.
+- [ ] Add a promo code (e.g. `MERRY20:20` in `PROMO_CODES` for 20% off) and push it in ads, posts and to past buyers. Remove it after Cyber Monday.
 - [ ] Email everyone who previewed but didn't buy (their emails are in the dashboard).
 
 ## Dec 1–15 · Peak season
@@ -78,5 +81,5 @@ If you're far behind by mid-November, the goal is unlikely. Keep going anyway: D
 
 - **Ad spend:** at about $12–15 per sale, 5,000 sales means **$60,000–75,000** in ads, paid as you go and covered by the sales they bring in.
 - **Per song:** Claude lyrics cost a few cents. Check ElevenLabs' per-song cost for your plan and the `music_v2_5` model.
-- **Stripe:** about 2.9% + 30¢ per order.
+- **Paystack:** a fee per order, higher for international cards than local ones. Check paystack.com/pricing for your country and for USD payments.
 - **Creators:** $500–5,000 depending on how many you hire.

@@ -47,9 +47,10 @@ export const LyricsSchema = z.object({
 
 export type Lyrics = z.infer<typeof LyricsSchema>;
 
+// Prices live in pricing.ts (they depend on the configured currency).
 export const TIERS = {
-  standard: { label: "The Song", priceCents: 2900, versions: 1, description: "Full personalized song (MP3) + printable gift card" },
-  deluxe: { label: "Deluxe Gift", priceCents: 4900, versions: 2, description: "Two versions in different styles + gift card + share page" },
+  standard: { label: "The Song", versions: 1, description: "Full personalized song (MP3) + printable gift card" },
+  deluxe: { label: "Deluxe Gift", versions: 2, description: "Two versions in different styles + gift card + share page" },
 } as const;
 
 export type TierId = keyof typeof TIERS;
@@ -70,6 +71,14 @@ export type Attribution = {
   ref?: string;
 };
 
+export type PendingCheckout = {
+  tier: TierId;
+  amount: number;
+  currency: string;
+  promoCode?: string;
+  createdAt: string;
+};
+
 export type Order = {
   id: string;
   createdAt: string;
@@ -78,8 +87,13 @@ export type Order = {
   lyrics: Lyrics;
   tier?: TierId;
   versions: SongVersion[];
-  stripeSessionId?: string;
-  amountPaidCents?: number;
+  /** Paystack checkouts started for this order, by reference: only these are accepted as payment. */
+  checkouts?: Record<string, PendingCheckout>;
+  paymentReference?: string;
+  /** Amount charged, in the currency's minor unit (cents, kobo, pesewas). */
+  amountPaid?: number;
+  currency?: string;
+  promoCode?: string;
   paidAt?: string;
   attribution?: Attribution;
   error?: string;
