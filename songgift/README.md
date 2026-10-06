@@ -10,6 +10,15 @@ A shop that sells personalized Christmas songs as gifts. The buyer answers a sho
 4. **Fulfillment** (`POST /api/webhooks/stripe`): after payment, the song is made and stored, and the buyer gets an email with a link.
 5. **Song page** (`/song/[id]`): player, download button, share link, and the printable gift card (`/song/[id]/card`).
 
+Also included:
+- **Admin dashboard** (`/admin`, set `ADMIN_PASSWORD`): revenue, progress toward the goal, preview-to-paid conversion, sales by source, recent orders, and a retry button for failed songs.
+- **Ad tracking**: Meta and TikTok pixels (Lead, InitiateCheckout, Purchase), plus first-touch attribution from `?utm_source=…&utm_campaign=…` or `?ref=creatorname` links, saved on each order.
+- **Legal pages**: `/terms`, `/privacy`, `/refunds`, which Stripe needs to activate your account. Have them reviewed for your country.
+- **Social previews**: share images for the home page and each song link.
+- **Sample songs**: add real examples to `src/lib/samples.ts` and they appear on the home page.
+
+See **[LAUNCH.md](LAUNCH.md)** for the week-by-week launch plan.
+
 Code layout: `src/lib/` holds the logic (`lyrics.ts` for Claude, `music.ts` for ElevenLabs, `fulfill.ts`, `store.ts`, `stripe.ts`, `email.ts`), and `src/app/` holds pages and API routes.
 
 ## Run locally
@@ -38,4 +47,4 @@ You only need `ANTHROPIC_API_KEY` to try the whole flow locally. Without the oth
 - Confirm your ElevenLabs plan allows commercial use of the music it generates.
 - Make 10–20 test songs, then adjust the lyric prompt in `src/lib/lyrics.ts` and the style prompts in `src/lib/types.ts`.
 - The FAQ on the home page promises a rewrite or refund within 7 days. Change it if that isn't your policy.
-- If a song fails to generate, the order shows as `failed`. For now you re-run it by hand: set its status back to `paid` and call `fulfillOrder`.
+- If a song fails to generate, the order shows as `failed` in `/admin`, with a Retry button.

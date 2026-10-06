@@ -26,6 +26,8 @@ export async function getOrder(id: string): Promise<Order | null> {
 export async function saveOrder(order: Order): Promise<void> {
   if (redis) {
     await redis.set(key(order.id), order);
+    // Index by creation time so the admin dashboard can list recent orders.
+    await redis.zadd("orders", { score: Date.parse(order.createdAt), member: order.id });
     return;
   }
   await fs.mkdir(DATA_DIR, { recursive: true });
@@ -38,6 +40,22 @@ export async function updateOrder(id: string, patch: Partial<Order>): Promise<Or
   const next = { ...order, ...patch };
   await saveOrder(next);
   return next;
+}
+
+/** Most recent orders first. */
+export async function listOrders(limit = 200): Promise<Order[]> {
+  if (redis) {
+    const ids = await redis.zrange<string[]>("orders", 0, limit - 1, { rev: true });
+    if (ids.length === 0) return [];
+    const orders = await redis.mget<(Order | null)[]>(...ids.map(key));
+    return orders.filter((o): o is Order => o !== null);
+  }
+  const files = await fs.readdir(DATA_DIR).catch(() => [] as string[]);
+  const orders = await Promise.all(files.filter((f) => f.endsWith(".json")).map((f) => getOrder(f.slice(0, -5))));
+  return orders
+    .filter((o): o is Order => o !== null)
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .slice(0, limit);
 }
 
 // Fixed-window rate limit for the free lyric preview (costs a Claude call).

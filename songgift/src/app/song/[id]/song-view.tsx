@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { PublicOrder } from "@/lib/public-order";
+import { SUPPORT_EMAIL } from "@/lib/site";
+import { track, trackPurchaseOnce } from "@/lib/track";
 import { STYLES, TIERS, type TierId } from "@/lib/types";
 
 const styleLabel = (id: string) => STYLES.find((s) => s.id === id)?.label ?? id;
@@ -26,8 +28,14 @@ export default function SongView({ initial, returnedFromCheckout }: { initial: P
     return () => clearInterval(timer);
   }, [inProgress, waitingForWebhook, order.id]);
 
+  // Report the sale to ad pixels once payment is confirmed.
+  useEffect(() => {
+    if (order.status !== "preview" && order.paidCents) trackPurchaseOnce(order.id, order.paidCents);
+  }, [order.status, order.paidCents, order.id]);
+
   async function checkout(tier: TierId) {
     setPaying(tier);
+    track("InitiateCheckout", { value: TIERS[tier].priceCents / 100, orderId: order.id });
     setError(null);
     try {
       const res = await fetch("/api/checkout", {
@@ -90,7 +98,9 @@ export default function SongView({ initial, returnedFromCheckout }: { initial: P
       {order.status === "failed" && (
         <div className="card mt-6 bg-berry/5">
           <p className="font-semibold text-berry">{order.error ?? "Something went wrong."}</p>
-          <p className="mt-1 text-muted">Reply to your receipt email and we&apos;ll fix it right away.</p>
+          <p className="mt-1 text-muted">
+            Email <a href={`mailto:${SUPPORT_EMAIL}`} className="underline">{SUPPORT_EMAIL}</a> with this page&apos;s link and we&apos;ll fix it right away.
+          </p>
         </div>
       )}
 

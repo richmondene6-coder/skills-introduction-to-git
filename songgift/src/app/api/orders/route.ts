@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { customAlphabet } from "nanoid";
+import { readAttribution } from "@/lib/attribution";
 import { writeLyrics, LyricsError } from "@/lib/lyrics";
 import { rateLimit, saveOrder } from "@/lib/store";
 import { QuizSchema, type Order } from "@/lib/types";
@@ -29,6 +30,7 @@ export async function POST(request: Request) {
       quiz: parsed.data,
       lyrics,
       versions: [],
+      attribution: readAttribution(request.headers.get("cookie")),
     };
     await saveOrder(order);
     return NextResponse.json({ id: order.id });

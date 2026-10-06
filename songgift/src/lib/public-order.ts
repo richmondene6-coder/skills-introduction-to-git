@@ -10,6 +10,7 @@ export type PublicOrder = {
   lyrics: Lyrics;
   lockedSections: number;
   versions: Order["versions"];
+  paidCents?: number;
   error?: string;
 };
 
@@ -27,6 +28,7 @@ export function publicOrder(order: Order): PublicOrder {
     lyrics: { title: order.lyrics.title, sections: visible },
     lockedSections: order.lyrics.sections.length - visible.length,
     versions: order.versions,
+    paidCents: order.amountPaidCents,
     error: order.error,
   };
 }

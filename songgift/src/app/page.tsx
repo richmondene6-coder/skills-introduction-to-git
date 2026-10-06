@@ -1,4 +1,6 @@
 import Link from "next/link";
+import CountdownBanner from "@/components/countdown-banner";
+import Samples from "@/components/samples";
 import { TIERS } from "@/lib/types";
 
 const steps = [
@@ -11,12 +13,15 @@ const faqs = [
   { q: "How long does it take?", a: "Most songs are ready within 5 minutes of checkout. We also email you a link." },
   { q: "Can I choose the music style?", a: "Yes: classic crooner, holiday pop, country, cozy acoustic, kids' singalong or smooth R&B." },
   { q: "How do I give it as a gift?", a: "Print the gift card (or send the link). They scan the QR code and the song plays." },
-  { q: "What if I don't love it?", a: "Email us within 7 days and we'll rewrite it or refund you." },
+  { q: "What if I don't love it?", a: "Email us within 7 days and we'll rewrite it once for free, or refund you in full. See our refund policy." },
 ];
+
+export const revalidate = 3600;
 
 export default function Home() {
   return (
     <div>
+      <CountdownBanner />
       <section className="mx-auto max-w-5xl px-4 pb-16 pt-14 text-center sm:pt-20">
         <p className="mb-4 inline-block rounded-full bg-pine/10 px-4 py-1 text-sm font-semibold text-pine">
           The most personal gift under the tree this year
@@ -47,6 +52,8 @@ export default function Home() {
           </div>
         ))}
       </section>
+
+      <Samples />
 
       <section className="bg-pine py-16 text-white">
         <div className="mx-auto max-w-5xl px-4">

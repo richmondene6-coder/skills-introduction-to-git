@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const orderId = session.metadata?.orderId;
     const tier = session.metadata?.tier as TierId | undefined;
     if (orderId && tier && session.payment_status === "paid") {
-      await markPaid(orderId, tier, session.id);
+      await markPaid(orderId, tier, session.id, session.amount_total ?? undefined);
       after(() => fulfillOrder(orderId));
     }
   }

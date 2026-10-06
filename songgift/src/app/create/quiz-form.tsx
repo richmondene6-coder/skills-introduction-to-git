@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { track } from "@/lib/track";
 import { RELATIONSHIPS, STYLES, TONES } from "@/lib/types";
 
 const TONE_LABELS: Record<(typeof TONES)[number], string> = {
@@ -28,6 +29,7 @@ export default function QuizForm() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong");
+      track("Lead", { orderId: data.id });
       router.push(`/song/${data.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");

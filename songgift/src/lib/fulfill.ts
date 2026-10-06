@@ -2,10 +2,10 @@ import { composeSong } from "./music";
 import { storeAudio } from "./audio-storage";
 import { sendSongReadyEmail } from "./email";
 import { getOrder, updateOrder } from "./store";
-import { STYLES, TIERS, type SongVersion, type StyleId, type TierId } from "./types";
+import { STYLES, TIERS, type Order, type SongVersion, type StyleId, type TierId } from "./types";
 
 /** Marks an order paid and records which song versions to produce. Idempotent. */
-export async function markPaid(orderId: string, tier: TierId, stripeSessionId?: string) {
+export async function markPaid(orderId: string, tier: TierId, stripeSessionId?: string, amountPaidCents?: number) {
   const order = await getOrder(orderId);
   if (!order) throw new Error(`Order ${orderId} not found`);
   if (order.status !== "preview") return order;
@@ -13,6 +13,8 @@ export async function markPaid(orderId: string, tier: TierId, stripeSessionId?: 
     status: "paid",
     tier,
     stripeSessionId,
+    amountPaidCents: amountPaidCents ?? TIERS[tier].priceCents,
+    paidAt: new Date().toISOString(),
     versions: pickStyles(order.quiz.style, TIERS[tier].versions).map((styleId) => ({ styleId })),
   });
 }
@@ -21,6 +23,18 @@ export async function markPaid(orderId: string, tier: TierId, stripeSessionId?: 
 export async function fulfillOrder(orderId: string): Promise<void> {
   const order = await getOrder(orderId);
   if (!order || order.status !== "paid") return;
+  await generate(orderId, order);
+}
+
+/** Re-runs generation for an order that failed (from the admin dashboard). */
+export async function retryOrder(orderId: string): Promise<boolean> {
+  const order = await getOrder(orderId);
+  if (!order || order.status !== "failed") return false;
+  await generate(orderId, order);
+  return true;
+}
+
+async function generate(orderId: string, order: Order): Promise<void> {
   await updateOrder(orderId, { status: "generating" });
 
   try {

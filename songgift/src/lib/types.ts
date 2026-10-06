@@ -61,6 +61,15 @@ export type SongVersion = {
   audioUrl?: string;
 };
 
+/** Where the buyer came from (ad, creator link, etc.), captured from the landing URL. */
+export type Attribution = {
+  source?: string;
+  medium?: string;
+  campaign?: string;
+  content?: string;
+  ref?: string;
+};
+
 export type Order = {
   id: string;
   createdAt: string;
@@ -70,5 +79,8 @@ export type Order = {
   tier?: TierId;
   versions: SongVersion[];
   stripeSessionId?: string;
+  amountPaidCents?: number;
+  paidAt?: string;
+  attribution?: Attribution;
   error?: string;
 };
