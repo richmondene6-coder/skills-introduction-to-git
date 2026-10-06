@@ -32,7 +32,7 @@ bash .claude/skills/songgift/scripts/test-payments.sh    # if payments, orders o
 |---|---|
 | `test-payments.sh` | Starts `mock-paystack.mjs` (a fake Paystack API) and the app with safe test settings, runs `payments-e2e.mjs` (36 checks: success, abandoned, underpaid, wrong currency, forged transactions, bad webhook signatures, promo codes, simultaneous callback + webhook), checks each song was generated exactly once, then stops everything and restores `.data/`. |
 | `walkthrough.sh [out-dir]` | Starts the app in demo mode, clicks through it like a customer (`walkthrough.mjs`), and saves 9 screenshots (desktop and phone) plus `SongGift-walkthrough.mp4`. Send results to the owner with `SendUserFile` (`display: "render"`). |
-| `package-zip.sh [out-dir]` | Builds `SongGift.zip` for the owner: committed app code, a blank `.env.local` (from `.env.example`), `START-HERE.md` (from `package/`) and `MARKET-RESEARCH.md`. Refuses to package anything that looks like a real key. Commit first: it packs `HEAD`. |
+| `package-zip.sh [out-dir]` | Builds `SongGift.zip` for the owner in the repo's layout: the committed `songgift/` app with a blank `.env.local` (from `.env.example`), `CLAUDE.md`, `.claude/skills/`, `START-HERE.md` (from `package/`) and `MARKET-RESEARCH.md`. Refuses to package anything that looks like a real key. Commit first: it packs `HEAD`. |
 
 All scripts take `PORT` (default 3005) and the tests take `MOCK_PORT` (default 4010). They fail fast if a port is busy.
 

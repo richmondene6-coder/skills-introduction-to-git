@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Builds SongGift.zip for the owner: committed app code, a blank .env.local,
-# START-HERE.md and MARKET-RESEARCH.md. Usage: bash package-zip.sh [output-dir]
+# Builds SongGift.zip for the owner, mirroring the repo layout so CLAUDE.md and this
+# skill also work there: committed songgift/ app with a blank .env.local, CLAUDE.md,
+# .claude/skills/, START-HERE.md and MARKET-RESEARCH.md. Usage: bash package-zip.sh [output-dir]
 set -eu
 HERE="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(cd "$HERE/../../../.." && pwd)"
@@ -8,9 +9,8 @@ OUT="${1:-$(mktemp -d)}"
 STAGE="$(mktemp -d)"
 mkdir -p "$OUT" "$STAGE/SongGift"
 
-git -C "$REPO" archive HEAD songgift | tar -x -C "$STAGE/SongGift"
-mv "$STAGE/SongGift/songgift" "$STAGE/SongGift/app"
-cp "$REPO/songgift/.env.example" "$STAGE/SongGift/app/.env.local"
+git -C "$REPO" archive HEAD songgift CLAUDE.md .claude | tar -x -C "$STAGE/SongGift"
+cp "$REPO/songgift/.env.example" "$STAGE/SongGift/songgift/.env.local"
 cp "$HERE/../package/START-HERE.md" "$STAGE/SongGift/START-HERE.md"
 cp "$REPO/songgift/MARKET-RESEARCH.md" "$STAGE/SongGift/MARKET-RESEARCH.md"
 

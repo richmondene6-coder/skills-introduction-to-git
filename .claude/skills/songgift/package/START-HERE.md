@@ -5,10 +5,11 @@ Everything for your personalized Christmas song gift business, in one folder.
 | File or folder | What it is |
 |---|---|
 | `MARKET-RESEARCH.md` | Why this niche, competitors and their revenue, the math to $200k |
-| `app/LAUNCH.md` | Week-by-week launch plan from now to December 15 |
-| `app/README.md` | How the app works, Paystack setup, and how to put it online |
-| `app/.env.local` | Your settings file: put your keys here (it stays on your computer) |
-| `app/` | The full app code |
+| `songgift/LAUNCH.md` | Week-by-week launch plan from now to December 15 |
+| `songgift/README.md` | How the app works, Paystack setup, and how to put it online |
+| `songgift/.env.local` | Your settings file: put your keys here (it stays on your computer) |
+| `songgift/` | The full app code |
+| `CLAUDE.md` and the hidden `.claude` folder | Notes and instructions for Claude Code: where we left off and how to run and test the app |
 
 ## Payments: Paystack, in US dollars
 
@@ -19,9 +20,9 @@ Everything for your personalized Christmas song gift business, in one folder.
 ## Run the app on your computer
 
 1. Install Node.js (version 20 or newer) from https://nodejs.org.
-2. Open a terminal in the `app` folder and run `npm install`, then `npm run dev`.
+2. Open a terminal in the `songgift` folder and run `npm install`, then `npm run dev`.
 3. Open http://localhost:3000 and click through it. **No keys needed to try it**: it uses demo lyrics, skips payment and plays a short test jingle.
-4. When you get each account, open `app/.env.local` in a text editor and fill in that key.
+4. When you get each account, open `songgift/.env.local` in a text editor and fill in that key.
    - Mac: if you can't see the file, press Cmd+Shift+. in Finder.
    - Windows: in File Explorer, turn on View → Show → Hidden items.
 
@@ -30,4 +31,4 @@ Everything for your personalized Christmas song gift business, in one folder.
 - Never paste API keys into chats, emails or code files.
 - Keys go only in `.env.local` (your computer) or Vercel's Environment Variables (the live site).
 
-The code is also on GitHub: `richmondene6-coder/skills-introduction-to-git`, branch `claude/app-ideas-revenue-goal-bcapir`, folder `songgift`.
+The code is also on GitHub: `richmondene6-coder/skills-introduction-to-git`, branch `claude/app-ideas-revenue-goal-bcapir`. To continue with Claude, reopen this session, or start a new one on that branch.
