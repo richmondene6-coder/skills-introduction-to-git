@@ -17,7 +17,7 @@ Also included:
 - **Social previews**: share images for the home page and each song link.
 - **Sample songs**: add real examples to `src/lib/samples.ts` and they appear on the home page.
 
-See **[LAUNCH.md](LAUNCH.md)** for the week-by-week launch plan.
+See **[LAUNCH.md](LAUNCH.md)** for the week-by-week launch plan and **[MARKET-RESEARCH.md](MARKET-RESEARCH.md)** for why this niche.
 
 Code layout: `src/lib/` holds the logic (`lyrics.ts` for Claude, `music.ts` for ElevenLabs, `paystack.ts` and `payments.ts` for payments, `pricing.ts`, `promo.ts`, `fulfill.ts`, `store.ts`, `email.ts`), and `src/app/` holds pages and API routes.
 
