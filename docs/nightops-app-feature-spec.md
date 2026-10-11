@@ -1,7 +1,7 @@
-# NightOps — Feature Spec & UI Brief (v0.3)
+# NightOps — Feature Spec & UI Brief (v0.4)
 
 Working name: **NightOps**. Operations platform for a high-volume nightclub / lounge / bar.
-Purpose of this doc: give a designer (or design tool) everything needed to draw the screens. Bring the designs back and we will iterate on both UI and build plan. Technical plan: `nightops-architecture.md`. Global subscription product, onboarding, billing and Platform Admin: `nightops-saas-platform.md`.
+Serves **restaurants, bars, lounges and nightclubs**, each with its own personalised mode. Purpose of this doc: give a designer (or design tool) everything needed to draw the screens. Bring the designs back and we will iterate on both UI and build plan. Technical plan: `nightops-architecture.md`. Global subscription product, onboarding, billing and Platform Admin: `nightops-saas-platform.md`.
 
 **v0.3: NightOps is a global SaaS product.** Businesses download it from the App Store, Google Play or the web, subscribe monthly, and use it in their own country, language and currency. Below, **"Owner" means the client's Business Owner**, and **"Credit Approver" means whoever that owner assigns** (could be the owner, a GM, or a head of VIP). Examples use ₦ but every amount is in the venue's own currency.
 
@@ -12,6 +12,8 @@ Purpose of this doc: give a designer (or design tool) everything needed to draw 
 - **Devices:** phones, tablets and computers. Peak **500–1,000 sales/hour**.
 - **Staff-responsible credit:** the staff member who sells on credit is responsible for collecting it, from the moment of sale. **Every credit sale needs approval by default.** Each Business Owner chooses who approves, the limits, and whether to relax these rules (§5 A5, §7 C7–C8, §8 D6, §11).
 - **Design for:** patchy internet and power, one or many venues per business, any country.
+
+**What changed in v0.4:** restaurants included. Every venue picks a **mode**: Restaurant, Nightclub, Bar, Lounge or Mixed. The mode personalises the home screen, navigation, modules, terminology and reports (§4a). Launch markets are Nigeria, US, Canada and UK, which adds tips, card pre-authorised tabs, local drink units and age prompts.
 
 **What changed in v0.3:** NightOps is now a global SaaS product. Credit approvers are configurable per business. New Account/Onboarding/Billing and Platform Admin surfaces. Wage recovery is country-gated.
 
@@ -33,7 +35,10 @@ A POS and back-office that never stops working when the internet drops, records 
 |---|---|---|
 | **Bartender / Waiter** | Shared tablet or phone at bar, landscape or portrait, one-handed, low light | Speed. Ring up an order in ≤3 taps per item. Never blocked by Wi-Fi. Tracks and collects their own credit sales. |
 | **Cashier / Host** | Tablet at door or VIP desk | Open/close tabs, take payments, check guest credit |
-| **Kitchen / Grill** | Screen or printer | See tickets, mark ready |
+| **Kitchen / Chef / Expo** | Kitchen screen or printer | Tickets by station, course timing, allergens, mark ready |
+| **Host / Door** *(restaurant, club, lounge)* | Tablet at entrance | Reservations, waitlist, guest list, cover charge, capacity count, ID checks |
+| **Server / Waiter** *(restaurant, lounge)* | Phone | Table orders by seat and course, send to kitchen, take payment at table, tips |
+| **Promoter** *(nightclub, limited external login)* | Phone | Own guest lists, see attributed entries and table spend, commission |
 | **Floor / Shift Manager** | Phone | Approve voids/comps, reconcile shifts, count stock |
 | **Accountant / Bookkeeper** | Laptop | P&L, expenses, exports, reconciliation |
 | **Business Owner** | Phone + laptop | Live numbers in their reporting currency, theft/shrinkage alerts, debt position, sets who approves credit, manages subscription |
@@ -44,7 +49,7 @@ A POS and back-office that never stops working when the internet drops, records 
 
 ## 3. Global design principles
 
-1. **Dark theme by default** (club lighting), light theme available for back-office. High contrast, large tap targets (min 48px, POS buttons 64px+).
+1. **Theme follows the mode:** dark by default for Nightclub/Bar/Lounge (low light), light by default for Restaurant; either can be switched. High contrast, large tap targets (min 48px, POS buttons 64px+).
 2. **Status = colour + icon + text**, never colour alone. Palette roles: OK (green), Near limit/Warning (amber), Frozen/Overdue/Danger (red), Offline (grey-blue), Pending approval (purple).
 3. **Always-visible header chips:** connection state (Online / Offline – N queued), shift timer, staff name, venue/section.
 4. **Money is always shown with a currency code/symbol and thousand separators** (₦1,250,000.00 · $812.40). Owner/accountant screens have a global **Local ⇄ USD toggle** showing the FX rate used and its date. Never show an amount without its currency. Money in/out colours are consistent everywhere.
@@ -66,6 +71,38 @@ F. Customer touchpoints             — WhatsApp flows, pay-link page, receipt, 
 G. Notifications & alerts           — push / WhatsApp / SMS to staff, approvers and owner
 P. Platform Admin console (vendor)  — for you: clients, revenue, country packs (platform doc §5 S4)
 ```
+
+---
+
+## 4a. Venue modes: one app, personalised per business type
+
+At setup each venue picks a **mode**. The mode decides what staff see first, which modules are switched on, the words used, the menu template, default roles, KPIs and reports. **The core is shared by all modes**: POS ordering & payment, stock, cash & shifts, credit tabs, debt recovery, P&L, roles and audit. The owner can switch any extra module on or off later (Settings → Modules).
+
+### Mode picker (onboarding + Settings)
+Large illustrated cards: **🍽 Restaurant · 🪩 Nightclub · 🍸 Bar · 🛋 Lounge · 🔀 Mixed**. Each card lists 3 key features. A venue can be changed later; data is kept.
+
+**Mixed venues** (common: restaurant by day, lounge or club by night):
+- **By time:** e.g. 12:00–19:59 Restaurant mode, 20:00–04:00 Nightclub mode. The app switches the home screen automatically at the set time, with a banner "Night mode starts in 15 min".
+- **By area:** e.g. Ground floor = Restaurant, Rooftop = Lounge, Main hall = Nightclub. Each station/device belongs to an area.
+- Reports can be split by mode/area, or combined.
+
+### What each mode personalises
+| | 🍽 Restaurant | 🪩 Nightclub | 🍸 Bar | 🛋 Lounge |
+|---|---|---|---|---|
+| **Home screen** | Table floor plan: covers, course status, time seated | Live night board: capacity counter, door revenue, VIP tables & min-spend progress, bar sales | Fast tab grid + quick-sale keypad | Seating zones with long-running tabs, reservations, shisha timers |
+| **Mode-only modules** | Reservations & waitlist · Table merge/transfer/split · **Courses & "fire" to kitchen** · Kitchen display by station + expo · **Allergens & dietary tags** · Order by seat · Takeaway/collection orders · Food recipe costing (g/kg/each) · Prep lists · Food waste log · *(later: QR order-at-table, delivery platforms)* | **Door & entry:** cover charge, ticket scan, guest list, wristbands · **Capacity counter** (in/out, max-occupancy alert) · **ID / age-check log** · **VIP table bookings** with deposit & minimum spend · **Bottle-service packages** & presentation queue · **Promoters** (guest-list attribution, commission) · **Events** (lineup, event P&L) · Coat check · Security incident log | **Speed tools:** favourites, repeat round, one-tap modifiers · **Card-held tabs** (pre-authorised card, closed at end of night) · Happy-hour price rules · **Pour & measure tracking** (25/35/50 ml, 1/1.5 oz) · **Keg/draught tracking** (pints/litres) · Age-check prompt | Reservations with minimum spend · Table service with long tabs · **Shisha/hookah** (where legal): flavours, coal-refresh timers, pipe stock · Membership & loyalty · Small events |
+| **Words used** | Table, cover, course, server, check | Table, bottle, entry, guest list, host | Tab, round, pour | Table, session, host |
+| **Default roles** | Host, Server, Runner, Chef/Line cook, Expo, Manager | Door/Cashier, Security, VIP host, Bottle server, Bartender, Promoter, Manager | Bartender, Barback, Manager | Host, Server, Shisha attendant, Bartender, Manager |
+| **Headline KPIs** | Covers, spend per cover, table turn time, kitchen ticket time, food cost %, labour % | Entries, door revenue, spend per head, VIP min-spend hit rate, bottle sales, promoter return, sales per bartender per hour | Sales per hour, pour cost %, bottle/keg variance, average tab, bartender speed | Spend per table per hour, dwell time, shisha revenue, repeat-guest rate |
+| **Menu template** | Starters/mains/desserts/sides, drinks | Bottles by category, bottle packages, shots, mixers, cover charges | Spirits by measure, beers on tap/bottle, cocktails | Cocktails, shisha flavours, small plates |
+
+### Country-aware POS pieces (all modes)
+- **Tips:** tip prompt on card payment (US/CA default ON: 15/18/20%/custom), tip pooling & tip-out report, UK tips-law report (all tips to staff). Service charge (UK/Nigeria) as a separate line.
+- **Card-held tabs** (US/CA/UK): pre-authorise a card to open a tab, close it at end of night, auto-close with a set tip rule if the guest leaves.
+- **Units & measures** follow the country (ml / fl oz / UK 25 ml or 35 ml spirit measures, pints).
+- **Age prompt** with the local legal age (18 / 19 / 21) on first alcohol item for flagged guests.
+
+**Design asks:** draw the mode picker, the **home screen for each of the 4 modes**, the Mixed-mode switch banner, and Settings → Modules toggles. Shared screens (order, payment, credit, reports) stay the same component set in every mode, with mode-specific labels.
 
 ---
 
@@ -121,7 +158,7 @@ Flow to design:
 - Add multiple tenders to one bill (e.g. ₦20,000 cash + ₦30,000 to tab); remaining balance updates live.
 - **Cash:** quick-notes keypad, auto change calculation.
 - **Bank transfer:** generates a **dynamic account number / QR** for this exact bill; screen auto-flips to "Paid ✔" when the payment webhook arrives (or "Waiting…" with manual confirm → manager PIN if no webhook).
-- **Card:** shows amount sent to terminal, status (pending/approved/failed).
+- **Card:** shows amount sent to terminal, status (pending/approved/failed). Tip prompt where the country/mode uses tips.
 - **Tab:** shows tab balance after charge and remaining credit, and launches the A5 credit flow (responsible staff + approval).
 - **Debt repayment mode:** a guest paying an old tab at the bar. Pick the guest, see their open charges oldest first, take payment, and the oldest charges are cleared first. Cash goes into the drawer, and the Responsible Staff is notified.
 - Split by item / by seat / by amount / equal split.
@@ -420,6 +457,8 @@ Requested → Pending approval (escalates up the approver chain) → Approved (o
 
 ## 12. Screen inventory (checklist for the designer)
 
+Modes (§4a): Mode picker · Restaurant home (floor plan) · Nightclub home (live night board) · Bar home (fast tabs) · Lounge home (zones + shisha timers) · Mixed-mode switch banner · Settings → Modules · Reservations & waitlist · Courses/fire + kitchen display by station · Allergen tags · Door & entry (cover, guest list, capacity, ID log) · VIP table booking with min-spend · Promoter view · Card-held tab open/close · Tip prompt & tip-out report.
+
 POS: Login · Shift open · Floor view · Order screen · Modifier sheet · Customer search/new · Guest credit card (+ staff credit meter) · **Credit responsibility confirm sheet** · **Guest acknowledgement (code) screen** · **Pending-approval state** · Frozen-tab banner · Override request · Payment (split) · **Debt repayment mode** · Cash keypad · Transfer QR · Success/receipt · **My Credit Book + debt detail** · Quick loss log · Cash drop / paid-out · Shift close (blind count) · Sync queue · **3 connection states**.
 
 Manager: Live dashboard · Approvals inbox · Approval detail · Shift reconciliation list/detail · Stock count · Receive delivery · Tab list/detail (filter by staff) · Staff on shift.
@@ -444,17 +483,18 @@ Customer: WhatsApp thread designs (5 tones + credit-acknowledgement message) · 
 | **2 – Control the stock** | Recipes, ml-level deduction, was## 14. Questions
 
 **Answered:**
+- **Markets:** Nigeria, United States, Canada, United Kingdom (England first). Company registered in Nigeria. Pilot venues available. Name: NightOps.
+- **Venue types:** restaurants, nightclubs, bars and lounges, each with its own personalised mode (§4a).
 - **Product:** global SaaS. Businesses subscribe monthly; you are the vendor; launch on App Store, Google Play and web.
 - **Credit:** whoever the Business Owner assigns approves credit (configurable approvers with limits). Approval is required and staff are accountable from the moment of sale by default; each business can adjust this.
 - **Clients' devices:** phones, tablets and computers, up to 500–1,000 sales/hour per venue.
 - **Build:** custom.
 
 **Still open:**
-1. **Launch market(s):** which country do you pilot in first, and which 2–3 markets come next? This sets the first languages, payment providers and tax rules.
-2. **Your company base:** where is your business registered? This decides which subscription billing providers you can use (Paystack vs. a Merchant of Record for international clients).
-3. **Pilot venues:** do you have 1–3 real venues willing to test, ideally the one you described?
-4. **Product name & brand:** keep "NightOps" (needs a trademark check) or another name? Logo, colours, vibe.
-5. **Venue types:** nightclubs/bars/lounges only, or restaurants too? Restaurants add table service, courses and reservations.
+1. **Pilot venues:** which venues, and which modes are they (club, lounge, restaurant, bar, mixed)? Do any already use a POS we'd need to import menus from?
+2. **US company:** are you open to forming a US company (owned by your Nigerian company) before the US/CA/UK public launch? It unlocks Stripe billing and local-currency pricing (platform doc §4.2).
+3. **Which US states and Canadian provinces first?**
+4. **Brand look:** logo, colours, vibe (premium-dark, neon, minimalist). The name **NightOps** is decided; trademark checks are pending.
 6. **Pricing:** happy with per-venue monthly plans (Starter / Pro / Enterprise), or do you prefer per-device pricing?
 
 dit sale wait for the owner, or may the owner pre-approve credit lines for trusted guests so those sales go through instantly? (The spec supports both. Which is the default?)
@@ -469,4 +509,4 @@ dit sale wait for the owner, or may the owner pre-approve credit lines for trust
 
 ## 15. Prompt you can paste into a design tool
 
-> Design "NightOps", a dark-mode, offline-first operations app for bars, lounges and nightclubs, sold worldwide as a subscription on iOS, Android and web (phones, tablets, computers; up to 1,000 sales/hour). Create: (0) onboarding: sign-up, create business with country picker (sets currency/language/tax), setup checklist, a "Credit & Approvals" settings screen where the owner assigns approvers with amount limits and an escalation chain, device pairing by QR, and a subscription/billing status screen including past-due and read-only states; (1) a tablet/phone POS with floor/section view, order screen with category rail + item grid + cart, guest credit meter plus the staff member's own credit meter, a "you are responsible for collecting this" credit confirmation sheet, a "pending approval · approver name" state, frozen-tab banner, split-tender payment screen, quick loss log, blind-count shift close, a "My Credit Book" list of the staff member's debtors, and three connection-state header chips (Online / No internet – venue sync OK / Offline); (2) a phone manager app with live dashboard, approvals inbox with PIN modal, and shift reconciliation; (3) an approver/owner app with a one-screen credit-approval card (guest history + responsible staff's track record + approver's limit + Approve / Approve lower / Decline / Send to Owner), real-time P&L with a Local ⇄ reporting-currency toggle, sales by Drinks/VIP/Kitchen, debt aging buckets (0–7, 8–14, 15–30, 30+), a staff credit & accountability table, and a shrinkage/anomaly centre; (4) WhatsApp message layouts for credit acknowledgement and friendly → firm debt reminders with quick-reply buttons; (5) a mobile payment-link page with currency selector; (6) a web Platform Admin console for the vendor (clients, MRR/churn, country packs). Use large touch targets, status colours with icons, a reusable PIN-override component, text that can grow 40% for translation, and layouts that can mirror for right-to-left languages. Currency amounts always show their currency. Refer to the feature spec for flows and states.
+> Design "NightOps", an offline-first operations app for restaurants, bars, lounges and nightclubs (dark mode for night venues, light mode option for restaurants), sold worldwide as a subscription on iOS, Android and web (phones, tablets, computers; up to 1,000 sales/hour). Create: (0) onboarding: sign-up, create business with country picker (Nigeria, US, Canada, UK; sets currency/language/tax), a venue-mode picker with illustrated cards (Restaurant, Nightclub, Bar, Lounge, Mixed), a distinct home screen per mode (restaurant table floor plan with courses; nightclub live night board with capacity counter, door revenue and VIP min-spend progress; bar fast-tab grid; lounge seating zones with shisha timers), a Settings → Modules toggle screen, setup checklist, a "Credit & Approvals" settings screen where the owner assigns approvers with amount limits and an escalation chain, device pairing by QR, and a subscription/billing status screen including past-due and read-only states; (1) a tablet/phone POS with floor/section view, order screen with category rail + item grid + cart, guest credit meter plus the staff member's own credit meter, a "you are responsible for collecting this" credit confirmation sheet, a "pending approval · approver name" state, frozen-tab banner, split-tender payment screen with tip prompt, card-held tab, quick loss log, blind-count shift close, a "My Credit Book" list of the staff member's debtors, and three connection-state header chips (Online / No internet – venue sync OK / Offline); (2) a phone manager app with live dashboard, approvals inbox with PIN modal, and shift reconciliation; (3) an approver/owner app with a one-screen credit-approval card (guest history + responsible staff's track record + approver's limit + Approve / Approve lower / Decline / Send to Owner), real-time P&L with a Local ⇄ reporting-currency toggle, sales by Drinks/VIP/Kitchen, debt aging buckets (0–7, 8–14, 15–30, 30+), a staff credit & accountability table, and a shrinkage/anomaly centre; (4) WhatsApp message layouts for credit acknowledgement and friendly → firm debt reminders with quick-reply buttons; (5) a mobile payment-link page with currency selector; (6) a web Platform Admin console for the vendor (clients, MRR/churn, country packs). Use large touch targets, status colours with icons, a reusable PIN-override component, text that can grow 40% for translation, and layouts that can mirror for right-to-left languages. Currency amounts always show their currency. Refer to the feature spec for flows and states.

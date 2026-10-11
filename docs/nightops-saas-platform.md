@@ -1,4 +1,4 @@
-# NightOps — Global SaaS Platform Plan (v0.1)
+# NightOps — Global SaaS Platform Plan (v0.2)
 
 Third doc in the set:
 - `nightops-app-feature-spec.md`: what the app does and what each screen shows.
@@ -13,7 +13,7 @@ Third doc in the set:
 
 ---
 
-## 1. Decisions (v0.3)
+## 1. Decisions
 
 | # | Decision | What it means for the product |
 |---|---|---|
@@ -21,6 +21,11 @@ Third doc in the set:
 | 2 | **Who approves credit is decided by each Business Owner** | Approvers are **configurable per business**: any person or role, each with an amount limit, plus an escalation chain. |
 | 3 | **Approval is required from day 1, but adjustable** | Defaults: every credit sale needs approval, and the selling staff member is accountable **from the moment of sale**. Each business can change these rules. |
 | 4 | **Global launch on iOS, Android and web** | Multi-language, multi-currency, multi-tax and multi-timezone. Country-specific legal rules. App-store compliance. International security and privacy standards. |
+| 5 | **Launch markets: Nigeria, United States, Canada, United Kingdom (England)** | Four country packs at launch (§9). Canada excludes Quebec at first (§9). |
+| 6 | **Your company is registered in Nigeria** | Paystack for subscription billing from day one. A plan for charging US/CA/UK clients (§4.2). |
+| 7 | **Pilot venues available** | Pilot in Nigeria first (§10). |
+| 8 | **Name: NightOps** | Trademark and domain checks in all 4 markets (§9.3). |
+| 9 | **Restaurants included, with a personalised mode per business type** | Restaurant / Nightclub / Bar / Lounge modes, plus hybrids (feature spec §4a). |
 
 ---
 
@@ -79,13 +84,24 @@ Accountability *tracking* (who sold it, who's collecting it, collection rates) i
 - **14-day free trial**, no card needed. **Annual billing** at ~2 months free.
 - **Regional pricing:** lower prices in lower-income markets (e.g. Africa, LatAm, South Asia) and standard prices in the US/UK/EU. Prices stored per country/currency.
 
-### 4.2 Collecting your subscription money
-| Market | Recommended | Why |
-|---|---|---|
-| Africa (Paystack countries) | **Paystack** subscriptions, USD where enabled (Nigeria: USD settles to a Zenith USD domiciliary account) | Your preferred rail. Local cards and transfers work. |
-| Rest of world | A **Merchant of Record** (e.g. Paddle, or Stripe's managed payments where eligible) | When you sell software into the EU/UK/US you owe VAT/GST/sales tax in many places. A Merchant of Record becomes the legal seller and handles tax for you. It costs more per transaction (Paddle quotes 5% + $0.50), but it saves you registering for tax in dozens of countries. **Check that it supports a Nigeria-based seller**, or set up a company abroad (e.g. US/UK). |
+### 4.2 Collecting your subscription money (you're a Nigeria-registered company)
+**What we found** (verify, see Sources):
+- **Stripe doesn't let Nigeria-registered businesses sign up directly.** Nigeria is routed to Paystack (which Stripe owns).
+- **Paystack** can charge international cards in **USD** (3.9% + ₦100) and pay you out in USD to a Zenith USD domiciliary account.
+- **Paddle** (Merchant of Record) says it supports sellers in 200+ countries, but we couldn't confirm Nigeria. Ask them directly.
 
-Build a **billing-provider interface** so both can run side by side. The app only asks "is this business's subscription active, and on which plan?"
+**Recommended path:**
+| Stage | Nigerian clients | US / Canadian / UK clients |
+|---|---|---|
+| **Pilot & early beta** | Paystack subscriptions in NGN (or USD) | Paystack USD card billing. Works from day one; clients see USD prices. |
+| **Before public launch in US/CA/UK** | Paystack | Set up a **US company** (e.g. Delaware via Stripe Atlas) owned by your Nigerian company. This unlocks **Stripe Billing + Stripe Tax** (sales tax/GST tracking, local-currency prices in USD/CAD/GBP, better card approval rates) and a **Stripe Connect platform** for clients' guest payments. Alternative: a Merchant of Record such as Paddle, if it accepts you. |
+
+- **Taxes on your subscriptions** (talk to an accountant in Nigeria and the US):
+  - **UK:** business clients normally account for the VAT themselves (reverse charge).
+  - **Canada:** non-resident digital-service sellers must register for GST/HST above a sales threshold.
+  - **US:** some states tax SaaS once you pass their sales thresholds.
+  - Stripe Tax or a Merchant of Record tracks these for you.
+- **US company upkeep:** yearly filings, including Form 5472 for foreign-owned US companies, with heavy penalties if missed. Budget for a US accountant.
 
 ### 4.3 App Store & Google Play rules (important for design)
 Apple and Google normally require their own in-app purchase for digital subscriptions (taking a 15–30% commission). For **business software sold to organisations**, the usual approach is:
@@ -110,15 +126,16 @@ Landing page (problem → product → proof), features per role, **pricing page 
 
 ### S1. Sign-up & onboarding (web + app). Goal: first test sale in under 15 minutes
 1. Sign up: email or phone + OTP, or Google / Apple.
-2. **Create business:** name, type (bar, lounge, nightclub, restaurant-bar), **country**. The country auto-sets currency, tax defaults, language, date/number formats and the legal rule pack.
-3. **Add first venue:** address, opening hours, business-day cut-off (e.g. 6 am), time zone.
-4. **Menu setup:** start from a template for the venue type (pre-filled common drinks and bottle sizes), import CSV/Excel, or start empty.
-5. **Invite staff:** by phone/WhatsApp/email, with role and venue. Staff get a link and set their PIN.
-6. **Credit & approvals wizard** (§3): who approves, limits, accountability rules, legal notice.
-7. **Connect guest payments:** Paystack / Stripe / others for the business's *own* guest payments (§6). Skippable.
-8. **Pair devices:** scan QR on each phone/tablet and **choose the Hub device** (§7).
-9. **Choose plan / start trial** (web).
-10. **Setup checklist** stays on the home screen until done ("Make a test sale ✓").
+2. **Create business:** name and **country** (Nigeria / US / Canada [not Quebec] / UK at launch). Country sets currency, taxes, units, language, drinking age and legal rules.
+3. **Choose venue mode:** big illustrated cards: **Restaurant · Nightclub · Bar · Lounge · Mixed** (e.g. restaurant by day, lounge by night). This personalises the whole app (feature spec §4a).
+4. **Add first venue:** address, opening hours, business-day cut-off (e.g. 6 am), time zone.
+5. **Menu setup:** start from a template for the chosen mode (pre-filled common drinks and bottle sizes), import CSV/Excel, or start empty.
+6. **Invite staff:** by phone/WhatsApp/email, with role and venue. Staff get a link and set their PIN.
+7. **Credit & approvals wizard** (§3): who approves, limits, accountability rules, legal notice. Optional; suggested by default in Nigeria and offered as an add-on in US/CA/UK, where tabs usually close the same night.
+8. **Connect guest payments:** Paystack / Stripe / others for the business's *own* guest payments (§6). Skippable.
+9. **Pair devices:** scan QR on each phone/tablet and **choose the Hub device** (§7).
+10. **Choose plan / start trial** (web).
+11. **Setup checklist** stays on the home screen until done ("Make a test sale ✓").
 
 ### S2. Subscription & billing (Business Owner, web; status-only in app)
 - Current plan, renewal date, venues/devices used vs plan limits, usage meters (messages, calls).
@@ -188,19 +205,61 @@ Each Business connects **its own** payment account, so guest money goes straight
 
 ---
 
-## 9. Launch path (recommended)
+## 9. Launch markets & country packs
 
-1. **Pilot (1–3 venues you can visit)** in your home market: Phase 1–2 features (till + stock). Fix what real nights break.
-2. **Paid beta (10–30 venues)** in Paystack countries: add credit, approvals, debt recovery, subscriptions.
-3. **Public launch** on web, Google Play and App Store in English-speaking markets with low fiscal-law burden. Turn on the Merchant of Record for international clients.
-4. **Expand by country pack:** language + tax + payment provider + legal gates + local message templates per market, starting where demand shows up.
+### 9.1 What each country pack contains
+| | 🇳🇬 Nigeria | 🇺🇸 United States | 🇨🇦 Canada | 🇬🇧 United Kingdom (England first) |
+|---|---|---|---|---|
+| **Currency** | NGN | USD | CAD | GBP |
+| **Guest payments** | Paystack (online, transfer, pay links; check Paystack card terminals) | Stripe + Stripe Terminal card readers | Stripe + Stripe Terminal | Stripe + Stripe Terminal |
+| **Sales taxes** | VAT 7.5% + **state taxes** such as Lagos State consumption tax on restaurants/hotels/events | State + county + city sales tax, some liquor taxes. Use a tax-rate service | GST/HST/PST by province, plus liquor taxes | VAT 20%. Export VAT records for Making Tax Digital software |
+| **Receipt / fiscal law** | No fiscal device today (watch the tax authority's e-invoicing rollout) | None generally | **Quebec requires certified sales-recording (WEB-SRM) for restaurants & bars, so exclude Quebec at launch** | None (VAT records via MTD) |
+| **How "tabs" work** | **Long-term credit is common.** Credit + debt recovery is a headline feature | Tab = card held/pre-authorised and closed the same night. Long-term credit is rare | Same as US | Same as US |
+| **What sells the product** | Credit control, theft & stock control, USD reporting | Speed, theft & pour control, tips, labour | Same as US | Same as US + tips law compliance |
+| **Tips** | Occasional; service charge common | **Heavy tipping:** tip prompts, tip pooling, tip-out reports | Heavy tipping; pooling rules vary by province | **Tips law (2024):** all tips must go to workers; written tipping policy; records kept |
+| **Recover tabs from staff wages** | Possible only with clear written consent (lawyer to confirm) | **Blocked by default.** Many states (e.g. California, New York) restrict deductions | **Blocked.** Ontario, BC and others forbid deductions for cash shortages | Only with prior written agreement; for retail-type workers, cash-shortage deductions **capped at 10% of gross pay per payday** |
+| **Debt reminders** | WhatsApp first, SMS fallback; NDPA consent | **SMS first** (carrier registration required for business texting); TCPA consent for automated texts/calls; California's Rosenthal Act covers businesses collecting their *own* debts | SMS + email; CASL consent rules; provincial consumer rules | WhatsApp + SMS; UK GDPR + PECR consent |
+| **Interest/late fees on tabs** | Off by default | Off by default (lending laws) | Off by default | Off by default. Interest-free short-term credit is usually exempt from FCA consumer-credit rules, but fees can change that |
+| **Language** | English | English (Spanish later) | English (French before Quebec) | English |
+| **Drink units** | ml | US fl oz | oz and ml | 25/35 ml spirit measures, pints |
+| **Legal drinking-age prompt** | 18 | 21 | 18 or 19 by province | 18 (Challenge 25 prompt) |
+| **Data hosting** | UK/EU region, with NDPA transfer safeguards | North America region | North America (Canada region option) | UK/EU region |
+| **Accounting exports** | QuickBooks, Zoho, Sage, Excel | QuickBooks Online, Xero | QuickBooks Online, Xero | Xero, QuickBooks, Sage |
 
-A single app that works everywhere on day one isn't realistic for a POS (tax and receipt laws differ too much). A **platform built for every country from day one**, switched on market by market, is how international POS companies do it.
+> Also check in each market: **rules on selling alcohol on credit**, and licensing rules for door entry and capacity (nightclubs). These belong in the country pack once confirmed.
 
-## 10. Sources
+### 9.2 Launch order (recommended)
+1. **Nigeria pilot**: 1–3 of your pilot venues (§10).
+2. **Nigeria paid beta**: 10–30 venues; subscriptions via Paystack.
+3. **United Kingdom (England)**: one VAT rate, no fiscal device, WhatsApp is common, and the tips law is a selling point.
+4. **United States**: start in 2–3 states. State-by-state tax and labour rules make it the most complex of the four.
+5. **Canada**: English-speaking provinces first (Ontario, BC, Alberta). Add Quebec when a WEB-SRM module and French are ready.
+
+### 9.3 Name & brand checks for "NightOps"
+- Trademark searches in **Nigeria (Trademarks Registry), US (USPTO), Canada (CIPO), UK (UKIPO)** for software (class 9) and SaaS (class 42). Then file in the launch markets.
+- Domains (e.g. nightops.app / .com / .ng / .co.uk) and social handles.
+- Because restaurants are included, use a tagline that says so, e.g. *"NightOps: run your restaurant, bar, lounge or club."*
+
+## 10. Pilot plan (Nigeria)
+- **Pick venues that cover the modes:** ideally one nightclub/lounge (your original brief) and one restaurant or restaurant-bar.
+- **Scope:** Phase 1–2 (till + stock) first, then credit & approvals once the till is trusted.
+- **Success measures** (agree them with each venue before starting):
+  - cash variance per shift down
+  - stock variance down
+  - time to ring a sale ≤ 5 s
+  - zero lost sales during internet outages
+  - debt collected within 14 days up
+- **Run of play:** set up with them, attend the first 2–3 busy nights in person, then hold weekly feedback calls. Every bug found on a Saturday night gets fixed before the next one.
+- **Pilot pricing:** free during pilot, then a founding-client discount in exchange for a testimonial or case study.
+
+## 11. Sources
 - Apple App Review Guidelines (3.1.3): https://developer.apple.com/support/downloads/terms/app-review-guidelines/App-Review-Guidelines-English-UK.pdf
 - Apple developer forum, Enterprise Services 3.1.3(c): https://developer.apple.com/forums/thread/773357
 - Apple developer forum, cross-platform service pattern: https://developer.apple.com/forums/thread/825551
 - Google Play Payments policy: https://support.google.com/googleplay/android-developer/answer/9858738
 - Paddle vs Stripe (merchant of record, fees): https://freemius.com/blog/paddle-vs-stripe/
 - Paystack USD acceptance: https://support.paystack.com/hc/en-us/articles/360009973799-Can-I-accept-payments-in-US-Dollars-USD
+- Paddle supported countries: https://developer.paddle.com/concepts/sell/supported-countries-locales
+- Stripe & Nigeria (secondary): https://incorpuk.com/blog/stripe-for-nigerians/
+- Stripe Atlas for African founders (secondary): https://techcabal.com/?p=44169
+- Revenu Québec, restaurant-sector mandatory billing (WEB-SRM): https://www.revenuquebec.ca/en/one-mission-concrete-actions/ensuring-tax-compliance/tax-evasion/tax-evasion-in-the-restaurant-sector

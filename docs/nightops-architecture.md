@@ -1,4 +1,4 @@
-# NightOps — Architecture & Build Plan (v0.2)
+# NightOps — Architecture & Build Plan (v0.3)
 
 Companion to `nightops-app-feature-spec.md` and `nightops-saas-platform.md`. This covers *how* to build what the spec describes.
 
@@ -186,7 +186,20 @@ Rough messaging cost example: 300 debtors/month × 5 WhatsApp reminders × $0.01
 - Backups: point-in-time recovery. Target RPO ≤ 5 min and RTO ≤ 1 h. Restore tested quarterly.
 - Security: OWASP ASVS/MASVS, dependency scanning, secrets manager, yearly penetration test, SOC 2 path (platform doc §8).
 
-**Phase 0 must include tenancy, entitlements, i18n and country packs.** They are cheap to build in at the start and very expensive to retrofit.
+**Venue modes (Restaurant / Nightclub / Bar / Lounge / Mixed)**
+- A mode is a **preset**, not separate code. It decides which modules are on, the home screen, labels, menu template, default roles and KPIs. Mode presets and plan entitlements combine: a module shows only if the mode or the owner turns it on **and** the plan includes it.
+- Mixed venues: modes attach to **areas** (stations/devices belong to an area) or to a **time schedule** per venue. Every order records its mode/area so reports can split or combine.
+- Mode-only modules (reservations, courses/KDS stations, door & capacity, promoters, keg tracking, shisha) are separate packages sharing the same core order/payment/stock/ledger.
+
+**Launch-market specifics (Nigeria, US, Canada, UK)**
+- **Tax engine:** several stacked taxes per item (e.g. state + county + city sales tax in the US; GST + PST in Canada; VAT + state consumption tax in Nigeria), tax-inclusive (UK/NG) or tax-exclusive (US/CA) prices. US/Canadian rates come from a tax-rate service rather than hand-entered tables.
+- **Tips:** tip lines kept separate from sales in the ledger, with tip pools, tip-out rules and the UK tips-law report.
+- **Card-held tabs:** Stripe Terminal pre-authorisation (US/CA/UK), with incremental authorisation and capture at close.
+- **Units:** stock stored in a base unit (ml/g); display units per country (fl oz, 25/35 ml measures, pints).
+- **Hosting:** two regions at launch: **North America** (US & Canadian clients) and **UK/Europe** (UK & Nigerian clients; good latency from Lagos, with NDPA transfer safeguards).
+- **Quebec** blocked in onboarding until a WEB-SRM module exists.
+
+**Phase 0 must include tenancy, entitlements, i18n, country packs and mode presets.** They are cheap to build in at the start and very expensive to retrofit.
 
 ## 12. Sources
 
