@@ -1,0 +1,309 @@
+id,name,category,item_type,brand,markets,modes,starter_in,pack,sell_units,station,allergens,notes
+cognac-hennessy-vs,Hennessy VS,Cognac & Brandy,spirit,Hennessy,ALL,R|N|B|L,N|B|L,spirit_bottle,shot|double|bottle,bar,,
+cognac-hennessy-vsop,Hennessy VSOP,Cognac & Brandy,spirit,Hennessy,ALL,R|N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+cognac-hennessy-xo,Hennessy XO,Cognac & Brandy,spirit,Hennessy,ALL,N|B|L,N,spirit_bottle,shot|bottle,bar,,
+cognac-remy-martin-vsop,Rémy Martin VSOP,Cognac & Brandy,spirit,Rémy Martin,ALL,R|N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+cognac-remy-martin-xo,Rémy Martin XO,Cognac & Brandy,spirit,Rémy Martin,ALL,N|B|L,,spirit_bottle,shot|bottle,bar,,
+cognac-martell-vsop,Martell VSOP,Cognac & Brandy,spirit,Martell,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+cognac-martell-blue-swift,Martell Blue Swift,Cognac & Brandy,spirit,Martell,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+cognac-martell-cordon-bleu,Martell Cordon Bleu,Cognac & Brandy,spirit,Martell,ALL,N|L,,spirit_bottle,shot|bottle,bar,,
+cognac-courvoisier-vs,Courvoisier VS,Cognac & Brandy,spirit,Courvoisier,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+cognac-courvoisier-vsop,Courvoisier VSOP,Cognac & Brandy,spirit,Courvoisier,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+spirit-house-brandy,House Brandy,Cognac & Brandy,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the brandy you pour
+whisky-jw-red,Johnnie Walker Red Label,Whisky,spirit,Johnnie Walker,ALL,R|N|B|L,B,spirit_bottle,shot|double|bottle,bar,,
+whisky-jw-black,Johnnie Walker Black Label,Whisky,spirit,Johnnie Walker,ALL,R|N|B|L,R|N|B|L,spirit_bottle,shot|double|bottle,bar,,
+whisky-jw-double-black,Johnnie Walker Double Black,Whisky,spirit,Johnnie Walker,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-jw-gold,Johnnie Walker Gold Label Reserve,Whisky,spirit,Johnnie Walker,ALL,N|B|L,N,spirit_bottle,shot|bottle,bar,,
+whisky-jw-blue,Johnnie Walker Blue Label,Whisky,spirit,Johnnie Walker,ALL,N|L,N,spirit_bottle,shot|bottle,bar,,
+whisky-chivas-12,Chivas Regal 12,Whisky,spirit,Chivas Regal,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-chivas-18,Chivas Regal 18,Whisky,spirit,Chivas Regal,ALL,N|L,,spirit_bottle,shot|bottle,bar,,
+whisky-glenfiddich-12,Glenfiddich 12,Whisky,spirit,Glenfiddich,ALL,R|N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+whisky-glenfiddich-15,Glenfiddich 15,Whisky,spirit,Glenfiddich,ALL,N|B|L,,spirit_bottle,shot|bottle,bar,,
+whisky-glenfiddich-18,Glenfiddich 18,Whisky,spirit,Glenfiddich,ALL,N|L,,spirit_bottle,shot|bottle,bar,,
+whisky-glenlivet-12,The Glenlivet 12,Whisky,spirit,The Glenlivet,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-macallan-12-dc,The Macallan 12 Double Cask,Whisky,spirit,The Macallan,ALL,N|B|L,N,spirit_bottle,shot|bottle,bar,,
+whisky-singleton-12,The Singleton 12,Whisky,spirit,The Singleton,NG|GB,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-monkey-shoulder,Monkey Shoulder,Whisky,spirit,Monkey Shoulder,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-jameson,Jameson Irish Whiskey,Whisky,spirit,Jameson,ALL,R|N|B|L,R|B,spirit_bottle,shot|double|bottle,bar,,
+whisky-jack-daniels,Jack Daniel's Old No.7,Whisky,spirit,Jack Daniel's,ALL,R|N|B|L,R|N|B|L,spirit_bottle,shot|double|bottle,bar,,
+whisky-jim-beam,Jim Beam White,Whisky,spirit,Jim Beam,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-makers-mark,Maker's Mark,Whisky,spirit,Maker's Mark,US|CA|GB,R|N|B|L,B,spirit_bottle,shot|double|bottle,bar,,
+whisky-bulleit-bourbon,Bulleit Bourbon,Whisky,spirit,Bulleit,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-crown-royal,Crown Royal,Whisky,spirit,Crown Royal,US|CA,R|N|B|L,N|B,spirit_bottle,shot|double|bottle,bar,,
+whisky-canadian-club,Canadian Club,Whisky,spirit,Canadian Club,US|CA,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+whisky-grants,Grant's Triple Wood,Whisky,spirit,Grant's,NG|GB,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+spirit-house-bourbon,House Bourbon,Whisky,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the bourbon you pour
+spirit-house-scotch,House Scotch,Whisky,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the scotch you pour
+vodka-absolut,Absolut Vodka,Vodka,spirit,Absolut,ALL,R|N|B|L,R|N|B|L,spirit_bottle,shot|double|bottle,bar,,
+vodka-smirnoff-21,Smirnoff No.21,Vodka,spirit,Smirnoff,ALL,R|N|B|L,R|B,spirit_bottle,shot|double|bottle,bar,,
+vodka-grey-goose,Grey Goose,Vodka,spirit,Grey Goose,ALL,R|N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+vodka-belvedere,Belvedere,Vodka,spirit,Belvedere,ALL,N|B|L,N,spirit_bottle,shot|double|bottle,bar,,
+vodka-ciroc,Cîroc,Vodka,spirit,Cîroc,ALL,N|B|L,N,spirit_bottle,shot|double|bottle,bar,,
+vodka-ketel-one,Ketel One,Vodka,spirit,Ketel One,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+vodka-titos,Tito's Handmade Vodka,Vodka,spirit,Tito's,US|CA,R|N|B|L,N|B,spirit_bottle,shot|double|bottle,bar,,
+spirit-house-vodka,House Vodka,Vodka,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the vodka you pour
+gin-gordons,Gordon's London Dry Gin,Gin,spirit,Gordon's,ALL,R|N|B|L,R|B,spirit_bottle,shot|double|bottle,bar,,
+gin-tanqueray,Tanqueray London Dry,Gin,spirit,Tanqueray,ALL,R|N|B|L,N|B|L,spirit_bottle,shot|double|bottle,bar,,
+gin-bombay-sapphire,Bombay Sapphire,Gin,spirit,Bombay Sapphire,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+gin-hendricks,Hendrick's Gin,Gin,spirit,Hendrick's,ALL,R|N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+gin-beefeater,Beefeater London Dry,Gin,spirit,Beefeater,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+gin-seagrams,Seagram's Extra Dry Gin,Gin,spirit,Seagram's,US|CA,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+gin-seamans-schnapps,Seaman's Aromatic Schnapps,Gin,spirit,Seaman's,NG,R|N|B|L,B,spirit_bottle,shot|bottle,bar,,
+spirit-house-gin,House Gin,Gin,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the gin you pour
+rum-bacardi-carta-blanca,Bacardi Carta Blanca,Rum,spirit,Bacardi,ALL,R|N|B|L,R|N|B|L,spirit_bottle,shot|double|bottle,bar,,
+rum-captain-morgan-spiced,Captain Morgan Original Spiced,Rum,spirit,Captain Morgan,ALL,R|N|B|L,B,spirit_bottle,shot|double|bottle,bar,,
+rum-havana-club-3,Havana Club 3 Años,Rum,spirit,Havana Club,NG|CA|GB,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,Cuban rum: not sold in the US
+rum-kraken,Kraken Black Spiced,Rum,spirit,Kraken,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+rum-appleton-signature,Appleton Estate Signature,Rum,spirit,Appleton Estate,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+rum-diplomatico-reserva,Diplomático Reserva Exclusiva,Rum,spirit,Diplomático,ALL,N|B|L,L,spirit_bottle,shot|double|bottle,bar,,
+spirit-house-white-rum,House White Rum,Rum,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the rum you pour
+spirit-house-dark-rum,House Dark Rum,Rum,spirit,House,ALL,R|N|B|L,B,spirit_bottle,shot|double,bar,,Map to the rum you pour
+tequila-patron-silver,Patrón Silver,Tequila & Mezcal,spirit,Patrón,ALL,R|N|B|L,N|B,spirit_bottle,shot|double|bottle,bar,,
+tequila-patron-reposado,Patrón Reposado,Tequila & Mezcal,spirit,Patrón,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+tequila-don-julio-blanco,Don Julio Blanco,Tequila & Mezcal,spirit,Don Julio,ALL,R|N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+tequila-don-julio-reposado,Don Julio Reposado,Tequila & Mezcal,spirit,Don Julio,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+tequila-don-julio-1942,Don Julio 1942,Tequila & Mezcal,spirit,Don Julio,ALL,N|L,N,spirit_bottle,shot|bottle,bar,,
+tequila-casamigos-blanco,Casamigos Blanco,Tequila & Mezcal,spirit,Casamigos,ALL,N|B|L,N|L,spirit_bottle,shot|double|bottle,bar,,
+tequila-casamigos-reposado,Casamigos Reposado,Tequila & Mezcal,spirit,Casamigos,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+tequila-clase-azul-reposado,Clase Azul Reposado,Tequila & Mezcal,spirit,Clase Azul,ALL,N|L,N,spirit_bottle,shot|bottle,bar,,
+tequila-jose-cuervo-especial,José Cuervo Especial Gold,Tequila & Mezcal,spirit,José Cuervo,ALL,R|N|B|L,B,spirit_bottle,shot|double|bottle,bar,,
+tequila-olmeca-blanco,Olmeca Blanco,Tequila & Mezcal,spirit,Olmeca,NG|GB,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+spirit-house-tequila,House Tequila Blanco,Tequila & Mezcal,spirit,House,ALL,R|N|B|L,R|B,spirit_bottle,shot|double,bar,,Map to the tequila you pour
+spirit-house-mezcal,House Mezcal,Tequila & Mezcal,spirit,House,ALL,N|B|L,,spirit_bottle,shot|double,bar,,
+liq-baileys,Baileys Original Irish Cream,Liqueurs & Bitters,liqueur,Baileys,ALL,R|N|B|L,R|B|L,spirit_bottle,shot|double|bottle,bar,milk,
+liq-jagermeister,Jägermeister,Liqueurs & Bitters,liqueur,Jägermeister,ALL,N|B|L,N|B,spirit_bottle,shot|bottle,bar,,
+liq-campari,Campari,Liqueurs & Bitters,liqueur,Campari,ALL,R|N|B|L,B|L,spirit_bottle,shot|double|bottle,bar,,
+liq-aperol,Aperol,Liqueurs & Bitters,liqueur,Aperol,ALL,R|N|B|L,R|B|L,spirit_bottle,shot|double|bottle,bar,,
+liq-cointreau,Cointreau,Liqueurs & Bitters,liqueur,Cointreau,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+liq-kahlua,Kahlúa,Liqueurs & Bitters,liqueur,Kahlúa,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+liq-disaronno,Disaronno Amaretto,Liqueurs & Bitters,liqueur,Disaronno,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,nuts,
+liq-southern-comfort,Southern Comfort,Liqueurs & Bitters,liqueur,Southern Comfort,ALL,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+liq-sambuca,House Sambuca,Liqueurs & Bitters,liqueur,House,ALL,N|B|L,,spirit_bottle,shot,bar,,
+liq-fireball,Fireball Cinnamon Whisky,Liqueurs & Bitters,liqueur,Fireball,US|CA,N|B|L,N|B,spirit_bottle,shot|bottle,bar,,
+liq-pimms,Pimm's No.1,Liqueurs & Bitters,liqueur,Pimm's,GB,R|N|B|L,R|B,spirit_bottle,glass|jug,bar,,Seasonal: summer jug serve
+liq-martini-rosso,Martini Rosso,Liqueurs & Bitters,liqueur,Martini,ALL,R|N|B|L,,spirit_bottle,shot|double|bottle,bar,,Sweet vermouth
+liq-archers,Archers Peach Schnapps,Liqueurs & Bitters,liqueur,Archers,GB,N|B|L,,spirit_bottle,shot|double|bottle,bar,,
+liq-orijin-bitters,Orijin Bitters,Liqueurs & Bitters,liqueur,Orijin,NG,R|N|B|L,N|B,spirit_bottle,shot|bottle,bar,,
+liq-alomo-bitters,Alomo Bitters,Liqueurs & Bitters,liqueur,Alomo,NG,R|N|B|L,,spirit_bottle,shot|bottle,bar,,
+sparkling-moet-imperial,Moët & Chandon Impérial Brut,Champagne & Sparkling,sparkling,Moët & Chandon,ALL,R|N|B|L,R|N|L,wine_bottle|magnum,glass|bottle|magnum,bar,sulphites,
+sparkling-moet-rose,Moët & Chandon Rosé Impérial,Champagne & Sparkling,sparkling,Moët & Chandon,ALL,R|N|B|L,N,wine_bottle|magnum,bottle|magnum,bar,sulphites,
+sparkling-moet-ice,Moët & Chandon Ice Impérial,Champagne & Sparkling,sparkling,Moët & Chandon,ALL,N|L,N,wine_bottle,bottle,bar,sulphites,
+sparkling-veuve-clicquot,Veuve Clicquot Yellow Label Brut,Champagne & Sparkling,sparkling,Veuve Clicquot,ALL,R|N|B|L,N|L,wine_bottle|magnum,bottle|magnum,bar,sulphites,
+sparkling-dom-perignon,Dom Pérignon Vintage,Champagne & Sparkling,sparkling,Dom Pérignon,ALL,R|N|L,N,wine_bottle,bottle,bar,sulphites,
+sparkling-armand-de-brignac,Armand de Brignac Brut Gold,Champagne & Sparkling,sparkling,Armand de Brignac,ALL,N|L,N,wine_bottle,bottle,bar,sulphites,Ace of Spades
+sparkling-laurent-perrier-rose,Laurent-Perrier Cuvée Rosé,Champagne & Sparkling,sparkling,Laurent-Perrier,ALL,R|N|L,,wine_bottle,bottle,bar,sulphites,
+sparkling-belaire-rose,Belaire Rosé,Champagne & Sparkling,sparkling,Belaire,NG|US,N|L,N,wine_bottle,bottle,bar,sulphites,
+sparkling-house-prosecco,House Prosecco,Champagne & Sparkling,sparkling,House,ALL,R|N|B|L,R|B|L,wine_bottle,glass|bottle,bar,sulphites,
+sparkling-house-cava,House Cava,Champagne & Sparkling,sparkling,House,ALL,R|B|L,,wine_bottle,glass|bottle,bar,sulphites,
+wine-house-red,House Red Wine,Wine,wine,House,ALL,R|N|B|L,R|B|L,wine_bottle,glass|bottle,bar,sulphites,
+wine-house-white,House White Wine,Wine,wine,House,ALL,R|N|B|L,R|B|L,wine_bottle,glass|bottle,bar,sulphites,
+wine-house-rose,House Rosé Wine,Wine,wine,House,ALL,R|N|B|L,R|L,wine_bottle,glass|bottle,bar,sulphites,
+wine-cabernet-sauvignon,Cabernet Sauvignon,Wine,wine,Generic,ALL,R|B|L,R,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-merlot,Merlot,Wine,wine,Generic,ALL,R|B|L,R,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-malbec,Malbec,Wine,wine,Generic,ALL,R|B|L,,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-pinot-noir,Pinot Noir,Wine,wine,Generic,ALL,R|B|L,,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-shiraz,Shiraz,Wine,wine,Generic,ALL,R|B|L,,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-sauvignon-blanc,Sauvignon Blanc,Wine,wine,Generic,ALL,R|B|L,R,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-chardonnay,Chardonnay,Wine,wine,Generic,ALL,R|B|L,R,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-pinot-grigio,Pinot Grigio,Wine,wine,Generic,ALL,R|B|L,,wine_bottle,glass|bottle,bar,sulphites,Set producer and vintage
+wine-four-cousins-sweet-red,Four Cousins Sweet Red,Wine,wine,Four Cousins,NG,R|N|B|L,R|N|L,wine_bottle,glass|bottle,bar,sulphites,
+wine-carlo-rossi-sweet-red,Carlo Rossi Sweet Red,Wine,wine,Carlo Rossi,NG|US,R|N|B|L,,wine_bottle,glass|bottle,bar,sulphites,
+beer-star-lager,Star Lager,Beer & Cider,beer,Star,NG,R|N|B|L,R|N|B|L,beer_bottle,bottle,bar,gluten,
+beer-gulder,Gulder,Beer & Cider,beer,Gulder,NG,R|N|B|L,R|B,beer_bottle,bottle,bar,gluten,
+beer-heineken,Heineken,Beer & Cider,beer,Heineken,ALL,R|N|B|L,R|N|B|L,beer_bottle|can|draught,bottle|can|pint|half_pint,bar,gluten,
+beer-trophy,Trophy Lager,Beer & Cider,beer,Trophy,NG,R|N|B|L,B,beer_bottle,bottle,bar,gluten,
+beer-hero,Hero Lager,Beer & Cider,beer,Hero,NG,R|N|B|L,B,beer_bottle,bottle,bar,gluten,
+beer-life,Life Continental Lager,Beer & Cider,beer,Life,NG,R|N|B|L,,beer_bottle,bottle,bar,gluten,
+beer-goldberg,Goldberg Lager,Beer & Cider,beer,Goldberg,NG,R|N|B|L,B,beer_bottle,bottle,bar,gluten,
+beer-legend-stout,Legend Extra Stout,Beer & Cider,beer,Legend,NG,R|N|B|L,B,beer_bottle,bottle,bar,gluten,
+beer-guinness-fes,Guinness Foreign Extra Stout,Beer & Cider,beer,Guinness,NG,R|N|B|L,R|B,beer_bottle|can,bottle|can,bar,gluten,
+beer-guinness-draught,Guinness Draught,Beer & Cider,beer,Guinness,US|CA|GB,R|N|B|L,R|B,draught|can,pint|half_pint|can,bar,gluten,
+beer-budweiser,Budweiser,Beer & Cider,beer,Budweiser,ALL,R|N|B|L,N|B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-tiger,Tiger Lager,Beer & Cider,beer,Tiger,NG|GB,R|N|B|L,,beer_bottle|can,bottle|can,bar,gluten,
+beer-33-export,33 Export,Beer & Cider,beer,33 Export,NG,R|N|B|L,,beer_bottle,bottle,bar,gluten,
+beer-desperados,Desperados,Beer & Cider,beer,Desperados,NG|GB,N|B|L,,beer_bottle|can,bottle|can,bar,gluten,
+beer-star-radler,Star Radler,Beer & Cider,beer,Star,NG,R|N|B|L,,beer_bottle|can,bottle|can,bar,gluten,
+beer-bud-light,Bud Light,Beer & Cider,beer,Bud Light,US|CA,R|N|B|L,R|N|B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-coors-light,Coors Light,Beer & Cider,beer,Coors,US|CA,R|N|B|L,R|N|B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-miller-lite,Miller Lite,Beer & Cider,beer,Miller,US,R|N|B|L,B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-michelob-ultra,Michelob Ultra,Beer & Cider,beer,Michelob,US,R|N|B|L,N|B,beer_bottle|can,bottle|can,bar,gluten,
+beer-modelo-especial,Modelo Especial,Beer & Cider,beer,Modelo,US|CA,R|N|B|L,R|B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-corona-extra,Corona Extra,Beer & Cider,beer,Corona,ALL,R|N|B|L,R|N|B|L,beer_bottle,bottle,bar,gluten,
+beer-stella-artois,Stella Artois,Beer & Cider,beer,Stella Artois,ALL,R|N|B|L,R|B,beer_bottle|can|draught,bottle|can|pint|half_pint,bar,gluten,
+beer-blue-moon,Blue Moon Belgian White,Beer & Cider,beer,Blue Moon,US|CA,R|N|B|L,,beer_bottle|draught,bottle|pint,bar,gluten,
+beer-house-ipa,House IPA (draught),Beer & Cider,beer,House,ALL,R|B|L,R|B,draught,pint|half_pint,bar,gluten,Map to your craft keg
+beer-molson-canadian,Molson Canadian,Beer & Cider,beer,Molson,CA,R|N|B|L,R|N|B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-labatt-blue,Labatt Blue,Beer & Cider,beer,Labatt,CA,R|N|B|L,B,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-alexander-keiths,Alexander Keith's IPA,Beer & Cider,beer,Alexander Keith's,CA,R|N|B|L,,beer_bottle|can|draught,bottle|can|pint,bar,gluten,
+beer-kokanee,Kokanee,Beer & Cider,beer,Kokanee,CA,R|N|B|L,,beer_bottle|can,bottle|can,bar,gluten,
+beer-carling,Carling,Beer & Cider,beer,Carling,GB,R|N|B|L,R|N|B,draught|can,pint|half_pint|can,bar,gluten,
+beer-peroni,Peroni Nastro Azzurro,Beer & Cider,beer,Peroni,GB|US|CA,R|N|B|L,R|B,beer_bottle|draught,bottle|pint|half_pint,bar,gluten,
+beer-madri,Madrí Excepcional,Beer & Cider,beer,Madrí,GB,R|N|B|L,,draught,pint|half_pint,bar,gluten,
+beer-camden-hells,Camden Hells,Beer & Cider,beer,Camden Town,GB,R|N|B|L,,draught|can,pint|half_pint|can,bar,gluten,
+cider-strongbow,Strongbow,Beer & Cider,cider,Strongbow,GB|CA,R|N|B|L,B,draught|can,pint|half_pint|can,bar,sulphites,
+cider-kopparberg,Kopparberg Strawberry & Lime,Beer & Cider,cider,Kopparberg,GB,R|N|B|L,,beer_bottle,bottle,bar,sulphites,
+cider-thatchers-gold,Thatchers Gold,Beer & Cider,cider,Thatchers,GB,R|N|B|L,,draught|can,pint|half_pint|can,bar,sulphites,
+cider-angry-orchard,Angry Orchard Crisp Apple,Beer & Cider,cider,Angry Orchard,US,R|N|B|L,,beer_bottle|can,bottle|can,bar,sulphites,
+rtd-smirnoff-ice,Smirnoff Ice,Beer & Cider,rtd,Smirnoff,NG|GB,N|B|L,N|B,beer_bottle,bottle,bar,,
+rtd-white-claw,White Claw Hard Seltzer,Beer & Cider,rtd,White Claw,US|CA|GB,N|B|L,N|B,can,can,bar,,
+soft-coca-cola,Coca-Cola,Soft Drinks & Mixers,soft,Coca-Cola,ALL,R|N|B|L,R|N|B|L,bottle_small|can,bottle|can|glass,bar,,
+soft-coke-zero,Coca-Cola Zero Sugar,Soft Drinks & Mixers,soft,Coca-Cola,ALL,R|N|B|L,R|B,bottle_small|can,bottle|can,bar,,
+soft-diet-coke,Diet Coke,Soft Drinks & Mixers,soft,Coca-Cola,US|CA|GB,R|N|B|L,R,bottle_small|can,bottle|can,bar,,
+soft-sprite,Sprite,Soft Drinks & Mixers,soft,Sprite,ALL,R|N|B|L,R|N|B|L,bottle_small|can,bottle|can|glass,bar,,
+soft-fanta-orange,Fanta Orange,Soft Drinks & Mixers,soft,Fanta,ALL,R|N|B|L,R|L,bottle_small|can,bottle|can,bar,,
+soft-schweppes-tonic,Schweppes Tonic Water,Soft Drinks & Mixers,mixer,Schweppes,ALL,R|N|B|L,N|B|L,bottle_small|can,bottle|can,bar,,
+soft-fever-tree-tonic,Fever-Tree Premium Indian Tonic,Soft Drinks & Mixers,mixer,Fever-Tree,ALL,R|N|B|L,L,bottle_small,bottle,bar,,
+soft-ginger-ale,Ginger Ale,Soft Drinks & Mixers,mixer,Generic,ALL,R|N|B|L,B,bottle_small|can,bottle|can,bar,,
+soft-ginger-beer,Ginger Beer,Soft Drinks & Mixers,mixer,Generic,ALL,R|N|B|L,B|L,bottle_small|can,bottle|can,bar,,
+soft-soda-water,Soda Water,Soft Drinks & Mixers,mixer,Generic,ALL,R|N|B|L,B,bottle_small|can,bottle|can,bar,,
+soft-red-bull,Red Bull,Soft Drinks & Mixers,soft,Red Bull,ALL,R|N|B|L,N|B|L,can,can,bar,,
+soft-monster,Monster Energy,Soft Drinks & Mixers,soft,Monster,US|CA|GB,N|B|L,,can,can,bar,,
+soft-predator,Predator Energy,Soft Drinks & Mixers,soft,Predator,NG,N|B|L,,bottle_small,bottle,bar,,
+soft-water-still,Bottled Water (Still),Soft Drinks & Mixers,water,Generic,ALL,R|N|B|L,R|N|B|L,bottle_small,bottle,bar,,
+soft-water-sparkling,Sparkling Water,Soft Drinks & Mixers,water,Generic,ALL,R|N|B|L,R|L,bottle_small,bottle,bar,,
+soft-malta-guinness,Malta Guinness,Soft Drinks & Mixers,soft,Malta Guinness,NG,R|N|B|L,R|N|B|L,bottle_small|can,bottle|can,bar,gluten,
+soft-amstel-malta,Amstel Malta,Soft Drinks & Mixers,soft,Amstel Malta,NG,R|N|B|L,,bottle_small|can,bottle|can,bar,gluten,
+soft-maltina,Maltina,Soft Drinks & Mixers,soft,Maltina,NG,R|N|B|L,R,bottle_small|can,bottle|can,bar,gluten,
+soft-chi-exotic,Chivita Exotic Juice,Soft Drinks & Mixers,soft,Chivita,NG,R|N|B|L,R|L,bottle_small,bottle|glass,bar,,
+soft-five-alive,Five Alive Pulpy Orange,Soft Drinks & Mixers,soft,Five Alive,NG,R|N|B|L,,bottle_small,bottle|glass,bar,,
+soft-orange-juice,Orange Juice,Soft Drinks & Mixers,soft,Generic,ALL,R|N|B|L,R|B|L,litre,glass,bar,,
+soft-pineapple-juice,Pineapple Juice,Soft Drinks & Mixers,soft,Generic,ALL,R|N|B|L,B,litre,glass,bar,,
+soft-cranberry-juice,Cranberry Juice,Soft Drinks & Mixers,soft,Generic,ALL,R|N|B|L,B,litre,glass,bar,,
+soft-apple-juice,Apple Juice,Soft Drinks & Mixers,soft,Generic,ALL,R|N|B|L,R,litre,glass,bar,,
+mocktail-chapman,Chapman,Mocktails,mocktail,House,NG,R|N|B|L,R|N|B|L,serving,glass,bar,,Nigerian classic
+mocktail-virgin-mojito,Virgin Mojito,Mocktails,mocktail,House,ALL,R|N|B|L,R|L,serving,glass,bar,,
+mocktail-shirley-temple,Shirley Temple,Mocktails,mocktail,House,US|CA,R|N|B|L,,serving,glass,bar,,
+mocktail-zobo,Zobo (Hibiscus),Mocktails,mocktail,House,NG,R|N|B|L,R|L,serving,glass,bar,,Batch-made; set as prep recipe
+mocktail-fresh-lemonade,Fresh Lemonade,Mocktails,mocktail,House,ALL,R|N|B|L,R,serving,glass,bar,,
+local-palm-wine,Palm Wine,Wine,wine,Local,NG,R|B|L,,litre,glass|jug,bar,,Fresh; short shelf life
+hot-espresso,Espresso,Hot Drinks,hot,House,ALL,R|N|B|L,R|L,serving,cup,barista,,
+hot-americano,Americano,Hot Drinks,hot,House,ALL,R|B|L,R,serving,cup,barista,,
+hot-cappuccino,Cappuccino,Hot Drinks,hot,House,ALL,R|B|L,R|L,serving,cup,barista,milk,
+hot-latte,Latte,Hot Drinks,hot,House,ALL,R|B|L,R|L,serving,cup,barista,milk,
+hot-tea,Tea,Hot Drinks,hot,House,ALL,R|B|L,R|L,serving,cup,barista,,
+hot-chocolate,Hot Chocolate,Hot Drinks,hot,House,ALL,R|B|L,,serving,cup,barista,milk,
+cocktail-mojito,Mojito,Cocktails,cocktail,House,ALL,R|N|B|L,R|N|B|L,serving,glass,bar,,
+cocktail-margarita,Margarita,Cocktails,cocktail,House,ALL,R|N|B|L,R|N|B|L,serving,glass,bar,,
+cocktail-long-island,Long Island Iced Tea,Cocktails,cocktail,House,ALL,R|N|B|L,N|B,serving,glass,bar,,
+cocktail-pina-colada,Piña Colada,Cocktails,cocktail,House,ALL,R|N|B|L,R|L,serving,glass,bar,,
+cocktail-cosmopolitan,Cosmopolitan,Cocktails,cocktail,House,ALL,R|N|B|L,N|L,serving,glass,bar,,
+cocktail-old-fashioned,Old Fashioned,Cocktails,cocktail,House,ALL,R|N|B|L,B|L,serving,glass,bar,,
+cocktail-negroni,Negroni,Cocktails,cocktail,House,ALL,R|N|B|L,B|L,serving,glass,bar,,
+cocktail-espresso-martini,Espresso Martini,Cocktails,cocktail,House,ALL,R|N|B|L,N|B|L,serving,glass,bar,,
+cocktail-aperol-spritz,Aperol Spritz,Cocktails,cocktail,House,ALL,R|N|B|L,R|B|L,serving,glass,bar,,
+cocktail-daiquiri,Daiquiri,Cocktails,cocktail,House,ALL,R|N|B|L,,serving,glass,bar,,
+cocktail-whiskey-sour,Whiskey Sour,Cocktails,cocktail,House,ALL,R|N|B|L,B,serving,glass,bar,,
+cocktail-moscow-mule,Moscow Mule,Cocktails,cocktail,House,ALL,R|N|B|L,B|L,serving,glass,bar,,
+cocktail-sex-on-the-beach,Sex on the Beach,Cocktails,cocktail,House,ALL,N|B|L,N,serving,glass,bar,,
+cocktail-tequila-sunrise,Tequila Sunrise,Cocktails,cocktail,House,ALL,N|B|L,N,serving,glass,bar,,
+cocktail-mai-tai,Mai Tai,Cocktails,cocktail,House,ALL,R|N|B|L,,serving,glass,bar,,
+cocktail-pornstar-martini,Pornstar Martini,Cocktails,cocktail,House,NG|GB,R|N|B|L,N|L,serving,glass,bar,,
+cocktail-caesar,Caesar,Cocktails,cocktail,House,CA,R|N|B|L,R|B,serving,glass,bar,,Canada's national cocktail
+cocktail-bloody-mary,Bloody Mary,Cocktails,cocktail,House,ALL,R|B|L,R,serving,glass,bar,,
+cocktail-gin-tonic,Gin & Tonic,Cocktails,cocktail,House,ALL,R|N|B|L,R|N|B|L,serving,glass,bar,,
+cocktail-cuba-libre,Rum & Coke (Cuba Libre),Cocktails,cocktail,House,ALL,R|N|B|L,N|B,serving,glass,bar,,
+cocktail-henny-coke,Henny & Coke,Cocktails,cocktail,House,NG|US,N|B|L,N,serving,glass,bar,,
+cocktail-vodka-red-bull,Vodka Red Bull,Cocktails,cocktail,House,ALL,N|B|L,N,serving,glass,bar,,
+shot-tequila,Tequila Shot,Shots,shot,House,ALL,N|B|L,N|B,serving,shot,bar,,
+shot-jagerbomb,Jägerbomb,Shots,shot,House,ALL,N|B,N|B,serving,shot,bar,,
+shot-b52,B-52,Shots,shot,House,ALL,N|B|L,,serving,shot,bar,milk,
+pkg-champagne-parade,Champagne Parade Package,Bottle Service,package,House,ALL,N|L,N,each,package,bar,,Choose bottle; adds sparklers and presentation
+pkg-cognac-bottle,Cognac Bottle Package,Bottle Service,package,House,ALL,N|L,N|L,each,package,bar,,Bottle + 4 mixers + ice bucket
+pkg-vodka-bottle,Vodka Bottle Package,Bottle Service,package,House,ALL,N|L,N,each,package,bar,,Bottle + 4 mixers + ice bucket
+pkg-tequila-bottle,Tequila Bottle Package,Bottle Service,package,House,ALL,N|L,N,each,package,bar,,Bottle + limes + salt + ice bucket
+pkg-whisky-bottle,Whisky Bottle Package,Bottle Service,package,House,ALL,N|L,,each,package,bar,,Bottle + 4 mixers + ice bucket
+svc-ice-bucket,Ice Bucket Refill,Bottle Service,service,House,ALL,N|L,N|L,each,each,bar,,
+svc-sparkler-show,Sparkler Show Add-on,Bottle Service,service,House,ALL,N|L,N,each,each,bar,,Check venue fire-safety rules
+shisha-single,Shisha - Single Flavour,Shisha,shisha,House,ALL,N|L,L,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-double-apple,Shisha - Double Apple,Shisha,shisha,House,ALL,N|L,L,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-mint,Shisha - Mint,Shisha,shisha,House,ALL,N|L,L,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-grape-mint,Shisha - Grape Mint,Shisha,shisha,House,ALL,N|L,,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-blueberry,Shisha - Blueberry,Shisha,shisha,House,ALL,N|L,,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-watermelon-mint,Shisha - Watermelon Mint,Shisha,shisha,House,ALL,N|L,,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-premium-mix,Shisha - Premium Mix,Shisha,shisha,House,ALL,N|L,L,each,session,shisha,,Check local smoke-free and licensing laws
+shisha-head-refill,Shisha Head Refill,Shisha,shisha,House,ALL,N|L,L,each,each,shisha,,
+shisha-coal-refresh,Coal Refresh,Shisha,service,House,ALL,N|L,L,each,each,shisha,,
+entry-regular,Regular Entry,Entry & Tables,entry,House,ALL,N|L,N,each,entry,door,,
+entry-vip,VIP Entry,Entry & Tables,entry,House,ALL,N|L,N,each,entry,door,,
+entry-guest-list,Guest List Entry,Entry & Tables,entry,House,ALL,N|L,N,each,entry,door,,Usually free; tracks promoter
+entry-early-bird,Early Bird Ticket,Entry & Tables,entry,House,ALL,N|L,,each,entry,door,,
+table-deposit,Table Booking Deposit,Entry & Tables,service,House,ALL,R|N|L,N|L,each,each,door,,Credited against the bill
+table-min-spend-topup,Minimum Spend Top-up,Entry & Tables,service,House,ALL,N|L,N|L,each,each,bar,,Auto-added when a table is under its minimum spend
+svc-coat-check,Coat Check,Entry & Tables,service,House,ALL,R|N|L,,each,each,door,,
+svc-corkage,Corkage Fee,Entry & Tables,service,House,ALL,R|N|L,,each,each,bar,,Per bottle brought in
+food-beef-suya,Beef Suya,Grills,food,House,NG,R|N|B|L,R|N|B|L,portion,portion,grill,peanuts,Yaji spice contains groundnut
+food-chicken-suya,Chicken Suya,Grills,food,House,NG,R|N|B|L,R|N|B|L,portion,portion,grill,peanuts,Yaji spice contains groundnut
+food-asun,Asun (Peppered Goat Meat),Grills,food,House,NG,R|N|B|L,R|N|B|L,portion,portion,grill,,
+food-peppered-gizzard,Peppered Gizzard,Small Plates & Sharing,food,House,NG,R|N|B|L,B|L,portion,portion,kitchen,,
+food-grilled-croaker,Grilled Croaker Fish with Plantain or Chips,Grills,food,House,NG,R|N|B|L,R|N|L,portion,portion,grill,fish,
+food-goat-pepper-soup,Goat Meat Pepper Soup,Soups,food,House,NG,R|N|B|L,R|B|L,portion,bowl,kitchen,,
+food-catfish-pepper-soup,Catfish Pepper Soup (Point & Kill),Soups,food,House,NG,R|N|B|L,R|B|L,portion,bowl,kitchen,fish,
+food-nkwobi,Nkwobi,Small Plates & Sharing,food,House,NG,R|N|B|L,B|L,portion,bowl,kitchen,,
+food-isi-ewu,Isi Ewu,Small Plates & Sharing,food,House,NG,R|N|B|L,,portion,bowl,kitchen,,
+food-jollof-rice,Jollof Rice with Chicken,Mains,food,House,NG,R|N|L,R|L,portion,plate,kitchen,celery,Check stock cubes for allergens
+food-fried-rice,Fried Rice with Chicken,Mains,food,House,NG,R|N|L,R,portion,plate,kitchen,,Check your recipe for allergens
+food-ofada-ayamase,Ofada Rice & Ayamase,Mains,food,House,NG,R|L,R,portion,plate,kitchen,,
+food-pounded-yam-egusi,Pounded Yam & Egusi Soup,Mains,food,House,NG,R|L,R,portion,plate,kitchen,crustaceans|fish,Crayfish and stockfish
+food-amala-ewedu,Amala with Ewedu & Gbegiri,Mains,food,House,NG,R,,portion,plate,kitchen,crustaceans,
+food-small-chops,Small Chops Platter,Small Plates & Sharing,food,House,NG,R|N|B|L,R|N|L,portion,platter,kitchen,gluten|eggs|milk,Puff-puff; samosa; spring roll
+food-puff-puff,Puff-Puff,Small Plates & Sharing,food,House,NG,R|N|B|L,,portion,portion,kitchen,gluten,
+food-chicken-shawarma,Chicken Shawarma,Mains,food,House,NG,R|N|B|L,R|N|L,each,each,kitchen,gluten|eggs|milk,
+food-dodo,Fried Plantain (Dodo),Sides,food,House,NG,R|N|B|L,R|L,portion,portion,kitchen,,
+food-yam-chips,Yam Chips,Sides,food,House,NG,R|N|B|L,,portion,portion,kitchen,,
+food-moi-moi,Moi Moi,Sides,food,House,NG,R|L,,portion,each,kitchen,,Check recipe: often contains egg or fish
+food-grilled-chicken,Grilled Chicken (Half),Grills,food,House,ALL,R|N|B|L,R|N|B|L,portion,portion,grill,,
+food-wings,Chicken Wings,Small Plates & Sharing,food,House,ALL,R|N|B|L,R|N|B,portion,portion,kitchen,milk,Buffalo/BBQ/pepper sauce options
+food-cheeseburger,Classic Cheeseburger,Mains,food,House,ALL,R|N|B|L,R|B,each,each,kitchen,gluten|milk|sesame|mustard,
+food-sliders,Sliders (3),Small Plates & Sharing,food,House,US|CA|GB,R|N|B|L,N|L,portion,portion,kitchen,gluten|milk|sesame,
+food-nachos,Loaded Nachos,Small Plates & Sharing,food,House,US|CA|GB,R|N|B|L,B|N,portion,platter,kitchen,milk,
+food-loaded-fries,Loaded Fries,Small Plates & Sharing,food,House,ALL,R|N|B|L,B|N,portion,portion,kitchen,milk,
+food-fries,Fries / Chips,Sides,food,House,ALL,R|N|B|L,R|N|B|L,portion,portion,kitchen,,Check fryer for cross-contact
+food-mozzarella-sticks,Mozzarella Sticks,Small Plates & Sharing,food,House,US|CA,R|N|B|L,,portion,portion,kitchen,gluten|milk|eggs,
+food-quesadilla,Chicken Quesadilla,Small Plates & Sharing,food,House,US|CA,R|B|L,,portion,portion,kitchen,gluten|milk,
+food-chicken-tenders,Chicken Tenders,Small Plates & Sharing,food,House,US|CA|GB,R|N|B|L,R|B,portion,portion,kitchen,gluten|eggs,
+food-caesar-salad,Caesar Salad,Mains,food,House,ALL,R|L,R,portion,plate,kitchen,gluten|eggs|fish|milk,Anchovy dressing and parmesan
+food-ribeye,Ribeye Steak,Mains,food,House,ALL,R|L,R,portion,plate,grill,,
+food-bbq-ribs,BBQ Pork Ribs,Mains,food,House,US|CA,R|B,,portion,plate,grill,mustard,
+food-mac-cheese,Mac & Cheese,Sides,food,House,US|CA,R|B,,portion,portion,kitchen,gluten|milk,
+food-onion-rings,Onion Rings,Sides,food,House,ALL,R|N|B|L,,portion,portion,kitchen,gluten,
+food-fish-tacos,Fish Tacos,Small Plates & Sharing,food,House,US|CA,R|B|L,,portion,plate,kitchen,fish,
+food-poutine,Poutine,Sides,food,House,CA,R|N|B|L,R|B,portion,portion,kitchen,milk|gluten,Fries; cheese curds; gravy
+food-mixed-grill-platter,Mixed Grill Platter (Sharing),Grills,food,House,ALL,R|N|B|L,N|L,portion,platter,grill,,
+food-fish-and-chips,Fish & Chips,Mains,food,House,GB,R|B|L,R|B,portion,plate,kitchen,fish|gluten,
+food-scampi-chips,Scampi & Chips,Mains,food,House,GB,R|B,,portion,plate,kitchen,crustaceans|gluten,
+food-sunday-roast,Sunday Roast (Beef),Mains,food,House,GB,R|B,R,portion,plate,kitchen,gluten|milk|eggs|celery,Yorkshire pudding and gravy
+food-steak-ale-pie,Steak & Ale Pie,Mains,food,House,GB,R|B,R,portion,plate,kitchen,gluten|celery|milk|eggs,
+food-bangers-mash,Bangers & Mash,Mains,food,House,GB,R|B,,portion,plate,kitchen,gluten|milk|sulphites,
+food-scotch-egg,Scotch Egg,Small Plates & Sharing,food,House,GB,R|B,B,each,each,kitchen,eggs|gluten,
+food-halloumi-fries,Halloumi Fries,Small Plates & Sharing,food,House,GB,R|N|B|L,B|L,portion,portion,kitchen,milk|gluten,
+dessert-sticky-toffee,Sticky Toffee Pudding,Desserts,dessert,House,GB,R|L,R,portion,portion,kitchen,gluten|eggs|milk,
+dessert-brownie,Chocolate Brownie,Desserts,dessert,House,ALL,R|L,R|L,portion,portion,kitchen,gluten|eggs|milk,May contain nuts
+dessert-cheesecake,Cheesecake,Desserts,dessert,House,ALL,R|L,R,portion,portion,kitchen,gluten|eggs|milk,
+dessert-ice-cream,Ice Cream (3 scoops),Desserts,dessert,House,ALL,R|L,R|L,portion,portion,kitchen,milk,
+dessert-fruit-platter,Fruit Platter,Desserts,dessert,House,ALL,R|N|L,N|L,portion,platter,kitchen,,
+ing-lime-juice,Fresh Lime Juice,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-lemon-juice,Fresh Lemon Juice,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-lime-wedge,Lime Wedge,Ingredients,ingredient,Generic,ALL,R|N|B|L,,each,,bar,,Stock only
+ing-orange-slice,Orange Slice,Ingredients,ingredient,Generic,ALL,R|N|B|L,,each,,bar,,Stock only
+ing-orange-peel,Orange Peel Twist,Ingredients,ingredient,Generic,ALL,R|N|B|L,,each,,bar,,Stock only
+ing-cucumber,Cucumber,Ingredients,ingredient,Generic,ALL,R|N|B|L,,each,,bar,,Stock only
+ing-mint,Fresh Mint,Ingredients,ingredient,Generic,ALL,R|N|B|L,,bunch,,bar,,Stock only
+ing-sugar-syrup,Sugar Syrup,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-vanilla-syrup,Vanilla Syrup,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-grenadine,Grenadine,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-orgeat,Orgeat (Almond Syrup),Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,nuts,Stock only
+ing-angostura,Angostura Bitters,Ingredients,ingredient,Angostura,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-triple-sec,House Triple Sec,Ingredients,ingredient,House,ALL,R|N|B|L,,spirit_bottle,,bar,,Stock only
+ing-coffee-liqueur,House Coffee Liqueur,Ingredients,ingredient,House,ALL,R|N|B|L,,spirit_bottle,,bar,,Stock only
+ing-peach-schnapps,House Peach Schnapps,Ingredients,ingredient,House,ALL,R|N|B|L,,spirit_bottle,,bar,,Stock only
+ing-coconut-cream,Coconut Cream,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-passion-fruit-puree,Passion Fruit Purée,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-espresso,Espresso (for cocktails),Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,barista,,Stock only
+ing-egg-white,Egg White,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,eggs,Stock only; vegan aquafaba alternative
+ing-tomato-juice,Tomato Juice,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-clamato,Clamato Juice,Ingredients,ingredient,Mott's,CA|US,R|N|B|L,,litre,,bar,crustaceans|molluscs,Stock only; clam broth
+ing-worcestershire,Worcestershire Sauce,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,fish,Stock only; contains anchovy
+ing-hot-sauce,Hot Sauce,Ingredients,ingredient,Generic,ALL,R|N|B|L,,litre,,bar,,Stock only
+ing-celery-salt,Celery Salt,Ingredients,ingredient,Generic,ALL,R|N|B|L,,kg,,bar,celery,Stock only
+ing-salt,Salt,Ingredients,ingredient,Generic,ALL,R|N|B|L,,kg,,bar,,Stock only
+ing-ice,Ice,Ingredients,ingredient,Generic,ALL,R|N|B|L,,kg,,bar,,Stock only; log ice purchases as stock or expense

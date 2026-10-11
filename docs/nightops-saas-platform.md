@@ -1,4 +1,4 @@
-# NightOps — Global SaaS Platform Plan (v0.2)
+# NightOps — Global SaaS Platform Plan (v0.3)
 
 Third doc in the set:
 - `nightops-app-feature-spec.md`: what the app does and what each screen shows.
@@ -21,11 +21,12 @@ Third doc in the set:
 | 2 | **Who approves credit is decided by each Business Owner** | Approvers are **configurable per business**: any person or role, each with an amount limit, plus an escalation chain. |
 | 3 | **Approval is required from day 1, but adjustable** | Defaults: every credit sale needs approval, and the selling staff member is accountable **from the moment of sale**. Each business can change these rules. |
 | 4 | **Global launch on iOS, Android and web** | Multi-language, multi-currency, multi-tax and multi-timezone. Country-specific legal rules. App-store compliance. International security and privacy standards. |
-| 5 | **Launch markets: Nigeria, United States, Canada, United Kingdom (England)** | Four country packs at launch (§9). Canada excludes Quebec at first (§9). |
-| 6 | **Your company is registered in Nigeria** | Paystack for subscription billing from day one. A plan for charging US/CA/UK clients (§4.2). |
+| 5 | **Launch markets: Nigeria, United States, Canada, United Kingdom (England)**, covering **every US state and every Canadian province** | Four country packs, plus **region packs** for each US state and Canadian province (taxes, tips, wage rules, happy-hour rules, drinking age). **Quebec is in scope**, so a certified WEB-SRM billing module and French are required before the Canada launch (§9). |
+| 6 | **Your company is registered in Nigeria; you'll form a US company too** | Paystack for subscription billing from day one. The US company unlocks Stripe Billing/Tax/Connect for US, CA and UK clients (§4.2). |
 | 7 | **Pilot venues available** | Pilot in Nigeria first (§10). |
 | 8 | **Name: NightOps** | Trademark and domain checks in all 4 markets (§9.3). |
 | 9 | **Restaurants included, with a personalised mode per business type** | Restaurant / Nightclub / Bar / Lounge modes, plus hybrids (feature spec §4a). |
+| 10 | **Ready-made menus + own items** | NightOps Library with starter menus per mode × country. Businesses pick from the library or create their own items (`nightops-menu-system.md`, `catalog/`). |
 
 ---
 
@@ -94,7 +95,7 @@ Accountability *tracking* (who sold it, who's collecting it, collection rates) i
 | Stage | Nigerian clients | US / Canadian / UK clients |
 |---|---|---|
 | **Pilot & early beta** | Paystack subscriptions in NGN (or USD) | Paystack USD card billing. Works from day one; clients see USD prices. |
-| **Before public launch in US/CA/UK** | Paystack | Set up a **US company** (e.g. Delaware via Stripe Atlas) owned by your Nigerian company. This unlocks **Stripe Billing + Stripe Tax** (sales tax/GST tracking, local-currency prices in USD/CAD/GBP, better card approval rates) and a **Stripe Connect platform** for clients' guest payments. Alternative: a Merchant of Record such as Paddle, if it accepts you. |
+| **Before public launch in US/CA/UK** *(decided: yes)* | Paystack | Set up a **US company** (e.g. Delaware via Stripe Atlas) owned by your Nigerian company. This unlocks **Stripe Billing + Stripe Tax** (sales tax/GST tracking, local-currency prices in USD/CAD/GBP, better card approval rates) and a **Stripe Connect platform** for clients' guest payments. Alternative: a Merchant of Record such as Paddle, if it accepts you. |
 
 - **Taxes on your subscriptions** (talk to an accountant in Nigeria and the US):
   - **UK:** business clients normally account for the VAT themselves (reverse charge).
@@ -126,10 +127,10 @@ Landing page (problem → product → proof), features per role, **pricing page 
 
 ### S1. Sign-up & onboarding (web + app). Goal: first test sale in under 15 minutes
 1. Sign up: email or phone + OTP, or Google / Apple.
-2. **Create business:** name and **country** (Nigeria / US / Canada [not Quebec] / UK at launch). Country sets currency, taxes, units, language, drinking age and legal rules.
+2. **Create business:** name and **country** (Nigeria / US / Canada / UK at launch, with state/province picked from the address). Country sets currency, taxes, units, language, drinking age and legal rules.
 3. **Choose venue mode:** big illustrated cards: **Restaurant · Nightclub · Bar · Lounge · Mixed** (e.g. restaurant by day, lounge by night). This personalises the whole app (feature spec §4a).
 4. **Add first venue:** address, opening hours, business-day cut-off (e.g. 6 am), time zone.
-5. **Menu setup:** start from a template for the chosen mode (pre-filled common drinks and bottle sizes), import CSV/Excel, or start empty.
+5. **Menu setup:** review the **starter menu** for the chosen mode and country (66–85 items from the NightOps Library), set prices in a fast grid, add more from the library or **create your own items**. Or import CSV/Excel, or start empty (`nightops-menu-system.md`).
 6. **Invite staff:** by phone/WhatsApp/email, with role and venue. Staff get a link and set their PIN.
 7. **Credit & approvals wizard** (§3): who approves, limits, accountability rules, legal notice. Optional; suggested by default in Nigeria and offered as an add-on in US/CA/UK, where tabs usually close the same night.
 8. **Connect guest payments:** Paystack / Stripe / others for the business's *own* guest payments (§6). Skippable.
@@ -152,7 +153,8 @@ Landing page (problem → product → proof), features per role, **pricing page 
 - **Clients:** search businesses, plan, MRR, country, venues, devices, last active, health score (are they actually using it?).
 - **Revenue:** MRR, new/expansion/churned revenue, trials converting, ARPA by country, failed payments queue.
 - **Client detail:** subscription history, usage, support notes, feature flags, **support access**. Viewing a client's account only with their consent, time-limited and fully logged.
-- **Country packs:** currency, tax presets, legal gates (e.g. staff-recovery allowed?), outreach rules (contact hours, voice allowed?), receipt requirements, default languages and message templates.
+- **NightOps Library:** add/edit items, starter menus per mode × market, review items businesses suggest (`nightops-menu-system.md` §8).
+- **Country & region packs:** currency, tax presets, legal gates (e.g. staff-recovery allowed?), outreach rules (contact hours, voice allowed?), receipt requirements, default languages and message templates.
 - **Messaging templates:** WhatsApp template library per language, plus Meta approval status.
 - **App releases:** minimum supported app version, force-update switch, release notes, staged rollout.
 - **System health:** sync backlog per venue, webhook failures, message delivery rates, error rates.
@@ -213,14 +215,14 @@ Each Business connects **its own** payment account, so guest money goes straight
 | **Currency** | NGN | USD | CAD | GBP |
 | **Guest payments** | Paystack (online, transfer, pay links; check Paystack card terminals) | Stripe + Stripe Terminal card readers | Stripe + Stripe Terminal | Stripe + Stripe Terminal |
 | **Sales taxes** | VAT 7.5% + **state taxes** such as Lagos State consumption tax on restaurants/hotels/events | State + county + city sales tax, some liquor taxes. Use a tax-rate service | GST/HST/PST by province, plus liquor taxes | VAT 20%. Export VAT records for Making Tax Digital software |
-| **Receipt / fiscal law** | No fiscal device today (watch the tax authority's e-invoicing rollout) | None generally | **Quebec requires certified sales-recording (WEB-SRM) for restaurants & bars, so exclude Quebec at launch** | None (VAT records via MTD) |
+| **Receipt / fiscal law** | No fiscal device today (watch the tax authority's e-invoicing rollout) | None generally | **Quebec requires certified sales-recording (WEB-SRM) for restaurants & bars.** Because Quebec is in scope, NightOps must pass Revenu Québec's certification before the Canada launch | None (VAT records via MTD) |
 | **How "tabs" work** | **Long-term credit is common.** Credit + debt recovery is a headline feature | Tab = card held/pre-authorised and closed the same night. Long-term credit is rare | Same as US | Same as US |
 | **What sells the product** | Credit control, theft & stock control, USD reporting | Speed, theft & pour control, tips, labour | Same as US | Same as US + tips law compliance |
 | **Tips** | Occasional; service charge common | **Heavy tipping:** tip prompts, tip pooling, tip-out reports | Heavy tipping; pooling rules vary by province | **Tips law (2024):** all tips must go to workers; written tipping policy; records kept |
 | **Recover tabs from staff wages** | Possible only with clear written consent (lawyer to confirm) | **Blocked by default.** Many states (e.g. California, New York) restrict deductions | **Blocked.** Ontario, BC and others forbid deductions for cash shortages | Only with prior written agreement; for retail-type workers, cash-shortage deductions **capped at 10% of gross pay per payday** |
 | **Debt reminders** | WhatsApp first, SMS fallback; NDPA consent | **SMS first** (carrier registration required for business texting); TCPA consent for automated texts/calls; California's Rosenthal Act covers businesses collecting their *own* debts | SMS + email; CASL consent rules; provincial consumer rules | WhatsApp + SMS; UK GDPR + PECR consent |
 | **Interest/late fees on tabs** | Off by default | Off by default (lending laws) | Off by default | Off by default. Interest-free short-term credit is usually exempt from FCA consumer-credit rules, but fees can change that |
-| **Language** | English | English (Spanish later) | English (French before Quebec) | English |
+| **Language** | English | English (Spanish later) | **English + French** (French required in Quebec for the app, receipts and guest messages) | English |
 | **Drink units** | ml | US fl oz | oz and ml | 25/35 ml spirit measures, pints |
 | **Legal drinking-age prompt** | 18 | 21 | 18 or 19 by province | 18 (Challenge 25 prompt) |
 | **Data hosting** | UK/EU region, with NDPA transfer safeguards | North America region | North America (Canada region option) | UK/EU region |
@@ -230,10 +232,22 @@ Each Business connects **its own** payment account, so guest money goes straight
 
 ### 9.2 Launch order (recommended)
 1. **Nigeria pilot**: 1–3 of your pilot venues (§10).
-2. **Nigeria paid beta**: 10–30 venues; subscriptions via Paystack.
+2. **Nigeria paid beta**: 10–30 venues; subscriptions via Paystack. Form the US company in parallel.
 3. **United Kingdom (England)**: one VAT rate, no fiscal device, WhatsApp is common, and the tips law is a selling point.
-4. **United States**: start in 2–3 states. State-by-state tax and labour rules make it the most complex of the four.
-5. **Canada**: English-speaking provinces first (Ontario, BC, Alberta). Add Quebec when a WEB-SRM module and French are ready.
+4. **United States, all states**: the region packs carry state/local sales tax (from a tax-rate service), tip and wage rules, happy-hour bans and dram-shop notes. Open sign-ups to every state at once. Pick a few states for launch marketing and in-person support.
+5. **Canada, all provinces**: English + French from day one, region packs for GST/HST/PST, drinking age (18/19) and tips. **Quebec needs WEB-SRM certification by Revenu Québec.** Start that process early (it involves testing with their systems) so Quebec isn't the thing that delays the whole Canada launch.
+
+### 9.2a Region packs (US states & Canadian provinces)
+A region pack sits on top of the country pack. It holds:
+- sales-tax rules
+- drinking age
+- wage-deduction and tip-pooling rules
+- whether alcohol happy-hour discounts are allowed
+- consent rules for reminder texts and calls
+- receipt requirements (e.g. Quebec WEB-SRM)
+- the language to use (e.g. French in Quebec)
+
+The venue's address picks its region pack automatically. Your Platform Admin console shows which region packs are **verified by a local advisor** and which are still **draft**. Sign-ups from draft regions are allowed but flagged.
 
 ### 9.3 Name & brand checks for "NightOps"
 - Trademark searches in **Nigeria (Trademarks Registry), US (USPTO), Canada (CIPO), UK (UKIPO)** for software (class 9) and SaaS (class 42). Then file in the launch markets.

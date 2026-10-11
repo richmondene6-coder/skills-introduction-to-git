@@ -1,4 +1,4 @@
-# NightOps — Feature Spec & UI Brief (v0.4)
+# NightOps — Feature Spec & UI Brief (v0.5)
 
 Working name: **NightOps**. Operations platform for a high-volume nightclub / lounge / bar.
 Serves **restaurants, bars, lounges and nightclubs**, each with its own personalised mode. Purpose of this doc: give a designer (or design tool) everything needed to draw the screens. Bring the designs back and we will iterate on both UI and build plan. Technical plan: `nightops-architecture.md`. Global subscription product, onboarding, billing and Platform Admin: `nightops-saas-platform.md`.
@@ -12,6 +12,8 @@ Serves **restaurants, bars, lounges and nightclubs**, each with its own personal
 - **Devices:** phones, tablets and computers. Peak **500–1,000 sales/hour**.
 - **Staff-responsible credit:** the staff member who sells on credit is responsible for collecting it, from the moment of sale. **Every credit sale needs approval by default.** Each Business Owner chooses who approves, the limits, and whether to relax these rules (§5 A5, §7 C7–C8, §8 D6, §11).
 - **Design for:** patchy internet and power, one or many venues per business, any country.
+
+**What changed in v0.5:** menus. Starter menus for each mode and country come from the **NightOps Library**. Businesses add library items or **create their own items** (full spec: `nightops-menu-system.md`; data: `catalog/`). Markets now cover every US state and Canadian province, including Quebec (needs French + WEB-SRM).
 
 **What changed in v0.4:** restaurants included. Every venue picks a **mode**: Restaurant, Nightclub, Bar, Lounge or Mixed. The mode personalises the home screen, navigation, modules, terminology and reports (§4a). Launch markets are Nigeria, US, Canada and UK, which adds tips, card pre-authorised tabs, local drink units and age prompts.
 
@@ -286,7 +288,8 @@ The venue runs a small **hub computer** on its own network so all devices stay i
 ## 8. Surface D — Back-office (web)
 
 ### D1. Menu & pricing
-- Categories, items, sizes, modifiers, bundles (bottle service), happy-hour price rules, tax/service charge settings.
+**Full spec: `nightops-menu-system.md`.** Starter menu from the NightOps Library per mode and country. Add library items or create your own items. Multiple menus with schedules, price per menu, modifiers, packages (bottle service), out-of-stock (86) toggle, import/bulk edit, translations.
+- Categories, items, sizes, modifiers, bundles (bottle service), happy-hour price rules (blocked where the region forbids them), tax/service charge settings.
 - Price changes are **versioned with who/when/why**; only Manager/Owner role.
 
 ### D2. Recipes & units (key for shrinkage control)
@@ -465,6 +468,8 @@ Manager: Live dashboard · Approvals inbox · Approval detail · Shift reconcili
 
 Owner: Home KPIs (Local ⇄ reporting currency) · P&L (+ drill-down) · CapEx · Debt aging · Debtor detail · **Credit approval card + queue** (approvers) · **Staff credit & liability table** · **Liability case** · **Staff exit settlement** · **Payouts & currency** · Loss centre · Reports centre · Controls.
 
+Menu (see `nightops-menu-system.md` §9): Starter-menu review · Set-prices grid · Menu list & schedules · Menu editor · **Unified search (library + own items)** · Library browser · Quick-add sheet · **Create own item** (short + full form) · "Did you mean…?" · Category manager · Modifier groups · Package builder · Allergen checklist · Library-update compare · Import mapping · Bulk edit.
+
 Back-office: Menu · Recipe editor · Inventory list/ledger · Stock take · PO/GRN · Expenses · Payroll (incl. approved deductions where lawful) · Customers · Guest & staff credit policy · **Staff credit agreement** · **Currency & FX** · Playbook builder · Template editor · Integrations · Audit log · Roles matrix · Settings.
 
 Account & billing (see platform doc §5): Marketing site + pricing · Sign-up/login · Create business (country picker) · Setup wizard (venue, menu template, invite staff, **Credit & Approvals wizard**, connect payments, pair devices + choose Hub) · Setup checklist · Subscription & billing (plan, usage, invoices, past-due / read-only states) · Cancel flow · Account deletion.
@@ -485,6 +490,8 @@ Customer: WhatsApp thread designs (5 tones + credit-acknowledgement message) · 
 **Answered:**
 - **Markets:** Nigeria, United States, Canada, United Kingdom (England first). Company registered in Nigeria. Pilot venues available. Name: NightOps.
 - **Venue types:** restaurants, nightclubs, bars and lounges, each with its own personalised mode (§4a).
+- **Menus:** ready-made starter menus from the NightOps Library. Businesses can pick more library items and create their own.
+- **US company:** yes, before the US/CA/UK public launch. **Coverage:** every US state and Canadian province.
 - **Product:** global SaaS. Businesses subscribe monthly; you are the vendor; launch on App Store, Google Play and web.
 - **Credit:** whoever the Business Owner assigns approves credit (configurable approvers with limits). Approval is required and staff are accountable from the moment of sale by default; each business can adjust this.
 - **Clients' devices:** phones, tablets and computers, up to 500–1,000 sales/hour per venue.
@@ -492,8 +499,7 @@ Customer: WhatsApp thread designs (5 tones + credit-acknowledgement message) · 
 
 **Still open:**
 1. **Pilot venues:** which venues, and which modes are they (club, lounge, restaurant, bar, mixed)? Do any already use a POS we'd need to import menus from?
-2. **US company:** are you open to forming a US company (owned by your Nigerian company) before the US/CA/UK public launch? It unlocks Stripe billing and local-currency pricing (platform doc §4.2).
-3. **Which US states and Canadian provinces first?**
+2. **Starter menus:** review `catalog/starter-menus.md` with your pilot venues. Which items are missing or wrong for Nigeria?
 4. **Brand look:** logo, colours, vibe (premium-dark, neon, minimalist). The name **NightOps** is decided; trademark checks are pending.
 6. **Pricing:** happy with per-venue monthly plans (Starter / Pro / Enterprise), or do you prefer per-device pricing?
 
@@ -509,4 +515,4 @@ dit sale wait for the owner, or may the owner pre-approve credit lines for trust
 
 ## 15. Prompt you can paste into a design tool
 
-> Design "NightOps", an offline-first operations app for restaurants, bars, lounges and nightclubs (dark mode for night venues, light mode option for restaurants), sold worldwide as a subscription on iOS, Android and web (phones, tablets, computers; up to 1,000 sales/hour). Create: (0) onboarding: sign-up, create business with country picker (Nigeria, US, Canada, UK; sets currency/language/tax), a venue-mode picker with illustrated cards (Restaurant, Nightclub, Bar, Lounge, Mixed), a distinct home screen per mode (restaurant table floor plan with courses; nightclub live night board with capacity counter, door revenue and VIP min-spend progress; bar fast-tab grid; lounge seating zones with shisha timers), a Settings → Modules toggle screen, setup checklist, a "Credit & Approvals" settings screen where the owner assigns approvers with amount limits and an escalation chain, device pairing by QR, and a subscription/billing status screen including past-due and read-only states; (1) a tablet/phone POS with floor/section view, order screen with category rail + item grid + cart, guest credit meter plus the staff member's own credit meter, a "you are responsible for collecting this" credit confirmation sheet, a "pending approval · approver name" state, frozen-tab banner, split-tender payment screen with tip prompt, card-held tab, quick loss log, blind-count shift close, a "My Credit Book" list of the staff member's debtors, and three connection-state header chips (Online / No internet – venue sync OK / Offline); (2) a phone manager app with live dashboard, approvals inbox with PIN modal, and shift reconciliation; (3) an approver/owner app with a one-screen credit-approval card (guest history + responsible staff's track record + approver's limit + Approve / Approve lower / Decline / Send to Owner), real-time P&L with a Local ⇄ reporting-currency toggle, sales by Drinks/VIP/Kitchen, debt aging buckets (0–7, 8–14, 15–30, 30+), a staff credit & accountability table, and a shrinkage/anomaly centre; (4) WhatsApp message layouts for credit acknowledgement and friendly → firm debt reminders with quick-reply buttons; (5) a mobile payment-link page with currency selector; (6) a web Platform Admin console for the vendor (clients, MRR/churn, country packs). Use large touch targets, status colours with icons, a reusable PIN-override component, text that can grow 40% for translation, and layouts that can mirror for right-to-left languages. Currency amounts always show their currency. Refer to the feature spec for flows and states.
+> Design "NightOps", an offline-first operations app for restaurants, bars, lounges and nightclubs (dark mode for night venues, light mode option for restaurants), sold worldwide as a subscription on iOS, Android and web (phones, tablets, computers; up to 1,000 sales/hour). Create: (0) onboarding: sign-up, create business with country picker (Nigeria, US, Canada, UK; sets currency/language/tax), a venue-mode picker with illustrated cards (Restaurant, Nightclub, Bar, Lounge, Mixed), a distinct home screen per mode (restaurant table floor plan with courses; nightclub live night board with capacity counter, door revenue and VIP min-spend progress; bar fast-tab grid; lounge seating zones with shisha timers), a Settings → Modules toggle screen, menu setup (starter-menu review with keep/remove toggles, a fast set-prices grid, one search box that finds library items and the business's own items with states "On menu / In your catalog / Add from library / Create your own", and a create-your-own-item form with photo, category, sell units & prices, stock pack size, recipe with live margin and allergen checklist), setup checklist, a "Credit & Approvals" settings screen where the owner assigns approvers with amount limits and an escalation chain, device pairing by QR, and a subscription/billing status screen including past-due and read-only states; (1) a tablet/phone POS with floor/section view, order screen with category rail + item grid + cart, guest credit meter plus the staff member's own credit meter, a "you are responsible for collecting this" credit confirmation sheet, a "pending approval · approver name" state, frozen-tab banner, split-tender payment screen with tip prompt, card-held tab, quick loss log, blind-count shift close, a "My Credit Book" list of the staff member's debtors, and three connection-state header chips (Online / No internet – venue sync OK / Offline); (2) a phone manager app with live dashboard, approvals inbox with PIN modal, and shift reconciliation; (3) an approver/owner app with a one-screen credit-approval card (guest history + responsible staff's track record + approver's limit + Approve / Approve lower / Decline / Send to Owner), real-time P&L with a Local ⇄ reporting-currency toggle, sales by Drinks/VIP/Kitchen, debt aging buckets (0–7, 8–14, 15–30, 30+), a staff credit & accountability table, and a shrinkage/anomaly centre; (4) WhatsApp message layouts for credit acknowledgement and friendly → firm debt reminders with quick-reply buttons; (5) a mobile payment-link page with currency selector; (6) a web Platform Admin console for the vendor (clients, MRR/churn, country packs). Use large touch targets, status colours with icons, a reusable PIN-override component, text that can grow 40% for translation, and layouts that can mirror for right-to-left languages. Currency amounts always show their currency. Refer to the feature spec for flows and states.

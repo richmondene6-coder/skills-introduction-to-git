@@ -1,4 +1,4 @@
-# NightOps — Architecture & Build Plan (v0.3)
+# NightOps — Architecture & Build Plan (v0.4)
 
 Companion to `nightops-app-feature-spec.md` and `nightops-saas-platform.md`. This covers *how* to build what the spec describes.
 
@@ -65,6 +65,7 @@ At 1,000 sales/hour across 10+ devices, a phone that loses Wi-Fi can't see what 
 
 - **Business** (tenant: plan, region, reporting currency, credit & approval rules), **Membership** (user ↔ business ↔ role ↔ venues), **Subscription**.
 - **Venue** (country, local currency, timezone, business-day cut-off), **Device**, **Staff**, **Role**, **Permission**.
+- **Library item** (platform-owned, no prices; markets, modes, starter flags) → **Catalog item** (per business; `library_item_id` or custom; overrides) → **Menu** (per venue; schedule, areas) → **Menu entry** (catalog item + price per sell unit). Plus **Modifier group**, **Package component**, **Library suggestion**, **Library update notice**. Seed data and validation rules: `catalog/`.
 - **Product**, **Recipe line** (product → ingredient + ml/qty), **Stock item** (bottle size ml, cost), **Stock movement** (sale/comp/spill/breakage/transfer/count/delivery; append-only).
 - **Order**, **Order line**, **Payment** (tender, currency, amount, FX rate, provider reference).
 - **Shift**, **Drawer event** (open float, drop, paid-out, no-sale, count).
@@ -197,7 +198,8 @@ Rough messaging cost example: 300 debtors/month × 5 WhatsApp reminders × $0.01
 - **Card-held tabs:** Stripe Terminal pre-authorisation (US/CA/UK), with incremental authorisation and capture at close.
 - **Units:** stock stored in a base unit (ml/g); display units per country (fl oz, 25/35 ml measures, pints).
 - **Hosting:** two regions at launch: **North America** (US & Canadian clients) and **UK/Europe** (UK & Nigerian clients; good latency from Lagos, with NDPA transfer safeguards).
-- **Quebec** blocked in onboarding until a WEB-SRM module exists.
+- **Region packs** (every US state and Canadian province) layer on top of country packs. The venue address selects one.
+- **Quebec:** a WEB-SRM integration (certified by Revenu Québec) plus French are **Canada launch blockers**, because all provinces are in scope.
 
 **Phase 0 must include tenancy, entitlements, i18n, country packs and mode presets.** They are cheap to build in at the start and very expensive to retrofit.
 

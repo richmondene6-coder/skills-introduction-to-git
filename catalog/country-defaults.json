@@ -1,0 +1,95 @@
+{
+  "_about": "Default pack sizes, pours and rules per launch market. Businesses can change any value per product. Volumes in ml.",
+  "NG": {
+    "name": "Nigeria",
+    "currency": "NGN",
+    "prices_include_tax": true,
+    "display_volume_unit": "ml",
+    "spirit_bottle_ml": 700,
+    "wine_bottle_ml": 750,
+    "magnum_ml": 1500,
+    "beer_bottle_ml": 600,
+    "can_ml": 330,
+    "bottle_small_ml": 350,
+    "pint_ml": null,
+    "half_pint_ml": null,
+    "standard_pour_ml": 30,
+    "double_pour_ml": 60,
+    "wine_glass_ml": [150, 250],
+    "legal_drinking_age": 18,
+    "notes": [
+      "Spirit bottles are sold in both 70 cl and 75 cl; set the size per product.",
+      "Big beer bottles are usually 600 ml; small bottles 330-375 ml."
+    ]
+  },
+  "US": {
+    "name": "United States",
+    "currency": "USD",
+    "prices_include_tax": false,
+    "display_volume_unit": "us_fl_oz",
+    "spirit_bottle_ml": 750,
+    "wine_bottle_ml": 750,
+    "magnum_ml": 1500,
+    "beer_bottle_ml": 355,
+    "can_ml": 355,
+    "bottle_small_ml": 355,
+    "pint_ml": 473,
+    "half_pint_ml": null,
+    "standard_pour_ml": 44,
+    "double_pour_ml": 89,
+    "wine_glass_ml": [148, 177],
+    "legal_drinking_age": 21,
+    "notes": [
+      "Standard pour is 1.5 US fl oz; display amounts in fl oz.",
+      "Some states restrict happy-hour discounts on alcohol; the region pack switches the feature off there."
+    ]
+  },
+  "CA": {
+    "name": "Canada",
+    "currency": "CAD",
+    "prices_include_tax": false,
+    "display_volume_unit": "oz_and_ml",
+    "spirit_bottle_ml": 750,
+    "wine_bottle_ml": 750,
+    "magnum_ml": 1500,
+    "beer_bottle_ml": 341,
+    "can_ml": 355,
+    "bottle_small_ml": 355,
+    "pint_ml": 568,
+    "half_pint_ml": null,
+    "standard_pour_ml": 28,
+    "double_pour_ml": 57,
+    "wine_glass_ml": [150, 180],
+    "legal_drinking_age": 19,
+    "legal_drinking_age_by_province": {"AB": 18, "MB": 18, "QC": 18},
+    "notes": [
+      "Standard pour is 1 oz in most provinces.",
+      "Pint size varies by province and venue (16-20 oz); set your glass size.",
+      "Quebec needs WEB-SRM certified billing and French."
+    ]
+  },
+  "GB": {
+    "name": "United Kingdom",
+    "currency": "GBP",
+    "prices_include_tax": true,
+    "display_volume_unit": "ml",
+    "spirit_bottle_ml": 700,
+    "wine_bottle_ml": 750,
+    "magnum_ml": 1500,
+    "beer_bottle_ml": 330,
+    "can_ml": 330,
+    "bottle_small_ml": 330,
+    "pint_ml": 568,
+    "half_pint_ml": 284,
+    "standard_pour_ml": 25,
+    "double_pour_ml": 50,
+    "wine_glass_ml": [125, 175, 250],
+    "legal_drinking_age": 18,
+    "notes": [
+      "Gin, rum, vodka and whisky must be sold in 25 ml or 35 ml measures (or multiples); choose one per venue.",
+      "Draught beer and cider are sold in 1/3, 1/2 and 2/3 pints or multiples.",
+      "A 125 ml glass of wine must be available.",
+      "Show the 14 regulated allergens on menus."
+    ]
+  }
+}

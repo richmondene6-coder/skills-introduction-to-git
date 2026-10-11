@@ -1,0 +1,3829 @@
+{
+  "version": 1,
+  "generated_by": "catalog/build_catalog.py",
+  "markets": {
+    "NG": {
+      "name": "Nigeria",
+      "currency": "NGN",
+      "prices_include_tax": true,
+      "display_volume_unit": "ml",
+      "spirit_bottle_ml": 700,
+      "wine_bottle_ml": 750,
+      "magnum_ml": 1500,
+      "beer_bottle_ml": 600,
+      "can_ml": 330,
+      "bottle_small_ml": 350,
+      "pint_ml": null,
+      "half_pint_ml": null,
+      "standard_pour_ml": 30,
+      "double_pour_ml": 60,
+      "wine_glass_ml": [
+        150,
+        250
+      ],
+      "legal_drinking_age": 18,
+      "notes": [
+        "Spirit bottles are sold in both 70 cl and 75 cl; set the size per product.",
+        "Big beer bottles are usually 600 ml; small bottles 330-375 ml."
+      ]
+    },
+    "US": {
+      "name": "United States",
+      "currency": "USD",
+      "prices_include_tax": false,
+      "display_volume_unit": "us_fl_oz",
+      "spirit_bottle_ml": 750,
+      "wine_bottle_ml": 750,
+      "magnum_ml": 1500,
+      "beer_bottle_ml": 355,
+      "can_ml": 355,
+      "bottle_small_ml": 355,
+      "pint_ml": 473,
+      "half_pint_ml": null,
+      "standard_pour_ml": 44,
+      "double_pour_ml": 89,
+      "wine_glass_ml": [
+        148,
+        177
+      ],
+      "legal_drinking_age": 21,
+      "notes": [
+        "Standard pour is 1.5 US fl oz; display amounts in fl oz.",
+        "Some states restrict happy-hour discounts on alcohol; the region pack switches the feature off there."
+      ]
+    },
+    "CA": {
+      "name": "Canada",
+      "currency": "CAD",
+      "prices_include_tax": false,
+      "display_volume_unit": "oz_and_ml",
+      "spirit_bottle_ml": 750,
+      "wine_bottle_ml": 750,
+      "magnum_ml": 1500,
+      "beer_bottle_ml": 341,
+      "can_ml": 355,
+      "bottle_small_ml": 355,
+      "pint_ml": 568,
+      "half_pint_ml": null,
+      "standard_pour_ml": 28,
+      "double_pour_ml": 57,
+      "wine_glass_ml": [
+        150,
+        180
+      ],
+      "legal_drinking_age": 19,
+      "legal_drinking_age_by_province": {
+        "AB": 18,
+        "MB": 18,
+        "QC": 18
+      },
+      "notes": [
+        "Standard pour is 1 oz in most provinces.",
+        "Pint size varies by province and venue (16-20 oz); set your glass size.",
+        "Quebec needs WEB-SRM certified billing and French."
+      ]
+    },
+    "GB": {
+      "name": "United Kingdom",
+      "currency": "GBP",
+      "prices_include_tax": true,
+      "display_volume_unit": "ml",
+      "spirit_bottle_ml": 700,
+      "wine_bottle_ml": 750,
+      "magnum_ml": 1500,
+      "beer_bottle_ml": 330,
+      "can_ml": 330,
+      "bottle_small_ml": 330,
+      "pint_ml": 568,
+      "half_pint_ml": 284,
+      "standard_pour_ml": 25,
+      "double_pour_ml": 50,
+      "wine_glass_ml": [
+        125,
+        175,
+        250
+      ],
+      "legal_drinking_age": 18,
+      "notes": [
+        "Gin, rum, vodka and whisky must be sold in 25 ml or 35 ml measures (or multiples); choose one per venue.",
+        "Draught beer and cider are sold in 1/3, 1/2 and 2/3 pints or multiples.",
+        "A 125 ml glass of wine must be available.",
+        "Show the 14 regulated allergens on menus."
+      ]
+    }
+  },
+  "recipes": {
+    "cocktail-aperol-spritz": {
+      "allergens": [
+        "sulphites"
+      ],
+      "recipe": [
+        {
+          "ingredient": "liq-aperol",
+          "qty": 60.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "sparkling-house-prosecco",
+          "qty": 90.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-soda-water",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-orange-slice",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-bloody-mary": {
+      "allergens": [
+        "celery",
+        "fish"
+      ],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-tomato-juice",
+          "qty": 120.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lemon-juice",
+          "qty": 10.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-worcestershire",
+          "qty": 3.0,
+          "unit": "dash"
+        },
+        {
+          "ingredient": "ing-hot-sauce",
+          "qty": 2.0,
+          "unit": "dash"
+        },
+        {
+          "ingredient": "ing-celery-salt",
+          "qty": 1.0,
+          "unit": "g"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-caesar": {
+      "allergens": [
+        "celery",
+        "crustaceans",
+        "fish",
+        "molluscs"
+      ],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-clamato",
+          "qty": 120.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-worcestershire",
+          "qty": 2.0,
+          "unit": "dash"
+        },
+        {
+          "ingredient": "ing-hot-sauce",
+          "qty": 2.0,
+          "unit": "dash"
+        },
+        {
+          "ingredient": "ing-celery-salt",
+          "qty": 1.0,
+          "unit": "g"
+        },
+        {
+          "ingredient": "ing-lime-wedge",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-cosmopolitan": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 40.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-triple-sec",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-cranberry-juice",
+          "qty": 30.0,
+          "unit": "ml"
+        }
+      ]
+    },
+    "cocktail-cuba-libre": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-white-rum",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-coca-cola",
+          "qty": 150.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-wedge",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-daiquiri": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-white-rum",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 15.0,
+          "unit": "ml"
+        }
+      ]
+    },
+    "cocktail-espresso-martini": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-coffee-liqueur",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-espresso",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 10.0,
+          "unit": "ml"
+        }
+      ]
+    },
+    "cocktail-gin-tonic": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-gin",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-schweppes-tonic",
+          "qty": 150.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-wedge",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-henny-coke": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "cognac-hennessy-vs",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-coca-cola",
+          "qty": 150.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-long-island": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "spirit-house-gin",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "spirit-house-white-rum",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "spirit-house-tequila",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-triple-sec",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lemon-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 10.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-coca-cola",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-mai-tai": {
+      "allergens": [
+        "nuts"
+      ],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-white-rum",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "spirit-house-dark-rum",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-triple-sec",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-orgeat",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-margarita": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-tequila",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-triple-sec",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-salt",
+          "qty": 2.0,
+          "unit": "g"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-mojito": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-white-rum",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 20.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-mint",
+          "qty": 8.0,
+          "unit": "leaf"
+        },
+        {
+          "ingredient": "soft-soda-water",
+          "qty": 60.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-moscow-mule": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-ginger-beer",
+          "qty": 120.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-negroni": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-gin",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "liq-campari",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "liq-martini-rosso",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-orange-peel",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-old-fashioned": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-bourbon",
+          "qty": 60.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 8.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-angostura",
+          "qty": 2.0,
+          "unit": "dash"
+        },
+        {
+          "ingredient": "ing-orange-peel",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-pina-colada": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-white-rum",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-coconut-cream",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-pineapple-juice",
+          "qty": 90.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-pornstar-martini": {
+      "allergens": [
+        "sulphites"
+      ],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 40.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-vanilla-syrup",
+          "qty": 10.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-passion-fruit-puree",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 10.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "sparkling-house-prosecco",
+          "qty": 50.0,
+          "unit": "ml"
+        }
+      ]
+    },
+    "cocktail-sex-on-the-beach": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 40.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-peach-schnapps",
+          "qty": 20.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-orange-juice",
+          "qty": 60.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-cranberry-juice",
+          "qty": 60.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-tequila-sunrise": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-tequila",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-orange-juice",
+          "qty": 100.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-grenadine",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-vodka-red-bull": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-vodka",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-red-bull",
+          "qty": 250.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "cocktail-whiskey-sour": {
+      "allergens": [
+        "eggs"
+      ],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-bourbon",
+          "qty": 50.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-lemon-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-egg-white",
+          "qty": 20.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-angostura",
+          "qty": 1.0,
+          "unit": "dash"
+        }
+      ]
+    },
+    "mocktail-chapman": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "soft-fanta-orange",
+          "qty": 150.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-sprite",
+          "qty": 150.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-grenadine",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-angostura",
+          "qty": 3.0,
+          "unit": "dash"
+        },
+        {
+          "ingredient": "ing-cucumber",
+          "qty": 3.0,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "ing-orange-slice",
+          "qty": 1.0,
+          "unit": "each"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "mocktail-fresh-lemonade": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "ing-lemon-juice",
+          "qty": 40.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 30.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-water-still",
+          "qty": 200.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "mocktail-shirley-temple": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "soft-ginger-ale",
+          "qty": 200.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-grenadine",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "mocktail-virgin-mojito": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "ing-lime-juice",
+          "qty": 25.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-sugar-syrup",
+          "qty": 20.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-mint",
+          "qty": 8.0,
+          "unit": "leaf"
+        },
+        {
+          "ingredient": "soft-soda-water",
+          "qty": 120.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-ice",
+          "qty": 1.0,
+          "unit": "scoop"
+        }
+      ]
+    },
+    "shot-b52": {
+      "allergens": [
+        "milk"
+      ],
+      "recipe": [
+        {
+          "ingredient": "ing-coffee-liqueur",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "liq-baileys",
+          "qty": 15.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-triple-sec",
+          "qty": 15.0,
+          "unit": "ml"
+        }
+      ]
+    },
+    "shot-jagerbomb": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "liq-jagermeister",
+          "qty": 35.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "soft-red-bull",
+          "qty": 125.0,
+          "unit": "ml"
+        }
+      ]
+    },
+    "shot-tequila": {
+      "allergens": [],
+      "recipe": [
+        {
+          "ingredient": "spirit-house-tequila",
+          "qty": 35.0,
+          "unit": "ml"
+        },
+        {
+          "ingredient": "ing-salt",
+          "qty": 1.0,
+          "unit": "g"
+        },
+        {
+          "ingredient": "ing-lime-wedge",
+          "qty": 1.0,
+          "unit": "each"
+        }
+      ]
+    }
+  },
+  "templates": {
+    "restaurant": {
+      "NG": {
+        "starter_item_count": 81,
+        "library_item_count": 174,
+        "categories": [
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-small-chops",
+              "food-wings"
+            ]
+          },
+          {
+            "name": "Soups",
+            "items": [
+              "food-goat-pepper-soup",
+              "food-catfish-pepper-soup"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-jollof-rice",
+              "food-fried-rice",
+              "food-ofada-ayamase",
+              "food-pounded-yam-egusi",
+              "food-chicken-shawarma",
+              "food-cheeseburger",
+              "food-caesar-salad",
+              "food-ribeye"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-beef-suya",
+              "food-chicken-suya",
+              "food-asun",
+              "food-grilled-croaker",
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-dodo",
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-cheesecake",
+              "dessert-ice-cream"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-americano",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-chapman",
+              "mocktail-virgin-mojito",
+              "mocktail-zobo",
+              "mocktail-fresh-lemonade"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-malta-guinness",
+              "soft-maltina",
+              "soft-chi-exotic",
+              "soft-orange-juice",
+              "soft-apple-juice"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-aperol-spritz",
+              "cocktail-bloody-mary",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose",
+              "wine-cabernet-sauvignon",
+              "wine-merlot",
+              "wine-sauvignon-blanc",
+              "wine-chardonnay",
+              "wine-four-cousins-sweet-red"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-star-lager",
+              "beer-gulder",
+              "beer-heineken",
+              "beer-guinness-fes",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "spirit-house-white-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-aperol"
+            ]
+          }
+        ]
+      },
+      "US": {
+        "starter_item_count": 66,
+        "library_item_count": 150,
+        "categories": [
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-chicken-tenders"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger",
+              "food-caesar-salad",
+              "food-ribeye"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-cheesecake",
+              "dessert-ice-cream"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-americano",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-virgin-mojito",
+              "mocktail-fresh-lemonade"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-diet-coke",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-orange-juice",
+              "soft-apple-juice"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-aperol-spritz",
+              "cocktail-bloody-mary",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose",
+              "wine-cabernet-sauvignon",
+              "wine-merlot",
+              "wine-sauvignon-blanc",
+              "wine-chardonnay"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-guinness-draught",
+              "beer-bud-light",
+              "beer-coors-light",
+              "beer-modelo-especial",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "beer-peroni"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "spirit-house-white-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-aperol"
+            ]
+          }
+        ]
+      },
+      "CA": {
+        "starter_item_count": 69,
+        "library_item_count": 154,
+        "categories": [
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-chicken-tenders"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger",
+              "food-caesar-salad",
+              "food-ribeye"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries",
+              "food-poutine"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-cheesecake",
+              "dessert-ice-cream"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-americano",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-virgin-mojito",
+              "mocktail-fresh-lemonade"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-diet-coke",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-orange-juice",
+              "soft-apple-juice"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-aperol-spritz",
+              "cocktail-caesar",
+              "cocktail-bloody-mary",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose",
+              "wine-cabernet-sauvignon",
+              "wine-merlot",
+              "wine-sauvignon-blanc",
+              "wine-chardonnay"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-guinness-draught",
+              "beer-bud-light",
+              "beer-coors-light",
+              "beer-modelo-especial",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "beer-molson-canadian",
+              "beer-peroni"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "spirit-house-white-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-aperol"
+            ]
+          }
+        ]
+      },
+      "GB": {
+        "starter_item_count": 69,
+        "library_item_count": 153,
+        "categories": [
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-chicken-tenders"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger",
+              "food-caesar-salad",
+              "food-ribeye",
+              "food-fish-and-chips",
+              "food-sunday-roast",
+              "food-steak-ale-pie"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-sticky-toffee",
+              "dessert-brownie",
+              "dessert-cheesecake",
+              "dessert-ice-cream"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-americano",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-virgin-mojito",
+              "mocktail-fresh-lemonade"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-diet-coke",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-orange-juice",
+              "soft-apple-juice"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-aperol-spritz",
+              "cocktail-bloody-mary",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose",
+              "wine-cabernet-sauvignon",
+              "wine-merlot",
+              "wine-sauvignon-blanc",
+              "wine-chardonnay"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-guinness-draught",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "beer-carling",
+              "beer-peroni"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "spirit-house-white-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-aperol",
+              "liq-pimms"
+            ]
+          }
+        ]
+      }
+    },
+    "nightclub": {
+      "NG": {
+        "starter_item_count": 81,
+        "library_item_count": 207,
+        "categories": [
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-champagne-parade",
+              "pkg-cognac-bottle",
+              "pkg-vodka-bottle",
+              "pkg-tequila-bottle",
+              "svc-ice-bucket",
+              "svc-sparkler-show"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-moet-rose",
+              "sparkling-moet-ice",
+              "sparkling-veuve-clicquot",
+              "sparkling-dom-perignon",
+              "sparkling-armand-de-brignac",
+              "sparkling-belaire-rose"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-hennessy-xo",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jw-gold",
+              "whisky-jw-blue",
+              "whisky-glenfiddich-12",
+              "whisky-macallan-12-dc",
+              "whisky-jack-daniels"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose",
+              "vodka-belvedere",
+              "vodka-ciroc"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-don-julio-blanco",
+              "tequila-don-julio-1942",
+              "tequila-casamigos-blanco",
+              "tequila-clase-azul-reposado"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-jagermeister",
+              "liq-orijin-bitters"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-cosmopolitan",
+              "cocktail-espresso-martini",
+              "cocktail-sex-on-the-beach",
+              "cocktail-tequila-sunrise",
+              "cocktail-pornstar-martini",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre",
+              "cocktail-henny-coke",
+              "cocktail-vodka-red-bull"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-star-lager",
+              "beer-heineken",
+              "beer-budweiser",
+              "beer-corona-extra",
+              "rtd-smirnoff-ice"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-malta-guinness"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-chapman"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-beef-suya",
+              "food-chicken-suya",
+              "food-asun",
+              "food-grilled-croaker",
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-small-chops",
+              "food-wings",
+              "food-loaded-fries"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "entry-regular",
+              "entry-vip",
+              "entry-guest-list",
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-fruit-platter"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-chicken-shawarma"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-four-cousins-sweet-red"
+            ]
+          }
+        ]
+      },
+      "US": {
+        "starter_item_count": 77,
+        "library_item_count": 184,
+        "categories": [
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-champagne-parade",
+              "pkg-cognac-bottle",
+              "pkg-vodka-bottle",
+              "pkg-tequila-bottle",
+              "svc-ice-bucket",
+              "svc-sparkler-show"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-moet-rose",
+              "sparkling-moet-ice",
+              "sparkling-veuve-clicquot",
+              "sparkling-dom-perignon",
+              "sparkling-armand-de-brignac",
+              "sparkling-belaire-rose"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-hennessy-xo",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jw-gold",
+              "whisky-jw-blue",
+              "whisky-glenfiddich-12",
+              "whisky-macallan-12-dc",
+              "whisky-jack-daniels",
+              "whisky-crown-royal"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose",
+              "vodka-belvedere",
+              "vodka-ciroc",
+              "vodka-titos"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-don-julio-blanco",
+              "tequila-don-julio-1942",
+              "tequila-casamigos-blanco",
+              "tequila-clase-azul-reposado"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-jagermeister",
+              "liq-fireball"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-cosmopolitan",
+              "cocktail-espresso-martini",
+              "cocktail-sex-on-the-beach",
+              "cocktail-tequila-sunrise",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre",
+              "cocktail-henny-coke",
+              "cocktail-vodka-red-bull"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-budweiser",
+              "beer-bud-light",
+              "beer-coors-light",
+              "beer-michelob-ultra",
+              "beer-corona-extra",
+              "rtd-white-claw"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-red-bull",
+              "soft-water-still"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-sliders",
+              "food-nachos",
+              "food-loaded-fries"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "entry-regular",
+              "entry-vip",
+              "entry-guest-list",
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-fruit-platter"
+            ]
+          }
+        ]
+      },
+      "CA": {
+        "starter_item_count": 75,
+        "library_item_count": 186,
+        "categories": [
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-champagne-parade",
+              "pkg-cognac-bottle",
+              "pkg-vodka-bottle",
+              "pkg-tequila-bottle",
+              "svc-ice-bucket",
+              "svc-sparkler-show"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-moet-rose",
+              "sparkling-moet-ice",
+              "sparkling-veuve-clicquot",
+              "sparkling-dom-perignon",
+              "sparkling-armand-de-brignac"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-hennessy-xo",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jw-gold",
+              "whisky-jw-blue",
+              "whisky-glenfiddich-12",
+              "whisky-macallan-12-dc",
+              "whisky-jack-daniels",
+              "whisky-crown-royal"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose",
+              "vodka-belvedere",
+              "vodka-ciroc",
+              "vodka-titos"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-don-julio-blanco",
+              "tequila-don-julio-1942",
+              "tequila-casamigos-blanco",
+              "tequila-clase-azul-reposado"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-jagermeister",
+              "liq-fireball"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-cosmopolitan",
+              "cocktail-espresso-martini",
+              "cocktail-sex-on-the-beach",
+              "cocktail-tequila-sunrise",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre",
+              "cocktail-vodka-red-bull"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-budweiser",
+              "beer-bud-light",
+              "beer-coors-light",
+              "beer-corona-extra",
+              "beer-molson-canadian",
+              "rtd-white-claw"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-red-bull",
+              "soft-water-still"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-sliders",
+              "food-nachos",
+              "food-loaded-fries"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "entry-regular",
+              "entry-vip",
+              "entry-guest-list",
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-fruit-platter"
+            ]
+          }
+        ]
+      },
+      "GB": {
+        "starter_item_count": 72,
+        "library_item_count": 184,
+        "categories": [
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-champagne-parade",
+              "pkg-cognac-bottle",
+              "pkg-vodka-bottle",
+              "pkg-tequila-bottle",
+              "svc-ice-bucket",
+              "svc-sparkler-show"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-moet-rose",
+              "sparkling-moet-ice",
+              "sparkling-veuve-clicquot",
+              "sparkling-dom-perignon",
+              "sparkling-armand-de-brignac"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-hennessy-xo",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-jw-gold",
+              "whisky-jw-blue",
+              "whisky-glenfiddich-12",
+              "whisky-macallan-12-dc",
+              "whisky-jack-daniels"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose",
+              "vodka-belvedere",
+              "vodka-ciroc"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-don-julio-blanco",
+              "tequila-don-julio-1942",
+              "tequila-casamigos-blanco",
+              "tequila-clase-azul-reposado"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-jagermeister"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-cosmopolitan",
+              "cocktail-espresso-martini",
+              "cocktail-sex-on-the-beach",
+              "cocktail-tequila-sunrise",
+              "cocktail-pornstar-martini",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre",
+              "cocktail-vodka-red-bull"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-budweiser",
+              "beer-corona-extra",
+              "beer-carling",
+              "rtd-smirnoff-ice",
+              "rtd-white-claw"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-red-bull",
+              "soft-water-still"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-sliders",
+              "food-nachos",
+              "food-loaded-fries"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "entry-regular",
+              "entry-vip",
+              "entry-guest-list",
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-fruit-platter"
+            ]
+          }
+        ]
+      }
+    },
+    "bar": {
+      "NG": {
+        "starter_item_count": 82,
+        "library_item_count": 186,
+        "categories": [
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-star-lager",
+              "beer-gulder",
+              "beer-heineken",
+              "beer-trophy",
+              "beer-hero",
+              "beer-goldberg",
+              "beer-legend-stout",
+              "beer-guinness-fes",
+              "beer-budweiser",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "rtd-smirnoff-ice"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-whiskey-sour",
+              "cocktail-moscow-mule",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-red",
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "gin-tanqueray",
+              "gin-seamans-schnapps",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-captain-morgan-spiced",
+              "spirit-house-white-rum",
+              "spirit-house-dark-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-jose-cuervo-especial",
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-jagermeister",
+              "liq-campari",
+              "liq-aperol",
+              "liq-orijin-bitters"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-ginger-ale",
+              "soft-ginger-beer",
+              "soft-soda-water",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-malta-guinness",
+              "soft-orange-juice",
+              "soft-pineapple-juice",
+              "soft-cranberry-juice"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-chapman"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-peppered-gizzard",
+              "food-nkwobi",
+              "food-wings",
+              "food-loaded-fries"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-beef-suya",
+              "food-chicken-suya",
+              "food-asun",
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger"
+            ]
+          },
+          {
+            "name": "Soups",
+            "items": [
+              "food-goat-pepper-soup",
+              "food-catfish-pepper-soup"
+            ]
+          }
+        ]
+      },
+      "US": {
+        "starter_item_count": 77,
+        "library_item_count": 168,
+        "categories": [
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-guinness-draught",
+              "beer-budweiser",
+              "beer-bud-light",
+              "beer-coors-light",
+              "beer-miller-lite",
+              "beer-michelob-ultra",
+              "beer-modelo-especial",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "beer-peroni",
+              "rtd-white-claw"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-whiskey-sour",
+              "cocktail-moscow-mule",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-red",
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "whisky-makers-mark",
+              "whisky-crown-royal",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "vodka-titos",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "gin-tanqueray",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-captain-morgan-spiced",
+              "spirit-house-white-rum",
+              "spirit-house-dark-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-jose-cuervo-especial",
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-jagermeister",
+              "liq-campari",
+              "liq-aperol",
+              "liq-fireball"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-ginger-ale",
+              "soft-ginger-beer",
+              "soft-soda-water",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-orange-juice",
+              "soft-pineapple-juice",
+              "soft-cranberry-juice"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-nachos",
+              "food-loaded-fries",
+              "food-chicken-tenders"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger"
+            ]
+          }
+        ]
+      },
+      "CA": {
+        "starter_item_count": 80,
+        "library_item_count": 171,
+        "categories": [
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-guinness-draught",
+              "beer-budweiser",
+              "beer-bud-light",
+              "beer-coors-light",
+              "beer-modelo-especial",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "beer-molson-canadian",
+              "beer-labatt-blue",
+              "beer-peroni",
+              "cider-strongbow",
+              "rtd-white-claw"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-whiskey-sour",
+              "cocktail-moscow-mule",
+              "cocktail-caesar",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-red",
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "whisky-makers-mark",
+              "whisky-crown-royal",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "vodka-titos",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "gin-tanqueray",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-captain-morgan-spiced",
+              "spirit-house-white-rum",
+              "spirit-house-dark-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-jose-cuervo-especial",
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-jagermeister",
+              "liq-campari",
+              "liq-aperol",
+              "liq-fireball"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-ginger-ale",
+              "soft-ginger-beer",
+              "soft-soda-water",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-orange-juice",
+              "soft-pineapple-juice",
+              "soft-cranberry-juice"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-nachos",
+              "food-loaded-fries",
+              "food-chicken-tenders"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries",
+              "food-poutine"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger"
+            ]
+          }
+        ]
+      },
+      "GB": {
+        "starter_item_count": 76,
+        "library_item_count": 171,
+        "categories": [
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-guinness-draught",
+              "beer-budweiser",
+              "beer-corona-extra",
+              "beer-stella-artois",
+              "beer-house-ipa",
+              "beer-carling",
+              "beer-peroni",
+              "cider-strongbow",
+              "rtd-smirnoff-ice",
+              "rtd-white-claw"
+            ]
+          },
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-long-island",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-whiskey-sour",
+              "cocktail-moscow-mule",
+              "cocktail-gin-tonic",
+              "cocktail-cuba-libre"
+            ]
+          },
+          {
+            "name": "Shots",
+            "items": [
+              "shot-tequila",
+              "shot-jagerbomb"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-red",
+              "whisky-jw-black",
+              "whisky-jameson",
+              "whisky-jack-daniels",
+              "whisky-makers-mark",
+              "spirit-house-bourbon",
+              "spirit-house-scotch"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-smirnoff-21",
+              "spirit-house-vodka"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-gordons",
+              "gin-tanqueray",
+              "spirit-house-gin"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-captain-morgan-spiced",
+              "spirit-house-white-rum",
+              "spirit-house-dark-rum"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-patron-silver",
+              "tequila-jose-cuervo-especial",
+              "spirit-house-tequila"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "spirit-house-brandy"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-jagermeister",
+              "liq-campari",
+              "liq-aperol",
+              "liq-pimms"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white"
+            ]
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-coke-zero",
+              "soft-sprite",
+              "soft-schweppes-tonic",
+              "soft-ginger-ale",
+              "soft-ginger-beer",
+              "soft-soda-water",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-orange-juice",
+              "soft-pineapple-juice",
+              "soft-cranberry-juice"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-wings",
+              "food-nachos",
+              "food-loaded-fries",
+              "food-chicken-tenders",
+              "food-scotch-egg",
+              "food-halloumi-fries"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken"
+            ]
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-cheeseburger",
+              "food-fish-and-chips"
+            ]
+          }
+        ]
+      }
+    },
+    "lounge": {
+      "NG": {
+        "starter_item_count": 85,
+        "library_item_count": 231,
+        "categories": [
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-cosmopolitan",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-moscow-mule",
+              "cocktail-pornstar-martini",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Shisha",
+            "items": [
+              "shisha-single",
+              "shisha-double-apple",
+              "shisha-mint",
+              "shisha-premium-mix",
+              "shisha-head-refill",
+              "shisha-coal-refresh"
+            ],
+            "module": "shisha",
+            "enabled_by_default": false
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-veuve-clicquot",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose",
+              "wine-four-cousins-sweet-red"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-glenfiddich-12",
+              "whisky-jack-daniels"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-don-julio-blanco",
+              "tequila-casamigos-blanco"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-diplomatico-reserva"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-campari",
+              "liq-aperol"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-star-lager",
+              "beer-heineken",
+              "beer-corona-extra"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-chapman",
+              "mocktail-virgin-mojito",
+              "mocktail-zobo"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-schweppes-tonic",
+              "soft-fever-tree-tonic",
+              "soft-ginger-beer",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-malta-guinness",
+              "soft-chi-exotic",
+              "soft-orange-juice"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-peppered-gizzard",
+              "food-nkwobi",
+              "food-small-chops"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-beef-suya",
+              "food-chicken-suya",
+              "food-asun",
+              "food-grilled-croaker",
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Mains",
+            "items": [
+              "food-jollof-rice",
+              "food-chicken-shawarma"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-ice-cream",
+              "dessert-fruit-platter"
+            ]
+          },
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-cognac-bottle",
+              "svc-ice-bucket"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-dodo",
+              "food-fries"
+            ]
+          },
+          {
+            "name": "Soups",
+            "items": [
+              "food-goat-pepper-soup",
+              "food-catfish-pepper-soup"
+            ]
+          }
+        ]
+      },
+      "US": {
+        "starter_item_count": 67,
+        "library_item_count": 206,
+        "categories": [
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-cosmopolitan",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-moscow-mule",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Shisha",
+            "items": [
+              "shisha-single",
+              "shisha-double-apple",
+              "shisha-mint",
+              "shisha-premium-mix",
+              "shisha-head-refill",
+              "shisha-coal-refresh"
+            ],
+            "module": "shisha",
+            "enabled_by_default": false
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-veuve-clicquot",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-glenfiddich-12",
+              "whisky-jack-daniels"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-don-julio-blanco",
+              "tequila-casamigos-blanco"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-diplomatico-reserva"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-campari",
+              "liq-aperol"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-corona-extra"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-virgin-mojito"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-schweppes-tonic",
+              "soft-fever-tree-tonic",
+              "soft-ginger-beer",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-orange-juice"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-sliders"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-ice-cream",
+              "dessert-fruit-platter"
+            ]
+          },
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-cognac-bottle",
+              "svc-ice-bucket"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          }
+        ]
+      },
+      "CA": {
+        "starter_item_count": 67,
+        "library_item_count": 208,
+        "categories": [
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-cosmopolitan",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-moscow-mule",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Shisha",
+            "items": [
+              "shisha-single",
+              "shisha-double-apple",
+              "shisha-mint",
+              "shisha-premium-mix",
+              "shisha-head-refill",
+              "shisha-coal-refresh"
+            ],
+            "module": "shisha",
+            "enabled_by_default": false
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-veuve-clicquot",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-glenfiddich-12",
+              "whisky-jack-daniels"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-don-julio-blanco",
+              "tequila-casamigos-blanco"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-diplomatico-reserva"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-campari",
+              "liq-aperol"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-corona-extra"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-virgin-mojito"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-schweppes-tonic",
+              "soft-fever-tree-tonic",
+              "soft-ginger-beer",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-orange-juice"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-sliders"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-ice-cream",
+              "dessert-fruit-platter"
+            ]
+          },
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-cognac-bottle",
+              "svc-ice-bucket"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          }
+        ]
+      },
+      "GB": {
+        "starter_item_count": 69,
+        "library_item_count": 206,
+        "categories": [
+          {
+            "name": "Cocktails",
+            "items": [
+              "cocktail-mojito",
+              "cocktail-margarita",
+              "cocktail-pina-colada",
+              "cocktail-cosmopolitan",
+              "cocktail-old-fashioned",
+              "cocktail-negroni",
+              "cocktail-espresso-martini",
+              "cocktail-aperol-spritz",
+              "cocktail-moscow-mule",
+              "cocktail-pornstar-martini",
+              "cocktail-gin-tonic"
+            ]
+          },
+          {
+            "name": "Shisha",
+            "items": [
+              "shisha-single",
+              "shisha-double-apple",
+              "shisha-mint",
+              "shisha-premium-mix",
+              "shisha-head-refill",
+              "shisha-coal-refresh"
+            ],
+            "module": "shisha",
+            "enabled_by_default": false
+          },
+          {
+            "name": "Champagne & Sparkling",
+            "items": [
+              "sparkling-moet-imperial",
+              "sparkling-veuve-clicquot",
+              "sparkling-house-prosecco"
+            ]
+          },
+          {
+            "name": "Wine",
+            "items": [
+              "wine-house-red",
+              "wine-house-white",
+              "wine-house-rose"
+            ]
+          },
+          {
+            "name": "Cognac & Brandy",
+            "items": [
+              "cognac-hennessy-vs",
+              "cognac-hennessy-vsop",
+              "cognac-remy-martin-vsop"
+            ]
+          },
+          {
+            "name": "Whisky",
+            "items": [
+              "whisky-jw-black",
+              "whisky-glenfiddich-12",
+              "whisky-jack-daniels"
+            ]
+          },
+          {
+            "name": "Tequila & Mezcal",
+            "items": [
+              "tequila-don-julio-blanco",
+              "tequila-casamigos-blanco"
+            ]
+          },
+          {
+            "name": "Vodka",
+            "items": [
+              "vodka-absolut",
+              "vodka-grey-goose"
+            ]
+          },
+          {
+            "name": "Gin",
+            "items": [
+              "gin-tanqueray",
+              "gin-hendricks"
+            ]
+          },
+          {
+            "name": "Rum",
+            "items": [
+              "rum-bacardi-carta-blanca",
+              "rum-diplomatico-reserva"
+            ]
+          },
+          {
+            "name": "Liqueurs & Bitters",
+            "items": [
+              "liq-baileys",
+              "liq-campari",
+              "liq-aperol"
+            ]
+          },
+          {
+            "name": "Beer & Cider",
+            "items": [
+              "beer-heineken",
+              "beer-corona-extra"
+            ]
+          },
+          {
+            "name": "Mocktails",
+            "items": [
+              "mocktail-virgin-mojito"
+            ]
+          },
+          {
+            "name": "Soft Drinks & Mixers",
+            "items": [
+              "soft-coca-cola",
+              "soft-sprite",
+              "soft-fanta-orange",
+              "soft-schweppes-tonic",
+              "soft-fever-tree-tonic",
+              "soft-ginger-beer",
+              "soft-red-bull",
+              "soft-water-still",
+              "soft-water-sparkling",
+              "soft-orange-juice"
+            ]
+          },
+          {
+            "name": "Hot Drinks",
+            "items": [
+              "hot-espresso",
+              "hot-cappuccino",
+              "hot-latte",
+              "hot-tea"
+            ]
+          },
+          {
+            "name": "Small Plates & Sharing",
+            "items": [
+              "food-sliders",
+              "food-halloumi-fries"
+            ]
+          },
+          {
+            "name": "Grills",
+            "items": [
+              "food-grilled-chicken",
+              "food-mixed-grill-platter"
+            ]
+          },
+          {
+            "name": "Desserts",
+            "items": [
+              "dessert-brownie",
+              "dessert-ice-cream",
+              "dessert-fruit-platter"
+            ]
+          },
+          {
+            "name": "Bottle Service",
+            "items": [
+              "pkg-cognac-bottle",
+              "svc-ice-bucket"
+            ],
+            "module": "bottle_service",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Entry & Tables",
+            "items": [
+              "table-deposit",
+              "table-min-spend-topup"
+            ],
+            "module": "door",
+            "enabled_by_default": true
+          },
+          {
+            "name": "Sides",
+            "items": [
+              "food-fries"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
