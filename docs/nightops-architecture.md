@@ -2,14 +2,14 @@
 
 Companion to `nightops-app-feature-spec.md` and `nightops-saas-platform.md`. This covers *how* to build what the spec describes.
 
-**v0.2 change:** NightOps is a **multi-tenant global SaaS**. Many businesses in many countries share one platform. See §12. Where this doc says "owner" it means a client's Business Owner. Paystack details in §5 apply to Paystack-country clients; other countries plug in other providers.
+**v0.2 change:** NightOps is a **multi-tenant global SaaS**. Many businesses in many countries share one platform. See §11. Where this doc says "owner" it means a client's Business Owner. Paystack details in §5 apply to Paystack-country clients; other countries plug in other providers.
 
 ## 1. Decisions so far
 
 | Topic | Decision | Consequence |
 |---|---|---|
 | Build vs buy | **Build our own, from scratch** | We own the ledger, offline sync and debt-recovery logic. No third-party POS to integrate with. |
-| Product model | **Global SaaS**: monthly subscriptions from businesses; iOS, Android, web | Multi-tenant, self-serve onboarding, subscription billing, Platform Admin, country packs (§12) |
+| Product model | **Global SaaS**: monthly subscriptions from businesses; iOS, Android, web | Multi-tenant, self-serve onboarding, subscription billing, Platform Admin, country packs (§11) |
 | Guest payments | **Per-business provider**: Paystack (Africa), Stripe (most other markets), more later | Each business connects its own account; guest money never passes through the vendor. Webhooks drive automatic reconciliation. |
 | Reporting currency | **Chosen per business** (e.g. USD) | Ledger records the local currency, and reports convert at stored daily FX rates (§5). |
 | Guest payments | **Local currency, chosen by location** | Each venue has a local currency. Pay links show local currency first, with USD for foreign cards. Needs multi-currency ledger and FX rates. |
