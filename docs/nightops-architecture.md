@@ -1,18 +1,21 @@
-# NightOps — Architecture & Build Plan (v0.1)
+# NightOps — Architecture & Build Plan (v0.2)
 
-Companion to `nightops-app-feature-spec.md`. This covers *how* to build what the spec describes.
+Companion to `nightops-app-feature-spec.md` and `nightops-saas-platform.md`. This covers *how* to build what the spec describes.
+
+**v0.2 change:** NightOps is a **multi-tenant global SaaS**. Many businesses in many countries share one platform. See §12. Where this doc says "owner" it means a client's Business Owner. Paystack details in §5 apply to Paystack-country clients; other countries plug in other providers.
 
 ## 1. Decisions so far
 
 | Topic | Decision | Consequence |
 |---|---|---|
 | Build vs buy | **Build our own, from scratch** | We own the ledger, offline sync and debt-recovery logic. No third-party POS to integrate with. |
-| Payments | **Paystack** | Card, transfer and pay-link collection plus webhooks for automatic reconciliation. |
-| Owner's money | **Wants USD** | Needs a USD reporting currency plus USD settlement where Paystack allows it (see §5). |
+| Product model | **Global SaaS**: monthly subscriptions from businesses; iOS, Android, web | Multi-tenant, self-serve onboarding, subscription billing, Platform Admin, country packs (§12) |
+| Guest payments | **Per-business provider**: Paystack (Africa), Stripe (most other markets), more later | Each business connects its own account; guest money never passes through the vendor. Webhooks drive automatic reconciliation. |
+| Reporting currency | **Chosen per business** (e.g. USD) | Ledger records the local currency, and reports convert at stored daily FX rates (§5). |
 | Guest payments | **Local currency, chosen by location** | Each venue has a local currency. Pay links show local currency first, with USD for foreign cards. Needs multi-currency ledger and FX rates. |
 | Devices | **Phones, tablets and computers** | One shared codebase: native app for phones/tablets, web app for computers. |
 | Volume | **500–1,000 sales/hour at peak** | Throughput is easy (≈1 sale every 4 seconds). The hard part is **many devices staying consistent while the internet is down**. |
-| Credit | **The staff member who sells on credit is responsible for collecting it; the owner approves** | Every credit sale carries a "responsible staff" field, an owner approval, and a staff liability lifecycle (spec §11). |
+| Credit | **Selling staff accountable from the moment of sale; approvers assigned by each Business Owner** | Rules engine per business: approver list with limits, escalation chain, auto-approve rules, country-gated wage recovery (spec §11, platform §3). |
 
 ## 2. System overview
 
@@ -60,6 +63,7 @@ At 1,000 sales/hour across 10+ devices, a phone that loses Wi-Fi can't see what 
 
 ## 4. Data model (core tables)
 
+- **Business** (tenant: plan, region, reporting currency, credit & approval rules), **Membership** (user ↔ business ↔ role ↔ venues), **Subscription**.
 - **Venue** (country, local currency, timezone, business-day cut-off), **Device**, **Staff**, **Role**, **Permission**.
 - **Product**, **Recipe line** (product → ingredient + ml/qty), **Stock item** (bottle size ml, cost), **Stock movement** (sale/comp/spill/breakage/transfer/count/delivery; append-only).
 - **Order**, **Order line**, **Payment** (tender, currency, amount, FX rate, provider reference).
@@ -142,7 +146,7 @@ Rough messaging cost example: 300 debtors/month × 5 WhatsApp reminders × $0.01
 
 | Phase | Engineering deliverables |
 |---|---|
-| 0 – Foundations | Repo/monorepo, auth, roles/PINs, device enrolment, event log + sync, venue hub image, design system from your UI designs |
+| 0 – Foundations | Repo/monorepo, multi-tenancy + row-level security, entitlements, i18n, country packs, auth, roles/PINs, device enrolment, event log + sync, venue hub image, design system from your UI designs |
 | 1 – Till | POS ordering, payments (cash/transfer/card), shifts, blind count, printers, audit log, basic sales reports |
 | 2 – Stock | Recipes, ml-level deduction, wastage/comp/breakage, counts, low-stock alerts, POs |
 | 3 – Money | Expenses, CapEx, FX rates, live P&L in local + USD, scheduled reports |
@@ -151,7 +155,40 @@ Rough messaging cost example: 300 debtors/month × 5 WhatsApp reminders × $0.01
 
 **Suggested team:** 1 product designer, 2–3 full-stack TypeScript engineers (one strong on mobile/offline), and a part-time QA/ops person to run a real-venue pilot. Pilot Phase 1 in one bar before rolling out further.
 
-## 11. Sources
+## 11. Multi-tenant SaaS architecture
+
+**Tenancy model**
+- Shared database, with a `business_id` on every row, enforced by **PostgreSQL row-level security**. A bug in one query can't leak another client's data.
+- Large Enterprise clients can later be moved to a dedicated database without code changes (same schema).
+- **Regions:** start with one primary region, then add an **EU region** before selling in the EU (GDPR expectations). A business is pinned to a region at sign-up, and its data, backups and hubs stay there.
+
+**New services**
+| Service | Job |
+|---|---|
+| Identity | Users, logins (email/phone OTP, Google, Apple), 2FA, memberships across businesses, device enrolment |
+| Tenant & entitlements | Businesses, venues, plan → feature flags and limits (venues, devices, message quota). The app asks "is feature X on for this business?", never "which plan are they on?" |
+| Subscription billing | Billing-provider interface: Paystack (Africa) + Merchant of Record / Stripe (rest of world). Handles trials, renewals, failed-payment retries (dunning) and grace periods, driven by provider webhooks. |
+| Country packs | Versioned config per country: currency, tax presets, receipt rules, language defaults, outreach rules (hours, voice allowed, consent), legal gates (e.g. wage recovery), message templates |
+| Payment connectors | One interface per guest-payment provider (Paystack, Stripe, Flutterwave…); each business stores its own encrypted credentials or connected-account ID |
+| Messaging connectors | WhatsApp Cloud API (one number per business, or a shared platform number with business branding), SMS/voice providers chosen per country |
+| Platform Admin API | Powers your vendor console; every support access is consent-based, time-limited and audited |
+| Usage metering | Counts messages, calls, devices and venues for plan limits and pass-through billing |
+
+**Apps & releases**
+- One React Native (Expo) codebase builds the **iOS and Android** apps, plus the React web app. Over-the-air updates for small fixes; store releases for native changes.
+- **Minimum-version check** at login so very old apps can be forced to update (important for ledger/sync changes).
+- **Hub mode** is a setting in the same app (any always-on tablet/laptop), not separate hardware. Venues without a Hub fall back to cloud sync + per-device offline rules.
+- Translations: all strings in i18n files (ICU message format), with a translation-management service. RTL layout support from the start.
+
+**Operations to international standard**
+- Infrastructure as code. Separate staging/production. Automated tests on the ledger, sync and money rules (these must never regress).
+- Monitoring: error/crash reporting, uptime checks, public status page, on-call that covers **weekend nights in client time zones**.
+- Backups: point-in-time recovery. Target RPO ≤ 5 min and RTO ≤ 1 h. Restore tested quarterly.
+- Security: OWASP ASVS/MASVS, dependency scanning, secrets manager, yearly penetration test, SOC 2 path (platform doc §8).
+
+**Phase 0 must include tenancy, entitlements, i18n and country packs.** They are cheap to build in at the start and very expensive to retrofit.
+
+## 12. Sources
 
 - Paystack, currencies & USD: https://support.paystack.com/hc/en-us/articles/360009973799-Can-I-accept-payments-in-US-Dollars-USD
 - Paystack, international payments: https://support.paystack.com/hc/en-us/articles/360009973779-What-currencies-does-Paystack-accept-Payments-in-
