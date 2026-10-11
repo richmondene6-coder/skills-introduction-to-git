@@ -1,5 +1,7 @@
 # NightOps — Feature Spec & UI Brief (v0.5)
 
+> **Designing the UI? Start with `nightops-ui-design-brief.md`.** It lists every screen with IDs, components, flows and design-tool prompts. This spec holds the detailed rules behind those screens.
+
 Working name: **NightOps**. Operations platform for a high-volume nightclub / lounge / bar.
 Serves **restaurants, bars, lounges and nightclubs**, each with its own personalised mode. Purpose of this doc: give a designer (or design tool) everything needed to draw the screens. Bring the designs back and we will iterate on both UI and build plan. Technical plan: `nightops-architecture.md`. Global subscription product, onboarding, billing and Platform Admin: `nightops-saas-platform.md`.
 
