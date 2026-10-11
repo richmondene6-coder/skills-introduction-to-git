@@ -1,9 +1,20 @@
-# NightOps — Feature Spec & UI Brief (v0.1)
+# NightOps — Feature Spec & UI Brief (v0.2)
 
 Working name: **NightOps**. Operations platform for a high-volume nightclub / lounge / bar.
-Purpose of this doc: give a designer (or design tool) everything needed to draw the screens. Bring the designs back and we will iterate on both UI and build plan.
+Purpose of this doc: give a designer (or design tool) everything needed to draw the screens. Bring the designs back and we will iterate on both UI and build plan. Technical plan: `nightops-architecture.md`.
 
-**Assumptions to confirm (see §12):** West-African market (NGN currency, diesel/generator costs, bank-transfer culture), venue has patchy internet, 1 venue at launch (multi-venue later), bartenders use shared tablets or their own phones.
+**Decisions (v0.2):**
+- **Custom build** from scratch.
+- **Payments via Paystack.** The owner's reporting and settlement currency is **USD**. Guests pay in the **local currency of the venue/location**, with USD available for foreign cards.
+- **Devices:** phones, tablets and computers. Peak **500–1,000 sales/hour**.
+- **Staff-responsible credit:** the staff member who sells on credit is responsible for collecting it, and **every credit sale needs owner approval** (§5 A5, §7 C7–C8, §11).
+- **Still assumed:** patchy internet and power, one venue at launch.
+
+**What changed from v0.1:**
+- Credit is now owned by the staff member who sold it and approved by the owner.
+- Money is multi-currency, with USD reporting for the owner.
+- There are 3 connection states, because a venue hub keeps devices in sync offline.
+- New screens: My Credit Book, Credit Approvals, Staff Liability, Currency & FX, Staff Exit Settlement.
 
 ---
 
@@ -15,12 +26,12 @@ A POS and back-office that never stops working when the internet drops, records 
 
 | Role | Primary device | What they care about |
 |---|---|---|
-| **Bartender / Waiter** | Shared tablet or phone at bar, landscape or portrait, one-handed, low light | Speed. Ring up an order in ≤3 taps per item. Never blocked by Wi-Fi. |
+| **Bartender / Waiter** | Shared tablet or phone at bar, landscape or portrait, one-handed, low light | Speed. Ring up an order in ≤3 taps per item. Never blocked by Wi-Fi. Tracks and collects their own credit sales. |
 | **Cashier / Host** | Tablet at door or VIP desk | Open/close tabs, take payments, check guest credit |
 | **Kitchen / Grill** | Screen or printer | See tickets, mark ready |
 | **Floor / Shift Manager** | Phone | Approve voids/comps, reconcile shifts, count stock |
 | **Accountant / Bookkeeper** | Laptop | P&L, expenses, exports, reconciliation |
-| **Owner** | Phone + laptop | Live numbers, theft/shrinkage alerts, debt position, approvals |
+| **Owner** | Phone + laptop | Live numbers in USD, theft/shrinkage alerts, debt position, **approves every credit sale** |
 | **Customer (VIP/patron)** | WhatsApp + mobile web page (no app install) | See what they owe, pay in seconds, get receipt |
 
 **Design the customer-facing pieces too** (WhatsApp message layouts, payment page, receipt, statement). They are part of the product.
@@ -30,7 +41,7 @@ A POS and back-office that never stops working when the internet drops, records 
 1. **Dark theme by default** (club lighting), light theme available for back-office. High contrast, large tap targets (min 48px, POS buttons 64px+).
 2. **Status = colour + icon + text**, never colour alone. Palette roles: OK (green), Near limit/Warning (amber), Frozen/Overdue/Danger (red), Offline (grey-blue), Pending approval (purple).
 3. **Always-visible header chips:** connection state (Online / Offline – N queued), shift timer, staff name, venue/section.
-4. **Money is always shown with currency and thousand separators** (₦1,250,000.00). Money in/out colours consistent everywhere.
+4. **Money is always shown with a currency code/symbol and thousand separators** (₦1,250,000.00 · $812.40). Owner/accountant screens have a global **Local ⇄ USD toggle** showing the FX rate used and its date. Never show an amount without its currency. Money in/out colours are consistent everywhere.
 5. **Irreversible or sensitive actions** (void, comp, price edit, forgive debt) always go through the same **Manager PIN modal** — one component, reused everywhere.
 6. **Empty, loading, error and offline states** must be designed for every list and form.
 7. **Fast paths for repeat behaviour:** favourites, recent items, "repeat last round", quick-qty.
@@ -74,11 +85,28 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 ### A4. Customer / tab attach
 - Search by name/phone, recent guests, "Add new guest" (name, phone with WhatsApp consent checkbox, optional photo, ID/notes).
 - **Guest card** shown inline: credit limit, current balance owed, available credit **as a progress meter**, oldest unpaid age, status chip (Good standing / Near limit ≥80% / **Frozen**).
-- When balance + new order > available credit → inline warning with the exact shortfall and options: *Take part payment now*, *Request manager override*, *Cancel items*.
+- When balance + new order > available credit → inline warning with the exact shortfall and options: *Take part payment now*, *Request owner override*, *Cancel items*.
+- Also shows the **staff member's own credit meter**: "Your outstanding credit: ₦180,000 of ₦250,000 allowed".
 
-### A5. Frozen-tab behaviour
-- A frozen tab shows a red banner "Credit limit reached / Overdue" and **disables "Charge to tab"**; other tenders (cash, transfer, card) still work.
-- Button: **Request override** → sends approval request to manager (push) → manager approves with PIN and reason, optionally with a one-time extra limit and expiry.
+### A5. Credit sale ("Charge to tab"): staff-responsible, owner-approved
+**Rule:** whoever rings up a credit sale becomes the **Responsible Staff** for that debt. The owner must approve it.
+
+Flow to design:
+1. Staff taps **Charge to tab**. A confirmation sheet says plainly: *"You are responsible for collecting ₦45,000 from Tunde A. by 18 Oct. If it isn't paid, it may be recovered from you."* Staff confirms with their PIN.
+2. **Guest acknowledgement:** the guest gets a WhatsApp/SMS message: "₦45,000 charged to your tab at {venue} by {staff}. Reply YES to confirm". The guest can also confirm with a one-time code on the staff's screen. This protects the staff member, and stops fake credit sales being used to hide theft.
+3. **Owner approval request** goes out (push + WhatsApp). The POS shows the charge as **"Pending owner approval"** (purple chip).
+   - *If the guest has an owner-pre-approved credit line* and the amount fits within it, the charge is **auto-approved** instantly.
+   - Otherwise the order can still be served **at the staff member's risk** while pending. The screen says so clearly.
+4. Owner decides: **Approve** · **Approve lower amount** · **Decline**. If declined, the staff member must collect payment now or the amount moves straight to their liability.
+5. Staff can't sell on credit when they have hit their **personal credit cap**, or have any debt in the Staff-Liability stage (configurable).
+
+**Frozen tab:** a red banner "Credit limit reached / Overdue" and **"Charge to tab" disabled**. Cash, transfer and card still work. **Request override** goes to the owner (manager can view but not approve credit). The owner can grant a one-time extra limit with an expiry.
+
+### A5a. My Credit Book (staff's own debtors)
+- List of every credit sale this staff member is responsible for: guest, amount, currency, sold date, due date, **aging chip**, approval status, guest-acknowledged ✓, outreach status (last message sent / read / replied / promise date).
+- Header totals: **Outstanding**, **Due this week**, **Overdue**, **At risk of moving to my liability (date)**, **Collected this month**, optional **recovery bonus earned**.
+- Per debt actions: **Send official pay link** (goes from the venue's WhatsApp, never the staff's personal number), **Log a call/visit note**, **Record cash received** (must go into their till drawer and appears in shift close), **Log promise to pay**, **Request transfer** to another staff member (owner approves).
+- Banner reminder: "Guests must only pay to the official venue account or pay link."
 
 ### A6. Payment screen (multi-tender split)
 - Amount due at top; tender chips: **Cash, Card/POS terminal, Bank transfer, Charge to tab, Voucher/Prepaid, Comp (manager only)**.
@@ -86,7 +114,8 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - **Cash:** quick-notes keypad, auto change calculation.
 - **Bank transfer:** generates a **dynamic account number / QR** for this exact bill; screen auto-flips to "Paid ✔" when the payment webhook arrives (or "Waiting…" with manual confirm → manager PIN if no webhook).
 - **Card:** shows amount sent to terminal, status (pending/approved/failed).
-- **Tab:** shows tab balance after charge and remaining credit.
+- **Tab:** shows tab balance after charge and remaining credit, and launches the A5 credit flow (responsible staff + owner approval).
+- **Debt repayment mode:** a guest paying an old tab at the bar. Pick the guest, see their open charges oldest first, take payment, and the oldest charges are cleared first. Cash goes into the drawer, and the Responsible Staff is notified.
 - Split by item / by seat / by amount / equal split.
 - Success screen: receipt options — print, WhatsApp, SMS, email, none.
 
@@ -107,11 +136,14 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - Outputs: X/Z report, shift summary (sales by category, voids count/value, comps, discounts, tabs opened, tabs charged).
 - Shift cannot be closed with unsent offline queue (shows blocking sync screen).
 
-### A10. Offline mode (must be designed)
-- Persistent header chip: "Offline – 14 sales queued".
-- All of A1–A9 work offline: menu, prices, open tabs, guest credit (last-synced snapshot), stock decrement (local).
-- Offline limits to design: bank-transfer QR and card tenders show "Unavailable offline"; **credit-limit checks use last-known balance and a conservative offline cap** to prevent over-extension; manager PIN works offline (cached hash, rate-limited).
-- On reconnect: queue syncs with conflict resolution screen only if needed ("Item price changed while offline").
+### A10. Connection states (must be designed: 3 states)
+The venue runs a small **hub computer** on its own network so all devices stay in sync even with no internet (see architecture doc).
+| State | Header chip | What works |
+|---|---|---|
+| **Online** | green "Online" | Everything |
+| **Venue-only** (internet down, hub up) | amber "No internet – venue sync OK" | All sales, tabs, credit charges (owner approval queued unless guest is pre-approved), stock. Bank-transfer/card confirmations show "Will confirm when internet returns". |
+| **Device offline** (can't reach hub) | red "Offline – 14 sales queued" | Cash sales only. **No credit sales or tab charges**. Voids/comps need a cached manager PIN (rate-limited). |
+- On reconnect: the queue syncs automatically. A conflict screen appears only if needed ("Item price changed while offline").
 
 ---
 
@@ -138,7 +170,8 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - Low-stock list with "Create PO" button.
 
 ### B5. Tab management
-- All tabs, filter by status/aging bucket; open a guest to see ledger, send reminder now, call now, extend/reduce limit (PIN), freeze/unfreeze, write-off request.
+- All tabs, filter by status / aging bucket / **responsible staff**. Open a guest to see their ledger, send a reminder now, call now, freeze/unfreeze, or request a write-off.
+- Managers **cannot approve credit or change credit limits**. That is the owner's call. They can view everything and add notes.
 
 ### B6. Staff
 - Clock in/out, who is on shift, device status, quick PIN reset.
@@ -178,6 +211,30 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 ### C6. Approvals & controls
 - Owner-only actions: write off debt, change roles, change credit policy, delete/lock periods, view audit log.
 
+### C7. Credit approvals (owner, phone-first, must be fast)
+- Push/WhatsApp notification opens a **one-screen decision card**:
+  - Guest: name, photo, tier, total owed, oldest debt age, payment history ("paid 9 of 10 tabs, average 6 days late"), guest acknowledged ✓/pending.
+  - Sale: items, amount + currency, time, station.
+  - **Responsible staff:** name, their current outstanding credit vs cap, their collection rate, and any debts already in liability.
+  - Buttons: **Approve** · **Approve lower amount** · **Decline** (reason) · **Approve + set credit line for this guest** (future charges up to X are auto-approved until a chosen date).
+- Biometric/PIN to confirm. A queue view handles busy nights ("6 pending · ₦310,000"), with batch approve for small amounts below a threshold the owner sets.
+- If the owner doesn't respond within N minutes, a reminder is sent. The charge stays "Pending" at the staff member's risk.
+
+### C8. Staff credit & liability
+- Table per staff member: credit sold (period), outstanding, overdue, **collection rate %**, average days to collect, amount moved to **staff liability**, deductions made, bonuses earned.
+- **Liability case** screen (per debt that passed its deadline): timeline of outreach attempts, guest promises, staff notes, then owner options:
+  - **Extend deadline**
+  - **Transfer to another staff member**
+  - **Recover from staff**: one-off or instalment plan, shown against payroll. The staff member's signed credit agreement is linked here.
+  - **Write off**: the venue takes the loss.
+  - **Keep chasing guest**: if the guest pays later, any amount already recovered from staff is refunded to them automatically.
+- **Staff exit settlement:** before a staff member can be deactivated, the app lists their open credit. Each debt must be transferred, settled or written off.
+
+### C9. Currency & payouts
+- Global **Local ⇄ USD** toggle on every owner/finance screen. Shows "Rate: 1 USD = ₦X (source, date)".
+- Payouts view: Paystack settlements by currency (NGN account, USD domiciliary account), fees paid, pending settlements, and money still to be converted to USD.
+- FX gain/loss line in P&L when debts are paid in a different currency than they were sold in.
+
 ---
 
 ## 8. Surface D — Back-office (web)
@@ -210,9 +267,22 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - **Role/permission matrix editor** (see §10).
 
 ### D6. Customers & credit policy
-- Customer database: contact, WhatsApp opt-in status, credit limit, tier (VIP/Regular/Corporate), notes, blacklist.
-- Credit policy: default limit per tier, grace days, auto-freeze triggers (limit reached **or** any balance older than X days).
+- Customer database: contact, country/phone code, WhatsApp opt-in status, owner-approved credit line (amount, currency, expiry), tier (VIP/Regular/Corporate), notes, blacklist.
+- **Guest credit policy:** default limit per tier, grace days, auto-freeze triggers (limit reached **or** any balance older than X days), guest-acknowledgement required (on/off).
+- **Staff credit policy:**
+  - Personal credit cap per staff member or role.
+  - Days until an unpaid debt becomes **staff liability** (e.g. 30).
+  - Whether staff with liability debts can keep selling on credit.
+  - Recovery bonus % (optional incentive).
+  - Maximum payroll deduction per pay period.
+  - Owner-approval rules (every sale vs. auto-approve inside pre-approved guest lines, batch-approve threshold, reminder timeout).
+- **Staff credit agreement:** upload or e-sign the agreement each staff member signs before credit selling is switched on for them.
 - Guarantor / referrer field for large limits.
+
+### D6a. Currency & FX settings
+- Venue local currency (from venue country), owner reporting currency (USD).
+- Daily FX rate: automatic source + manual override, with a history table.
+- Pay-link currency rules: local by default; allow USD for foreign cards (on/off); quote lock time.
 
 ### D7. Collections playbook builder
 - Visual timeline editor: steps on Day 0, +3, +7, +14, +21, +30 with channel (WhatsApp/SMS/Voice), template, tone (Friendly / Firm / Final), send window (e.g. 10:00–19:00), stop conditions (paid, disputed, promise-to-pay).
@@ -246,11 +316,13 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - **Quick-reply buttons:** Pay now · I've paid · Promise to pay on… · Dispute · Talk to a person · Stop messages.
 - **Two-way bot flows:** "I've paid" → asks for reference/screenshot → verifies via payment webhook or flags for human review. "Promise date" → date picker → schedules follow-up and pauses escalation until date. "Dispute" → itemised list to pick lines → creates dispute ticket for manager.
 - **Payment confirmation message** + digital receipt (PDF/image) + updated balance.
+- Every message is sent **from the venue's official WhatsApp number**, never a staff member's personal phone. It names the staff member who served the guest ("Served by Ada") so the guest recognises the tab, and states "Only pay to the official link/account below".
 
 ### F2. Pay-link page (mobile web, no login)
-- Header: venue + guest name, amount due, itemised accordion.
+- Header: venue + guest name, amount due **in the debt's currency**, itemised accordion.
+- **Currency selector:** defaults to the venue's local currency, detected from the venue country and the guest's phone/location. Guests with foreign cards can choose **USD**, which shows the converted amount, the rate, and a "price held for 30:00" countdown.
 - Choose: **Pay full / Pay part (amount input) / Bank transfer details with copy button / Card**.
-- Result screens: success (with receipt download), pending, failed, expired link.
+- Result screens: success (with receipt download), pending, failed, expired link, quote expired (requote).
 - Trust cues: venue name, secure badge, support WhatsApp number.
 
 ### F3. Statement & receipt
@@ -261,7 +333,8 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - Flow: greeting + identity → "Press 1 to receive a payment link by WhatsApp/SMS, 2 to promise a payment date, 3 to speak with someone, 9 to opt out of calls". Call outcome logged on guest timeline (answered/no answer/promise/opt-out).
 
 ### G. Staff/owner notifications (push + WhatsApp)
-- Low stock, large void, comp over threshold, cash variance, frozen-tab override request, payment received on large tab, daily summary, device offline > N minutes, outreach bot failures.
+- **Owner:** credit approval requests (highest priority, actionable from the notification), frozen-tab override requests, low stock, large void, comp over threshold, cash variance, payment received on a large tab, daily summary, venue hub/internet down > N minutes, outreach bot failures.
+- **Staff:** your credit sale was approved/declined, your guest paid (with amount), your guest promised/disputed, "debt moves to your liability in 3 days", recovery bonus earned.
 - Notification centre UI with severity, unread, snooze rules.
 
 ---
@@ -276,9 +349,15 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 | Delete a sales record | ✖ | ✖ | ✖ (void only, logged) | ✖ | ✖ (records are append-only; reversal entries only) |
 | Change item price / apply discount | ✖ | ✖ | ✔ (logged) | ✖ | ✔ |
 | Comp items | ✖ | ✖ | **PIN** + reason | – | ✔ |
-| Charge to tab beyond limit | ✖ | ✖ | **PIN** + expiry | – | ✔ |
+| Sell on credit (charge to tab, becomes Responsible Staff) | ✔ within own cap | ✔ within own cap | ✔ within own cap | – | ✔ |
+| **Approve a credit sale** | ✖ | ✖ | ✖ (view only) | ✖ | ✔ |
+| Charge to tab beyond guest limit | ✖ | ✖ | Request only | – | ✔ |
 | Clear / adjust / forgive customer debt | ✖ | ✖ | Request only | ✖ | ✔ |
-| Edit credit limit | ✖ | ✖ | Within band | ✖ | ✔ |
+| Edit guest credit line / staff credit cap | ✖ | ✖ | ✖ | ✖ | ✔ |
+| Transfer debt responsibility between staff | Request | Request | Request | ✖ | ✔ |
+| Recover debt from staff (payroll deduction) | ✖ | ✖ | ✖ | Prepare | ✔ |
+| See own credit book | ✔ | ✔ | ✔ | – | ✔ |
+| See all staff credit & liability | ✖ | ✖ | ✔ | ✔ | ✔ |
 | See expected cash total before blind count | ✖ | ✖ | ✔ | ✔ | ✔ |
 | Edit inventory counts / post adjustments | ✖ | ✖ | ✔ | View | ✔ |
 | View P&L / margins / costs | ✖ | ✖ | Limited | ✔ | ✔ |
@@ -298,9 +377,24 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 - Auto-freeze triggers: (a) limit reached, (b) any invoice older than grace days (config, e.g. 14), (c) manual freeze, (d) broken promise-to-pay.
 - Unfreeze automatically when balance falls below the limit **and** nothing is past grace.
 
+**Staff-responsible credit lifecycle** (design this as a status timeline on every credit charge):
+```
+Requested → Pending owner approval → Approved (or Declined → collect now / staff liability)
+   → Open → Due (grace ends) → Overdue (outreach escalates) → Staff liability (after N days, e.g. 30)
+   → Paid by guest │ Recovered from staff │ Transferred │ Written off
+```
+- Each charge has exactly **one Responsible Staff** at a time. Transfers keep the history.
+- **Guest acknowledgement** (YES reply / one-time code) is recorded against the charge.
+- Staff can't sell on credit above their personal cap, or (configurable) while they have debts in liability.
+- If a guest pays after money was recovered from the staff member, the staff member is **refunded automatically**.
+- Guests only ever pay the **venue** (Paystack link, official account, or into a till). Never a staff member's personal account.
+- **Legal note:** recovering debts from wages needs a written agreement signed by the staff member and must follow local labour law (limits on deductions). Get a local lawyer to check the staff credit agreement before switching this on.
+
 **Aging buckets:** Current · 1–7 · 8–14 · 15–30 · 30+ days (oldest unpaid charge sets the bucket; partial payments apply FIFO to oldest charges).
 
-**Payment reconciliation:** payment webhook → match by reference → apply to oldest charges → update balance → unfreeze if eligible → send receipt → stop escalation → write ledger and audit entry. Unmatched payments land in a "Needs matching" queue (design this screen).
+**Currency:** sales and debts are recorded in the venue's local currency. The owner sees everything in **USD** at the stored daily rate. A payment in a different currency stores its rate, and any difference is booked to FX gain/loss.
+
+**Payment reconciliation:** Paystack webhook → verify → match by reference → apply to oldest charges → update balance → unfreeze if eligible → notify Responsible Staff + owner → send receipt → stop escalation → write ledger and audit entry. Unmatched payments land in a "Needs matching" queue (design this screen).
 
 **Stock deduction:** each sale line explodes through its recipe; bottle level is tracked in ml; partial bottles carry over between shifts; comps/spills/breakages deduct with reason codes; theoretical vs counted variance is surfaced after every stock count.
 
@@ -310,15 +404,15 @@ G. Notifications & alerts           — push / WhatsApp / SMS to staff and owner
 
 ## 12. Screen inventory (checklist for the designer)
 
-POS: Login · Shift open · Floor view · Order screen · Modifier sheet · Customer search/new · Guest credit card · Frozen-tab banner · Override request · Payment (split) · Cash keypad · Transfer QR · Success/receipt · Quick loss log · Cash drop / paid-out · Shift close (blind count) · Sync queue · Offline states.
+POS: Login · Shift open · Floor view · Order screen · Modifier sheet · Customer search/new · Guest credit card (+ staff credit meter) · **Credit responsibility confirm sheet** · **Guest acknowledgement (code) screen** · **Pending-approval state** · Frozen-tab banner · Override request · Payment (split) · **Debt repayment mode** · Cash keypad · Transfer QR · Success/receipt · **My Credit Book + debt detail** · Quick loss log · Cash drop / paid-out · Shift close (blind count) · Sync queue · **3 connection states**.
 
-Manager: Live dashboard · Approvals inbox · Approval detail · Shift reconciliation list/detail · Stock count · Receive delivery · Tab list/detail · Staff on shift.
+Manager: Live dashboard · Approvals inbox · Approval detail · Shift reconciliation list/detail · Stock count · Receive delivery · Tab list/detail (filter by staff) · Staff on shift.
 
-Owner: Home KPIs · P&L (+ drill-down) · CapEx · Debt aging · Debtor detail · Loss centre · Reports centre · Controls.
+Owner: Home KPIs (Local ⇄ USD) · P&L (+ drill-down) · CapEx · Debt aging · Debtor detail · **Credit approval card + queue** · **Staff credit & liability table** · **Liability case** · **Staff exit settlement** · **Payouts & currency** · Loss centre · Reports centre · Controls.
 
-Back-office: Menu · Recipe editor · Inventory list/ledger · Stock take · PO/GRN · Expenses · Payroll · Customers · Credit policy · Playbook builder · Template editor · Integrations · Audit log · Roles matrix · Settings.
+Back-office: Menu · Recipe editor · Inventory list/ledger · Stock take · PO/GRN · Expenses · Payroll (incl. approved deductions) · Customers · Guest & staff credit policy · **Staff credit agreement** · **Currency & FX** · Playbook builder · Template editor · Integrations · Audit log · Roles matrix · Settings.
 
-Customer: WhatsApp thread designs (5 tones) · Pay-link page (4 states) · Receipt · Statement · IVR flow diagram.
+Customer: WhatsApp thread designs (5 tones + credit-acknowledgement message) · Pay-link page (6 states, with currency selector) · Receipt · Statement · IVR flow diagram.
 
 ---
 
@@ -329,22 +423,26 @@ Customer: WhatsApp thread designs (5 tones) · Pay-link page (4 states) · Recei
 | **1 – Control the till** | POS (offline), shifts, blind count, roles/PINs, audit log, sales reports | Stops cash leakage fast |
 | **2 – Control the stock** | Recipes, ml-level deduction, wastage/comp/breakage logging, low-stock alerts, counts | Stops bottle theft and waste |
 | **3 – Control the money** | Expenses, CapEx, live P&L, margin dashboards, scheduled reports | Real-time profit view |
-| **4 – Control credit** | Customer tabs, limits, aging, auto-freeze, split tenders | VIP credit with guardrails |
+| **4 – Control credit** | Customer tabs, limits, staff-responsible credit, owner approvals, aging, auto-freeze, staff liability, split tenders | VIP credit with guardrails and clear accountability |
 | **5 – Recover debt** | WhatsApp/SMS bot, payment links, webhooks, IVR, auto-reconcile, receipts | Cash collected without staff effort |
 
-## 14. Open questions (answers change the design and the vendor choice)
+## 14. Questions
 
-1. **Country / currency / payment rails?** (Assumed Nigeria + NGN — Paystack/Flutterwave-style payment links and virtual accounts.) 
-2. **Devices:** staff phones, shared Android tablets, or existing POS hardware? Receipt/kitchen printers? Card terminals?
-3. **Scale:** peak transactions per hour, number of bars/stations, one venue or several?
-4. **Credit:** typical tab size, how many VIPs on credit, who may grant limits, and is there a guarantor practice?
-5. **Debt recovery tone & legal limits:** acceptable contact hours, whether voice calls are allowed, privacy/consent practice for WhatsApp opt-in.
-6. **Accounting:** who keeps the books and in what tool (QuickBooks / Zoho / Excel)?
-7. **Build vs buy:** custom build on an offline-first POS core, or compose existing POS + ledger + messaging tools? (Recommendation and priced vendor matrix to follow once 1–3 are answered.)
-8. **Brand:** venue name, logo, colours, vibe (premium-dark, neon, minimalist).
+**Answered (v0.2):** Paystack, with USD for the owner and local currency for guests · phones + tablets + computers at 500–1,000 sales/hour · custom build · staff-responsible credit with owner approval.
+
+**Still open:**
+1. **"My own payment in USD":** does this mean (a) the venue's takings should end up in USD, or (b) you plan to sell NightOps to other venues and charge *them* a USD subscription? Option (b) adds multi-business accounts and subscription billing screens.
+2. **Which country is the first venue in?** Will there be venues in other countries soon? This decides whether we need a second payment provider beyond Paystack.
+3. **Owner approval speed:** must *every* credit sale wait for the owner, or may the owner pre-approve credit lines for trusted guests so those sales go through instantly? (The spec supports both. Which is the default?)
+4. **Staff liability:** after how many days does an unpaid debt become the staff member's? Is the recovery a payroll deduction, an instalment plan, or both? Any recovery bonus for staff who collect on time?
+5. **Typical tab size and number of VIPs on credit**, to set default caps.
+6. **Debt recovery limits:** contact hours, voice calls allowed?
+7. **Accounting:** who keeps the books and in what tool (QuickBooks / Zoho / Excel)?
+8. **Hardware:** receipt/kitchen printers and card terminals? OK to add a small venue hub computer + UPS + 4G backup router?
+9. **Brand:** venue name, logo, colours, vibe (premium-dark, neon, minimalist).
 
 ---
 
 ## 15. Prompt you can paste into a design tool
 
-> Design a dark-mode, offline-first hospitality operations app called "NightOps" for a high-volume nightclub. Create: (1) a tablet POS with floor/section view, order screen with category rail + item grid + cart, guest credit meter, frozen-tab banner, split-tender payment screen, quick loss log, and blind-count shift close; (2) a phone manager app with live dashboard, approvals inbox with manager-PIN modal, and shift reconciliation; (3) an owner dashboard with real-time P&L, sales by Drinks/VIP/Kitchen, debt aging buckets (0–7, 8–14, 15–30, 30+), and a shrinkage/anomaly centre; (4) WhatsApp message layouts for friendly → firm debt reminders with quick-reply buttons; (5) a mobile payment-link page. Use large touch targets, status colours with icons, persistent online/offline chip, and a reusable PIN-override component. Refer to the feature spec for flows and states.
+> Design a dark-mode, offline-first hospitality operations app called "NightOps" for a high-volume nightclub (500–1,000 sales/hour) that runs on phones, tablets and computers. Create: (1) a tablet/phone POS with floor/section view, order screen with category rail + item grid + cart, guest credit meter plus the staff member's own credit meter, a "you are responsible for collecting this" credit confirmation sheet, a "pending owner approval" state, frozen-tab banner, split-tender payment screen, quick loss log, blind-count shift close, a "My Credit Book" list of the staff member's debtors, and three connection-state header chips (Online / No internet – venue sync OK / Offline); (2) a phone manager app with live dashboard, approvals inbox with manager-PIN modal, and shift reconciliation; (3) an owner app with a one-screen credit-approval card (guest history + responsible staff's track record + Approve / Approve lower / Decline), real-time P&L with a Local ⇄ USD toggle, sales by Drinks/VIP/Kitchen, debt aging buckets (0–7, 8–14, 15–30, 30+), a staff credit & liability table, and a shrinkage/anomaly centre; (4) WhatsApp message layouts for credit acknowledgement and friendly → firm debt reminders with quick-reply buttons; (5) a mobile payment-link page with a currency selector (local currency default, USD option). Use large touch targets, status colours with icons, and a reusable PIN-override component. Refer to the feature spec for flows and states.
