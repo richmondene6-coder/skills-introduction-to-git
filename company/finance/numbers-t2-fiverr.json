@@ -1,0 +1,7 @@
+{"business":"Excel cleanup + report service, Tier 2 (cleanup + pivot report + charts + summary) on Fiverr","unit":"order",
+"price":60,
+"variable":[{"label":"Fiverr seller fee (20%)","cost":12.00},{"label":"Refund/redo allowance (5% of price, guess)","cost":3.00},{"label":"Withdrawal fees allocated per order (guess)","cost":0.50},{"label":"AI tokens (covered by flat chat plan)","cost":0}],
+"fixed_monthly":[{"label":"Claude plan (0 = founder already has one)","cost":0}],
+"startup":[{"label":"Upwork Connects test (board cap, Upwork only)","cost":0}],
+"days_per_month":30,"capacity_per_day":2.0,"plan_per_day":0.4,
+"ramp_per_day":[0.0333,0.1,0.1667,0.2333,0.3,0.3333,0.4,0.4,0.4,0.4,0.4,0.4]}
